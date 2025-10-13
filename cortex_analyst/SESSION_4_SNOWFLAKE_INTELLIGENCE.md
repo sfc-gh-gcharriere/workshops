@@ -276,7 +276,7 @@ Now integrate the email procedure with your agent through the Snowsight UI:
    - **Resource type**: `procedure`
    - **Database & Schema**: `SNOWFLAKE_INTELLIGENCE.AGENTS`
    - **Custom tool identifier**: `SNOWFLAKE_INTELLIGENCE.AGENTS.SEND_EMAIL()`
-   - **Name**: `Send_Email`
+   - **Name**: `send_email`
    - **Description**: `Send an email message`
 
 7. Configure the parameters:
@@ -291,14 +291,9 @@ Now integrate the email procedure with your agent through the Snowsight UI:
    - Description: `If subject is not provided, use "Snowflake Intelligence".`
 
 8. Click **Add** to save the tool configuration
+9. Click **Save** to save your agent configuration
 
 The agent can now send email notifications with analysis results!
-
-**Custom Tool Types:**
-- **FUNCTION**: Python/Java UDFs
-- **PROCEDURE**: Stored procedures
-- **EXTERNAL_FUNCTION**: API integrations
-- **CORTEX_ANALYST**: Semantic model queries
 
 ---
 
