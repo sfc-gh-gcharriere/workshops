@@ -323,13 +323,13 @@ Secure Data Sharing enables consumers to query live data that is owned and manag
 6. **Add Consumer Accounts**:
    - Get your neighbor's **Data Sharing Account Identifier**:
    
-   <img width="622" height="621" alt="view_account_details" src="https://github.com/user-attachments/assets/ae4f0323-28a9-40d0-83ea-363fedfbbd47" />
+   <img alt="view_account_details" src="img/snowflake_fundamentals/account_details.png" />
    
-   <img width="890" height="637" alt="data_sharing_account_identifier" src="https://github.com/user-attachments/assets/e3f14907-e786-41f4-97b1-c1d5a490ae18" />
+   <img alt="data_sharing_account_identifier" src="img/snowflake_fundamentals/account_identifier.png" />
    
    - Add your neighbor's account as a consumer account:
    
-   <img width="606" height="765" alt="add_account" src="https://github.com/user-attachments/assets/2160c190-c220-4e11-9f9c-bc341f303b03" />
+   <img alt="add_account" src="img/snowflake_fundamentals/add_account.png" />
    
    - Click **Save**
 
@@ -349,7 +349,7 @@ Secure Data Sharing enables consumers to query live data that is owned and manag
 
 2. **Click Get** to access the private shared listings from your neighbor
 
-   <img width="531" height="417" alt="share" src="https://github.com/user-attachments/assets/45177694-0c20-460c-a55f-350cff4ebd41" />
+   <img  alt="share" src="img/snowflake_fundamentals/add_account.png" />
 
 3. **Query the shared data** to verify access
 
