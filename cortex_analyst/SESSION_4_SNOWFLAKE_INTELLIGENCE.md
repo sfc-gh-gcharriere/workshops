@@ -169,47 +169,19 @@ These capabilities make it easy for business users to explore and analyze data w
 
 ### Example Questions for Snowflake Intelligence
 
-Now that your agent is configured with the semantic model, you can ask a wide variety of business questions through Snowflake Intelligence. Try these examples:
+Now that your agent is configured with the semantic model, you can ask business questions through Snowflake Intelligence. Try these examples:
 
-**Basic Revenue Questions:**
-- What was the total revenue in 2024?
-- Show me daily revenue for the last 30 days
-- What's our best performing product line?
+1. What was the total revenue in 2024?
+2. Compare revenue across all regions
+3. Top 5 products by revenue
+4. Monthly revenue trend for 2024
+5. Monthly profit in Europe per category
+6. List large orders from last month
+7. YoY revenue growth by product line
+8. Which region had the highest growth in 2024?
 
-**Regional Analysis:**
-- Compare revenue across all regions
-- Which region had the highest growth in 2024?
-- Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
-
-**Product Analysis:**
-- Top 5 products by revenue
-- Show me revenue by product line over time
-- What's the average order value by product category?
-
-**Time-Based Queries:**
-- Monthly revenue trend for 2024
-- Quarter-over-quarter revenue comparison
-- Daily cumulative revenue in December 2023
-
-**Advanced Queries (Using Custom Metrics & Filters):**
-- Monthly profit in Europe per category
-- List large orders from last month
-- Profit margin by region
-- Show me large orders with profit breakdown
-
-**Percentage & Comparison Queries:**
-- Percentage of revenue per region
-- YoY revenue growth by product line
-- What percentage of total revenue comes from Electronics?
-
-**Follow-up Questions (Contextual Understanding):**
-After asking a question, try follow-ups like:
-- "Show me the trend over time"
-- "Compare that to the previous year"
-- "Which products contributed most to that?"
-- "Break that down by region"
-
-Snowflake Intelligence will remember the context of your conversation and understand what "that" refers to, making it feel like a natural conversation with a data analyst!
+**Follow-up Questions:**
+After asking a question, try follow-ups like "Show me the trend over time" or "Compare that to the previous year". Snowflake Intelligence will remember the context and understand what "that" refers to!
 
 ---
 
