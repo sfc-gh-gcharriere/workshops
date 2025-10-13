@@ -306,7 +306,7 @@ Secure Data Sharing enables consumers to query live data that is owned and manag
 
 2. **Create Listing** → Select **Specified Consumers** (Private Listing)
 
-   <img width="246" height="237" alt="Private_Listing" src="img/snowflake_fundamentals/create_listing.png" />
+   <img width="246" height="237" alt="Private Listing" src="img/snowflake_fundamentals/create_listing.png" />
 
 3. **Define Listing Details**:
    - Listing Title: `yourname_citibike` (e.g., `john_citibike`)
@@ -318,7 +318,7 @@ Secure Data Sharing enables consumers to query live data that is owned and manag
 
 5. **Define Access Type** → Select **Free Listing**
 
-   <img width="476" height="276" alt="free_listing" src="https://github.com/user-attachments/assets/5ee7372a-3348-42c2-8f73-357a0c88162b" />
+   <img alt="Free Access" src="img/snowflake_fundamentals/free_access.png" />
 
 6. **Add Consumer Accounts**:
    - Get your neighbor's **Data Sharing Account Identifier**:
