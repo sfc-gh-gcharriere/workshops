@@ -4,7 +4,7 @@
 
 > **Note:** This is an optional session for participants interested in advanced integration patterns. You can proceed directly to [Session 4: Snowflake Intelligence](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) if you prefer.
 
-This session demonstrates how to integrate Snowflake Cortex Search with Cortex Analyst, enabling fuzzy matching that allows users to make mistakes with terminology and still get proper results.
+Cortex Search is a standalone service that can be integrated with Cortex Analyst to handle high cardinality columns such as product lines. This integration enables fuzzy matching that allows users to make mistakes with terminology and still get proper results.
 
 ---
 
@@ -14,10 +14,11 @@ This session demonstrates how to integrate Snowflake Cortex Search with Cortex A
 - **Semantic Search**: Find content by meaning, not just keywords
 - **Vector Embeddings**: Automatically generated using Snowflake's AI models
 - **Fuzzy Matching**: Match variations, typos, and abbreviations to actual values
+<img width="1804" height="662" alt="cortex_search" src="https://github.com/user-attachments/assets/02ef91b8-a6c7-4c16-9e81-e97921a55f3d" />
 
 ---
 
-## Part 1: Understanding the Problem (5 minutes)
+## Part 1: Understanding the Problem
 
 ### Step 1: Test a Question That Works
 
