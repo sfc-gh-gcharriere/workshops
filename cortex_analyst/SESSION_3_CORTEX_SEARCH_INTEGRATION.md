@@ -104,10 +104,18 @@ CREATE OR REPLACE CORTEX SEARCH SERVICE product_line_search_service
 
 **Verify the Search Service:**
 
-```sql
--- Check search service status
-SHOW CORTEX SEARCH SERVICES;
+To verify your search service was created successfully:
+1. Navigate to **AI & ML** > **Cortex Search** in Snowsight
+2. You should see `PRODUCT_LINE_SEARCH_SERVICE` listed
+3. Click on the service to view its details and status
 
+<img width="1258" height="204" alt="cortex_search_ui" src="https://github.com/user-attachments/assets/0b742c73-00a3-403d-98db-943f082153be" />
+
+**Optional: Test the Search Service Directly**
+
+You can test the search service with SQL to see how it matches terms:
+
+```sql
 -- Test the search service directly
 SELECT * FROM TABLE(
   product_line_search_service!SEARCH(
