@@ -29,7 +29,7 @@ In this session, you'll explore how Snowflake Intelligence and Agents extend you
 
 ---
 
-## Part 1: Snowflake Agents (15 minutes)
+## Part 1: Snowflake Agents (10 minutes)
 
 ### What are Snowflake Agents?
 
@@ -43,7 +43,7 @@ Think of agents as intelligent coordinators that can analyze data, make decision
 
 ---
 
-### Step 1: Create Your First AI Agent
+### Create Your First AI Agent (10 minutes)
 
 Navigate to **AI & ML** > **Agents** in Snowsight
 
