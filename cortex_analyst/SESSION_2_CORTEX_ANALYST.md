@@ -239,7 +239,7 @@ Navigate to Snowsight and create a new semantic view:
 6. Select columns: Include **all columns** from each of the selected tables
 7. Click **Create** and **Save**
 
-<img width="1261" height="820" alt="semantic_view_creation" src="https://github.com/user-attachments/assets/ba831c10-5b1f-4b62-a492-c767e53ec025" />
+<img alt="semantic_view_creation" src="img/cortex_analyst/semantic_view_creation.png" />
 
 ---
 
@@ -255,6 +255,7 @@ In the Semantic View builder, update the column types for each table:
    - Change type from **"Fact"** to **"Dimension"**
 3. For the `LOCATION_ID` column:
    - Change type from **"Fact"** to **"Dimension"**
+<img alt="move to dimension" src="img/cortex_analyst/move_to_dimension.png" />
 
 #### Fix LOCATION_DIM Table
 1. Select the `LOCATION_DIM` table in the left panel
