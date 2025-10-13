@@ -84,13 +84,24 @@ For more details, see the [Snowflake Intelligence documentation](https://docs.sn
 
 ### Create Your First AI Agent
 
-Navigate to **AI & ML** > **Agents** in Snowsight and Create your first AI Agent.
+Navigate to **AI & ML** > **Agents** in Snowsight and click **+ Agent** to create your first AI agent.
+
 <img alt="create_agent" src="img/snowflake_intelligence/create_agent.png" />
 
 **Agent Configuration:**
-- **Warehouse**: Compute resources for agent operations
-- **Description**: Clear purpose statement
-- **Instructions**: System prompts guiding agent behavior
+
+1. **Agent object name**: `revenue_analyst_agent`
+2. **Display name**: `Revenue Analyst Agent`
+3. **Warehouse**: Select `cortex_analyst_wh` (compute resources for agent operations)
+4. **Description**: `AI agent for analyzing revenue data and answering business questions`
+5. **Instructions**: System prompts to guide agent behavior:
+   ```
+   You are a helpful revenue data analyst. Use the Cortex Analyst tool to answer 
+   questions about revenue, products, and regional performance. Provide clear, 
+   concise answers with relevant data insights.
+   ```
+
+Click **Create agent** to complete the initial setup
 
 ---
 
