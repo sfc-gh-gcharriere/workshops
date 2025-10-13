@@ -349,7 +349,7 @@ Secure Data Sharing enables consumers to query live data that is owned and manag
 
 2. **Click Get** to access the private shared listings from your neighbor
 
-   <img  alt="share" src="img/snowflake_fundamentals/add_account.png" />
+   <img  alt="share" src="img/snowflake_fundamentals/consumer_share.png" />
 
 3. **Query the shared data** to verify access
 
