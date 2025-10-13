@@ -1,8 +1,35 @@
-# Session 4: Advanced Analytics with Snowflake Intelligence (30 minutes)
+# Session 4: Snowflake Intelligence (30 minutes)
 
-## AI-Powered Insights and Automation
+## What is Snowflake Intelligence?
 
-This session introduces Snowflake Intelligence and Snowflake Agents, demonstrating how to orchestrate AI tools to create powerful, automated analytics workflows that go beyond simple question-answering.
+**Snowflake Intelligence** is Snowflake's AI-powered assistant that provides a unified, conversational interface to interact with your entire Snowflake environment. It combines natural language understanding with intelligent tool orchestration to help users get insights, automate workflows, and manage their data platform.
+
+**Key Capabilities:**
+- **Conversational Analytics**: Ask questions across all your data using natural language
+- **Intelligent Tool Orchestration**: Automatically selects and chains the right AI services (Cortex Analyst, Cortex Search, etc.)
+- **Contextual Understanding**: Maintains conversation context and learns from your interactions
+- **Platform Integration**: Seamlessly integrates with your semantic models, data, and Snowflake features
+
+**How It Works:**
+1. You interact with Snowflake Intelligence through a chat interface in Snowsight
+2. Ask questions or request actions in natural language
+3. Intelligence analyzes your request and determines the best tools to use
+4. Orchestrates multiple Snowflake services as needed (Cortex Analyst for data queries, Cortex Search for semantic search, etc.)
+5. Returns comprehensive answers with context and explanations
+6. Maintains conversation history for follow-up questions
+
+**What Makes It Different:**
+- **Beyond Cortex Analyst**: While Cortex Analyst focuses on structured data queries, Snowflake Intelligence can help with platform tasks, documentation, troubleshooting, and more
+- **Multi-Tool Orchestration**: Automatically combines different AI services based on your needs
+- **Unified Experience**: One interface for all your Snowflake AI capabilities
+
+**Example Interactions:**
+- "What tables do I have access to in my database?"
+- "Analyze revenue trends and suggest optimization strategies"
+- "Show me how to create a dynamic masking policy"
+- "Compare sales performance across regions and explain any anomalies"
+
+In this session, you'll explore how Snowflake Intelligence and Agents extend your Cortex Analyst capabilities to create sophisticated, automated analytics workflows.
 
 ---
 
