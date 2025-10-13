@@ -9,10 +9,10 @@
 | 3 | Create Semantic View | 5 min | Part 2 | Build the foundation for your semantic model |
 | 4 | Configure Tables | 10 min | Part 2 | Define fact and dimension tables with relationships |
 | 5 | Test Join Query | 5 min | Part 2 | Validate relationships between tables |
-| 6 | Add Verified Queries | 5 min | Part 2 | Create complex query patterns for AI training |
+| 6 | Add Verified Queries | 10 min | Part 2 | Create complex query patterns for AI training |
 | 7 | Add Custom Metrics | 10 min | Part 2 | Define profit calculation with SQL expressions |
-| 8 | Add Named Filters | 10 min | Part 2 | Create reusable filters for large orders |
-| 9 | Add Custom Instructions | 10 min | Part 2 | Set default behaviors and formatting rules |
+| 8 | Add Named Filters | 5 min | Part 2 | Create reusable filters for large orders |
+| 9 | Add Custom Instructions | 5 min | Part 2 | Set default behaviors and formatting rules |
 | 10 | Save Semantic Model | 5 min | Part 2 | Finalize your semantic view |
 
 **Part 1: Environment Setup (15 minutes)** | **Part 2: Semantic Model Development (60 minutes)**
