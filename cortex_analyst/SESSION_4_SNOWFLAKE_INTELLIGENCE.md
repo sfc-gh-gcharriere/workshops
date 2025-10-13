@@ -277,10 +277,9 @@ Now integrate the email procedure with your agent through the Snowsight UI:
 6. Configure the email tool with the following settings:
 
    - **Resource type**: `procedure`
+   - **Database & Schema**: `SNOWFLAKE_INTELLIGENCE.AGENTS`
    - **Name**: `Send_Email`
-   - **Database & Schema**: `SNOWFLAKE_INTELLIGENCE.DATA`
-   - **Custom tool identifier**: `SNOWFLAKE_INTELLIGENCE.DATA.SEND_EMAIL()`
-   - **Warehouse**: `COMPUTE_WH`
+   - **Custom tool identifier**: `SNOWFLAKE_INTELLIGENCE.AGENTS.SEND_EMAIL()`
 
 7. Configure the parameters:
 
