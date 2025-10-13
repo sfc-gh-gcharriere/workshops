@@ -50,7 +50,7 @@ All using plain English - no SQL required for end users!
 ## Prerequisites
 
 ### Technical Requirements
-- Snowflake Trial account: https://signup.snowflake.com/
+- Snowflake Trial account: <a href="https://signup.snowflake.com/" target="_blank">https://signup.snowflake.com/</a>
 - Basic understanding of SQL
 - Familiarity with data warehousing concepts
 
