@@ -2,23 +2,20 @@
 
 ## Session Agenda
 
-| # | Topic | Duration | Description |
-|---|-------|----------|-------------|
-| 1 | What is Cortex Analyst? | 5 min | Understanding natural language to SQL capabilities |
-| 2 | Environment Setup | 15 min | Create database, schema, warehouse, and load data |
-| 3 | Create Semantic View | 5 min | Build the foundation for your semantic model |
-| 4 | Configure Tables | 10 min | Define fact and dimension tables with relationships |
-| 5 | Test Join Query | 5 min | Validate relationships between tables |
-| 6 | Add Verified Queries | 5 min | Create complex query patterns for AI training |
-| 7 | Add Custom Metrics | 10 min | Define profit calculation with SQL expressions |
-| 8 | Add Named Filters | 10 min | Create reusable filters for large orders |
-| 9 | Add Custom Instructions | 10 min | Set default behaviors and formatting rules |
-| 10 | Save Semantic Model | 5 min | Finalize your semantic view |
-| 11 | Example Questions | 5 min | Try various natural language queries |
-| 12 | Intelligence Capabilities | 5 min | Explore advanced AI features |
+| # | Topic | Duration | Part | Description |
+|---|-------|----------|------|-------------|
+| 1 | What is Cortex Analyst? | 5 min | Intro | Understanding natural language to SQL capabilities |
+| 2 | Environment Setup | 15 min | Part 1 | Create database, schema, warehouse, and load data |
+| 3 | Create Semantic View | 5 min | Part 2 | Build the foundation for your semantic model |
+| 4 | Configure Tables | 10 min | Part 2 | Define fact and dimension tables with relationships |
+| 5 | Test Join Query | 5 min | Part 2 | Validate relationships between tables |
+| 6 | Add Verified Queries | 5 min | Part 2 | Create complex query patterns for AI training |
+| 7 | Add Custom Metrics | 10 min | Part 2 | Define profit calculation with SQL expressions |
+| 8 | Add Named Filters | 10 min | Part 2 | Create reusable filters for large orders |
+| 9 | Add Custom Instructions | 10 min | Part 2 | Set default behaviors and formatting rules |
+| 10 | Save Semantic Model | 5 min | Part 2 | Finalize your semantic view |
 
-**Part 1: Environment Setup (15 minutes)**  
-**Part 2: Semantic Model Development (60 minutes)**
+**Part 1: Environment Setup (15 minutes)** | **Part 2: Semantic Model Development (60 minutes)**
 
 ---
 
@@ -733,53 +730,7 @@ Now that you've configured your semantic model with relationships, verified quer
 1. In the Semantic View builder, click the **Save** button at the top right
 2. Your semantic model is now ready to use!
 
-**What Gets Saved:**
-- ✅ All table definitions and relationships
-- ✅ Verified queries
-- ✅ Custom metrics (Profit)
-- ✅ Named filters (large_order)
-- ✅ Custom instructions (formatting, percentages, date filters)
-
 Your semantic model is now available for natural language queries through Cortex Analyst and **Snowflake Intelligence**!
-
----
-
-### Example Questions You Can Now Ask
-
-With your semantic model configured, you can ask a wide variety of business questions in natural language. Here are some examples:
-
-**Basic Revenue Questions:**
-- What was the total revenue in 2024?
-- Show me daily revenue for the last 30 days
-- What's our best performing product line?
-
-**Regional Analysis:**
-- Compare revenue across all regions
-- Which region had the highest growth in 2024?
-- Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
-
-**Product Analysis:**
-- Top 5 products by revenue
-- Show me revenue by product line over time
-- What's the average order value by product category?
-
-**Time-Based Queries:**
-- Monthly revenue trend for 2024
-- Quarter-over-quarter revenue comparison
-- Daily cumulative revenue in December 2023
-
-**Advanced Queries (Using Custom Metrics & Filters):**
-- Monthly profit in Europe per category
-- List large orders from last month
-- Profit margin by region
-- Show me large orders with profit breakdown
-
-**Percentage & Comparison Queries:**
-- Percentage of revenue per region
-- YoY revenue growth by product line
-- What percentage of total revenue comes from Electronics?
-
-Try these questions in the Playground tab or through Snowflake Intelligence to see how Cortex Analyst translates them into SQL!
 
 ---
 
