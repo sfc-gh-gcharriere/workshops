@@ -110,28 +110,25 @@ Once the agent is created, click on it to open the details page, then click **Ed
    Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
    ```
 
-Save your configuration.
+Add your question.
 
 ---
 
 ### Step 3: Add Cortex Analyst Tool to Agent
 
-Integrate your semantic model as a tool the agent can use:
-
-```sql
-ALTER AGENT revenue_analyst_agent
-  ADD TOOL cortex_analyst_tool
-  TYPE = CORTEX_ANALYST
-  PARAMETERS = (
-    SEMANTIC_MODEL = '@cortex_analyst_demo.revenue_timeseries.raw_data/revenue_timeseries.yaml'
-  )
-  DESCRIPTION = 'Query revenue, product, and regional data using natural language';
-```
+Navigate to the **Tools** tab in your agent configuration and click **+ Add** to integrate your Cortex Analyst semantic model.
+<img alt="add_cortex_analyst_tool" src="img/snowflake_intelligence/add_tools.png" />
 
 **Tool Configuration:**
-- **Type**: CORTEX_ANALYST indicates this tool uses your semantic model
-- **Parameters**: Points to your semantic model YAML file
-- **Description**: Helps the agent understand when to use this tool
+
+1. **Tool Type**: Select **Semantic view**
+2. **Database**: Select `CORTEX_ANALYST_DEMO`
+3. **Schema**: Select `REVENUE_TIMESERIES`
+4. **Semantic view**: Select `REVENUE_TIMESERIES`
+5. **Tool name**: `revenue_analyst_tool`
+6. **Description**: `Query revenue, product, and regional data using natural language`
+
+Click **Add** to attach the tool to your agent
 
 ---
 
