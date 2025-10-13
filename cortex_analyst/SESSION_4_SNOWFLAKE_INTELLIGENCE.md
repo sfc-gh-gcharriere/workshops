@@ -196,14 +196,17 @@ Extend your agent's capabilities by adding email functionality. This allows the 
 
 **Step 1: Setup Email Integration and Procedure**
 
-First, set up the email notification integration and create the email sending procedure in the agents schema:
+First, set up the email notification integration and create the email sending procedure in the data schema:
 
 ```sql
 -- ========================================
 -- Email integration setup
 -- ========================================
--- Switch to the agents schema
-USE SCHEMA snowflake_intelligence.agents;
+-- Create schema for data tools
+CREATE SCHEMA IF NOT EXISTS snowflake_intelligence.data;
+
+-- Switch to the data schema
+USE SCHEMA snowflake_intelligence.data;
 
 -- Create a notification integration for sending emails
 -- This allows Snowflake to send emails through its built-in email service
@@ -264,18 +267,32 @@ $$;
 
 **Step 2: Add Email Tool to Your Agent**
 
-Now integrate the email procedure with your agent:
+Now integrate the email procedure with your agent through the Snowsight UI:
 
-```sql
-ALTER AGENT revenue_analyst_agent
-  ADD TOOL email_notification_tool
-  TYPE = PROCEDURE
-  PARAMETERS = (
-    PROCEDURE_NAME = 'snowflake_intelligence.agents.send_email',
-    DESCRIPTION = 'Send email notifications with analysis results'
-  )
-  DESCRIPTION = 'Use this tool when the user requests to send or share analysis results via email';
-```
+1. Navigate to your agent's **Tools** tab
+2. Click on **+ Add** to add a custom tool
+3. Configure the email tool with the following settings:
+
+   - **Name**: `Send_Email`
+   - **Resource type**: `procedure`
+   - **Database & Schema**: `SNOWFLAKE_INTELLIGENCE.DATA`
+   - **Custom tool identifier**: `SNOWFLAKE_INTELLIGENCE.DATA.SEND_EMAIL()`
+   - **Warehouse**: `COMPUTE_WH`
+
+4. Configure the parameters:
+
+   **Parameter 1: body**
+   - Description: `If body is not provided, summarize the last question and use that as content for the email.`
+
+   **Parameter 2: recipient_email**
+   - Description: `If the email is not provided, send it to YOUR_EMAIL_ADDRESS_GOES_HERE.`
+
+   **Parameter 3: subject**
+   - Description: `If subject is not provided, use "Snowflake Intelligence".`
+
+5. Click **Add** to save the tool configuration
+
+The agent can now send email notifications with analysis results!
 
 **Custom Tool Types:**
 - **FUNCTION**: Python/Java UDFs
