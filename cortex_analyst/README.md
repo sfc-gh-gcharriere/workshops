@@ -14,6 +14,8 @@ This workshop is organized into four detailed session guides:
 **Core Duration**: 2 hours 30 minutes  
 **With Optional Session 3**: 2 hours 45 minutes (approx. half-day with breaks)
 
+📊 **[Download Workshop Slides (PDF)](Snowflake%20Workshop%20-%20Oct%202025.pdf)**
+
 ---
 
 ## Overview
