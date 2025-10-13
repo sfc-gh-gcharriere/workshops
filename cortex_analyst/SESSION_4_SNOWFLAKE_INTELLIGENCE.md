@@ -43,23 +43,44 @@ Think of agents as intelligent coordinators that can analyze data, make decision
 
 ---
 
-### Create Your First AI Agent (10 minutes)
+### Setup Snowflake Intelligence
 
-Navigate to **AI & ML** > **Agents** in Snowsight
-
-#### Define Agent Properties
+Before creating agents, you need to set up the required database and schema structure. Run the following SQL commands:
 
 ```sql
-CREATE AGENT revenue_analyst_agent
-  WAREHOUSE = cortex_analyst_wh
-  DESCRIPTION = 'AI agent for revenue analysis with email notification capabilities'
-  INSTRUCTIONS = $$
-    You are a helpful revenue analyst assistant. 
-    When users ask questions about revenue, products, or regions, use Cortex Analyst to query the data.
-    If the user requests to share results, use the email tool to send the information.
-    Always provide clear, concise summaries of the data.
-  $$;
+USE ROLE ACCOUNTADMIN;
+
+-- 1. Create database for Snowflake Intelligence configuration
+CREATE DATABASE IF NOT EXISTS snowflake_intelligence;
+GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE PUBLIC;
+
+-- 2. Create schema to store agents
+CREATE SCHEMA IF NOT EXISTS snowflake_intelligence.agents;
+GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
+
+-- 3. Grant CREATE AGENT privilege to your role
+GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
 ```
+
+**What This Does:**
+- Creates a dedicated `snowflake_intelligence` database for agent configuration
+- Creates an `agents` schema to store all agent definitions
+- Grants appropriate privileges for agent creation and access
+- Makes agents discoverable to all users with PUBLIC role
+
+**Important Notes:**
+- By default, Snowflake Intelligence uses the user's default role and default warehouse
+- All queries from Snowflake Intelligence use the user's credentials
+- Role-based access control (RBAC) and data masking policies automatically apply to all agent interactions
+
+For more details, see the [Snowflake Intelligence documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-intelligence).
+
+---
+
+### Create Your First AI Agent
+
+Navigate to **AI & ML** > **Agents** in Snowsight and Create your first AI Agent.
+<img alt="create_agent" src="img/snowflake_intelligence/create_agent.png" />
 
 **Agent Configuration:**
 - **Warehouse**: Compute resources for agent operations
