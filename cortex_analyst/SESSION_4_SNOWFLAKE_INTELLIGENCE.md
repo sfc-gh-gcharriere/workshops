@@ -116,9 +116,7 @@ Once the agent is created, click on it to open the details page, then click **Ed
 
 Add your question.
 
----
-
-### Step 3: Add Cortex Analyst Tool to Agent
+**Step 3: Add Cortex Analyst Tool to Agent**
 
 Navigate to the **Tools** tab in your agent configuration and click **+ Add** to integrate your Cortex Analyst semantic model.
 <img alt="add_cortex_analyst_tool" src="img/snowflake_intelligence/add_tools.png" />
@@ -136,9 +134,7 @@ Navigate to the **Tools** tab in your agent configuration and click **+ Add** to
 
 Click **Add** to attach the tool to your agent, then **Save** your agent configuration
 
----
-
-### Step 4: Test Your Agent in Snowflake Intelligence
+**Step 4: Test Your Agent in Snowflake Intelligence**
 
 Now that your agent is configured with the Cortex Analyst tool, let's test it!
 
