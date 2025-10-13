@@ -30,7 +30,7 @@ In the Cortex Analyst Playground, enter this question and run it.
 
 **Why This Works:**
 - Your semantic model has sample values that include "Clothing"
-- The AI can match "clothes" to "Clothing" from the discovered samples
+- Cortex Analyst can match "clothes" to "Clothing" from the discovered samples
 - Query generates: `WHERE product_line = 'Clothing'`
 
 ---
@@ -46,7 +46,7 @@ In the Cortex Analyst Playground, enter this question and run it.
 
 **Why This Fails:**
 - The semantic model samples don't include "Books" as a value
-- The AI cannot match "book" to any known product line
+- Cortex Analyst cannot match "book" to any known product line
 - Result: Error or "No data found" message
 
 **The Problem:**
