@@ -295,9 +295,7 @@ Now integrate the email procedure with your agent through the Snowsight UI:
 
 The agent can now send email notifications with analysis results!
 
----
-
-### Test Email Capabilities
+**Step 3: Test Email Capabilities**
 
 Now that your agent has email functionality, let's test it!
 
