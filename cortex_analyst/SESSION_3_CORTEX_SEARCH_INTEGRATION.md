@@ -140,16 +140,21 @@ Now we need to tell Cortex Analyst to use this search service when users ask abo
 Behind the scenes, this integration adds the `cortex_search_service` configuration to your PRODUCT_LINE dimension:
 
 ```yaml
-dimensions:
-  - name: PRODUCT_LINE
-    synonyms:
-      - product category
-      - product type
-    description: The product category (e.g., Books, Electronics, Clothing)
-    expr: PRODUCT_LINE
-    data_type: TEXT
-    cortex_search_service: product_line_search_service  # Search enabled!
+- name: PRODUCT_LINE
+  description: The category or classification of the product, such as electronics, clothing, or home appliances, that helps to group similar products together for analysis and reporting purposes.
+  expr: PRODUCT_LINE
+  data_type: VARCHAR(16777216)
+  sample_values:
+    - Electronics
+    - Clothing
+    - Home Appliances
+  cortex_search_service:
+    database: CORTEX_ANALYST_DEMO
+    schema: REVENUE_TIMESERIES
+    service: PRODUCT_LINE_SEARCH_SERVICE
 ```
+
+Note that Cortex Search is now linked to this dimension, enabling fuzzy matching on product line queries!
 
 ---
 
