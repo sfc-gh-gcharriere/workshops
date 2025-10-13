@@ -3,7 +3,42 @@
 ## Hands-On Semantic Model Development
 
 This session focuses on the practical implementation of Snowflake Cortex Analyst, from environment setup to building sophisticated semantic models that enable natural language analytics.
+
+---
+
+## What is Cortex Analyst?
+
+**Cortex Analyst** is Snowflake's AI-powered, fully managed service that enables business users to interact with structured data using natural language. It acts as an intelligent semantic layer between users and their data, translating conversational questions into accurate SQL queries.
+
+**Key Capabilities:**
+- **Natural Language to SQL**: Automatically generates optimized SQL from plain English questions
+- **Semantic Understanding**: Leverages AI to understand business context, metrics, and relationships
+- **Self-Service Analytics**: Empowers non-technical users to query data without SQL knowledge
+- **Governed Access**: Respects all Snowflake security policies and access controls
+
+**How It Works:**
+1. You define a **semantic model** (or semantic view) that describes your data in business terms
+2. Users ask questions in natural language (e.g., "What was revenue by product line last quarter?")
+3. Cortex Analyst interprets the question using the semantic model
+4. Generates and executes the appropriate SQL query
+5. Returns results with explanations
+
+**The Semantic Model:**
+The semantic model is the foundation of Cortex Analyst. It defines:
+- **Tables and their relationships** (how data connects)
+- **Dimensions** (categorical attributes like product_line, region)
+- **Measures** (numeric metrics like revenue, profit)
+- **Business rules** (filters, custom calculations)
+- **Sample values** (to help the AI understand possible values)
+
 <img alt="model" src="img/cortex_analyst/model.png" />
+
+In this session, you'll build a complete semantic model that enables questions like:
+- "Show me total revenue by product line for December 2023"
+- "What is the profit margin in Europe?"
+- "Compare actual vs forecasted revenue"
+
+All without writing a single line of SQL!
 
 ---
 
@@ -115,7 +150,7 @@ For each table, we'll load data directly through the UI:
 5. **⚠️ Important**: The file format may not automatically detect the header. Modify the file format settings:
    - Check the box for **"First line contains header"**
    
-   <img width="376" height="385" alt="first_line_header" src="https://github.com/user-attachments/assets/c46a03cd-242e-4e66-86ce-b3283a742a0a" />
+   <img alt="first_line_header" src="img/cortex_analyst/first_line_header.png" />
 
 6. Verify the column mapping is correct:
    - `location_id` → `LOCATION_ID`
