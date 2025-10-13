@@ -290,7 +290,7 @@ In the Semantic View builder, navigate to the **Relationships** section and defi
 
 This relationship connects daily revenue records to product information, allowing questions like "What is the revenue for Electronics?" or "Show me sales by product line."
 
-<img width="624" height="438" alt="revenue_to_product" src="https://github.com/user-attachments/assets/17a77ce4-6c6b-483a-af95-d5ee1259c5fd" />
+<img alt="revenue_to_product" src="img/cortex_analyst/revenue_to_product.png" />
 
 ```yaml
 relationships:
@@ -308,7 +308,7 @@ relationships:
 
 This relationship connects daily revenue records to location details (region and state), enabling geographic analysis like "Show revenue by region" or "What are sales in California?"
 
-<img width="610" height="436" alt="revenue_to_location" src="https://github.com/user-attachments/assets/02dd5a30-10bb-4ecd-b79e-63f1d0d9e120" />
+<img alt="revenue_to_location" src="img/cortex_analyst/revenue_to_location.png" />
 
 ```yaml
   - name: revenue_to_location
@@ -467,7 +467,7 @@ Now let's define profit with your organization's specific formula: **Revenue - (
    - **Metric Name**: `Profit`
    - **Metric Description**: `The profit generated from sales after deducting 1% processing fee and cost of goods sold`
    - **Synonyms** (optional): `earnings`, `margin`, `net income`
-<img width="732" height="584" alt="profit_metric" src="https://github.com/user-attachments/assets/e6274738-17e2-4fb9-b24d-9bf10854ed5c" />
+<img alt="profit_metric" src="img/cortex_analyst/profit_metric.png" />
 
 **YAML representation:**
 ```yaml
@@ -548,7 +548,7 @@ Now let's define what "large orders" means for your organization, for example: o
    - **Filter Name**: `large_order`
    - **Filter Description** (optional): `Orders with revenue equal to or greater than 1150`
    - **Synonyms** (optional): `large orders`, `big orders`, `high value orders`
-<img width="754" height="637" alt="large_orders" src="https://github.com/user-attachments/assets/18c0d1e5-c366-4399-a975-6e6748f51e7b" />
+<img alt="large_orders" src="img/cortex_analyst/large_orders.png" />
 
 5. Click **Add**
 
