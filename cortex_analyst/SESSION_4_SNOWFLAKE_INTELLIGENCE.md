@@ -149,7 +149,8 @@ Now that your agent is configured with the Cortex Analyst tool, let's test it!
 
 The agent will use the Cortex Analyst tool to query your semantic model and provide a detailed answer with revenue data and year-over-year growth analysis for European product categories.
 
-
+<img alt="cortex_analyst_tool" src="img/snowflake_intelligence/question.png" />
+<img alt="cortex_analyst_tool" src="img/snowflake_intelligence/answer.png" />
 
 ---
 
