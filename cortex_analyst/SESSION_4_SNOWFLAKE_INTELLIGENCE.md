@@ -43,23 +43,6 @@ Think of agents as intelligent coordinators that can analyze data, make decision
 
 ---
 
-### Agent Architecture
-
-```
-User Question
-    ↓
-Snowflake Agent
-    ↓
-├── Tool 1: Cortex Analyst (Data Analysis)
-├── Tool 2: Email Service (Notifications)
-├── Tool 3: Custom Functions (Business Logic)
-└── Tool 4: External APIs (Integrations)
-    ↓
-Orchestrated Response
-```
-
----
-
 ### Step 1: Create Your First AI Agent
 
 Navigate to **AI & ML** > **Agents** in Snowsight
