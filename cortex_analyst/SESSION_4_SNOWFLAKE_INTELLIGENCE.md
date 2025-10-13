@@ -128,7 +128,9 @@ Navigate to the **Tools** tab in your agent configuration and click **+ Add** to
 5. **Tool name**: `revenue_analyst_tool`
 6. **Description**: `Query revenue, product, and regional data using natural language`
 
-Click **Add** to attach the tool to your agent
+<img alt="cortex_analyst_tool" src="img/snowflake_intelligence/analyst_tool.png" />
+
+Click **Add** to attach the tool to your agent, then **Save** your agent configuration
 
 ---
 
