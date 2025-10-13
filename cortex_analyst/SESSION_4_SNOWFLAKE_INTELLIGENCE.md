@@ -198,18 +198,6 @@ ALTER AGENT revenue_analyst_agent
 
 ---
 
-## Part 2: Snowflake Intelligence Capabilities (15 minutes)
-
-### What is Snowflake Intelligence?
-
-Snowflake Intelligence is an integrated AI layer that provides:
-- **Conversational Analytics**: Natural language interaction across the platform
-- **Intelligent Tool Orchestration**: Automatic tool selection and chaining
-- **Contextual Understanding**: Learn from user patterns and preferences
-- **Visualization Recommendations**: Suggest optimal chart types
-
----
-
 ## Session Summary
 
 In this session, you've learned:

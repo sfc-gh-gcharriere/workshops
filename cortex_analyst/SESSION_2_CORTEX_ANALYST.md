@@ -728,6 +728,58 @@ Your semantic model is now available for natural language queries through Cortex
 
 ---
 
+### Example Questions You Can Now Ask
+
+With your semantic model configured, you can ask a wide variety of business questions in natural language. Here are some examples:
+
+**Basic Revenue Questions:**
+- What was the total revenue in 2024?
+- Show me daily revenue for the last 30 days
+- What's our best performing product line?
+
+**Regional Analysis:**
+- Compare revenue across all regions
+- Which region had the highest growth in 2024?
+- Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
+
+**Product Analysis:**
+- Top 5 products by revenue
+- Show me revenue by product line over time
+- What's the average order value by product category?
+
+**Time-Based Queries:**
+- Monthly revenue trend for 2024
+- Quarter-over-quarter revenue comparison
+- Daily cumulative revenue in December 2023
+
+**Advanced Queries (Using Custom Metrics & Filters):**
+- Monthly profit in Europe per category
+- List large orders from last month
+- Profit margin by region
+- Show me large orders with profit breakdown
+
+**Percentage & Comparison Queries:**
+- Percentage of revenue per region
+- YoY revenue growth by product line
+- What percentage of total revenue comes from Electronics?
+
+Try these questions in the Playground tab or through Snowflake Intelligence to see how Cortex Analyst translates them into SQL!
+
+---
+
+### Snowflake Intelligence Capabilities
+
+When you use your semantic model through **Snowflake Intelligence**, you get access to powerful AI capabilities:
+
+- **Conversational Analytics**: Natural language interaction across the platform - ask questions in plain English and get instant answers
+- **Intelligent Tool Orchestration**: Automatic tool selection and chaining - the system intelligently chooses the right tools to answer complex questions
+- **Contextual Understanding**: Learn from user patterns and preferences - Intelligence remembers your conversation context and adapts to your style
+- **Visualization Recommendations**: Suggest optimal chart types - automatically generates the best visualizations based on your data and question
+
+These capabilities make it easy for business users to explore and analyze data without writing SQL or understanding complex technical details.
+
+---
+
 ## Session Summary
 
 In this session, you've learned:
