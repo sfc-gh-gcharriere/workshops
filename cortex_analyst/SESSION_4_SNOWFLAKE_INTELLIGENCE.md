@@ -297,6 +297,33 @@ The agent can now send email notifications with analysis results!
 
 ---
 
+### Test Email Capabilities
+
+Now that your agent has email functionality, let's test it!
+
+1. Navigate to **AI & ML** > **Snowflake Intelligence** in Snowsight
+2. Select your **Revenue Analyst Agent**
+3. Try asking questions that involve sending emails, such as:
+
+   ```
+   Can you analyze the top 3 products by revenue and email me the results?
+   ```
+
+   or
+
+   ```
+   Send me an email with the total revenue for 2024
+   ```
+
+The agent will:
+- Use the Cortex Analyst tool to query the data
+- Format the results
+- Use the email tool to send you the analysis
+
+Check your email inbox to verify the email was sent successfully!
+
+---
+
 ## Session Summary
 
 In this session, you've learned:
