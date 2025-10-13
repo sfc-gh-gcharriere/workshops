@@ -140,15 +140,16 @@ Now that your agent is configured with the Cortex Analyst tool, let's test it!
 
 1. Navigate to **AI & ML** > **Snowflake Intelligence** in Snowsight
 2. Your `Revenue Analyst Agent` should appear in the available agents
-3. Click on your agent to open the chat interface
-4. Click on the **test question** you configured earlier:
+3. Click on the **test question** you configured earlier:
    ```
    Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
    ```
 
+<img alt="cortex_analyst_tool" src="img/snowflake_intelligence/si.png" />
+
 The agent will use the Cortex Analyst tool to query your semantic model and provide a detailed answer with revenue data and year-over-year growth analysis for European product categories.
 
-<img alt="cortex_analyst_tool" src="img/snowflake_intelligence/si.png" />
+
 
 ---
 
