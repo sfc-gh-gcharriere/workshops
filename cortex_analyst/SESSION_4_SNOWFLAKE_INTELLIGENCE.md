@@ -318,6 +318,8 @@ The agent will:
 - Use the email tool to send you the analysis
 
 Check your email inbox to verify the email was sent successfully!
+<img alt="send_email" src="img/snowflake_intelligence/send_email.png" />
+<img alt="send_email" src="img/snowflake_intelligence/email.png" />
 
 ---
 
