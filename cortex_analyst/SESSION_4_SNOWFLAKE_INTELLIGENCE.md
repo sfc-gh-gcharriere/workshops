@@ -363,6 +363,8 @@ This means the agents and semantic models you've built in this workshop will soo
 
 Stay tuned for these upcoming capabilities that will make your Snowflake data truly universally accessible!
 
+<img alt="send_email" src="img/snowflake_intelligence/mcp.png" />
+
 ---
 
 **Previous**: [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST.md) | [Session 3: Cortex Search Integration (Optional)](SESSION_3_CORTEX_SEARCH_INTEGRATION.md)  
