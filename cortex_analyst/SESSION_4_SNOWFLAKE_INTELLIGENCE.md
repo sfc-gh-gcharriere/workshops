@@ -196,17 +196,14 @@ Extend your agent's capabilities by adding email functionality. This allows the 
 
 **Step 1: Setup Email Integration and Procedure**
 
-Set up the email notification integration and create the email sending procedure in the data schema:
+Set up the email notification integration and create the email sending procedure in the agents schema:
 
 ```sql
 -- ========================================
 -- Email integration setup
 -- ========================================
--- Create schema for data tools
-CREATE SCHEMA IF NOT EXISTS snowflake_intelligence.data;
-
--- Switch to the data schema
-USE SCHEMA snowflake_intelligence.data;
+-- Switch to the agents schema
+USE SCHEMA snowflake_intelligence.agents;
 
 -- Create a notification integration for sending emails
 -- This allows Snowflake to send emails through its built-in email service
@@ -278,8 +275,9 @@ Now integrate the email procedure with your agent through the Snowsight UI:
 
    - **Resource type**: `procedure`
    - **Database & Schema**: `SNOWFLAKE_INTELLIGENCE.AGENTS`
-   - **Name**: `Send_Email`
    - **Custom tool identifier**: `SNOWFLAKE_INTELLIGENCE.AGENTS.SEND_EMAIL()`
+   - **Name**: `Send_Email`
+   - **Description**: `Send an email message`
 
 7. Configure the parameters:
 
