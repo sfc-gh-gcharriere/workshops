@@ -348,6 +348,19 @@ Congratulations! You've completed the Snowflake Cortex Analyst Workshop.
 2. **Cortex Analyst**: Semantic model development and natural language queries
 3. **Snowflake Intelligence**: Advanced AI orchestration and automation
 
+### What's Next
+
+The future of Snowflake Intelligence is even more exciting! **Model Context Protocol (MCP) capabilities** are coming soon to Snowflake Intelligence, which will:
+
+- **Extend Beyond Snowflake**: Connect Snowflake Intelligence to any external AI agent platform
+- **Universal Integration**: Enable your semantic models and agents to work with popular AI assistants and platforms
+- **Broader Reach**: Make your data accessible through any MCP-compatible agent, not just within Snowflake
+- **Standardized Protocol**: Leverage the open MCP standard for seamless interoperability across the AI ecosystem
+
+This means the agents and semantic models you've built in this workshop will soon be able to serve as powerful data sources for AI assistants everywhere, extending your data's reach far beyond the Snowflake environment.
+
+Stay tuned for these upcoming capabilities that will make your Snowflake data truly universally accessible!
+
 ---
 
 **Previous**: [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST.md) | [Session 3: Cortex Search Integration (Optional)](SESSION_3_CORTEX_SEARCH_INTEGRATION.md)  
