@@ -3,17 +3,19 @@
 ## Enhancing Analytics with Semantic Search
 
 > **Note:** This is an optional session for participants interested in advanced integration patterns. You can proceed directly to [Session 4: Snowflake Intelligence](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) if you prefer.
-
-Cortex Search is a standalone service that can be integrated with Cortex Analyst to handle high cardinality columns such as product lines. This integration enables fuzzy matching that allows users to make mistakes with terminology and still get proper results.
-
 ---
 
 ## What is Cortex Search?
 
-**Cortex Search** is Snowflake's fully managed search service that provides:
-- **Semantic Search**: Find content by meaning, not just keywords
+**Cortex Search** is a standalone, fully managed search service in Snowflake that can be integrated with Cortex Analyst to handle **high cardinality columns** such as product lines, customer names, or geographic locations.
+
+**Key Capabilities:**
+- **Semantic Search**: Find content by meaning, not just exact keywords
 - **Vector Embeddings**: Automatically generated using Snowflake's AI models
 - **Fuzzy Matching**: Match variations, typos, and abbreviations to actual values
+
+**Why Integrate with Cortex Analyst?**
+When users ask questions, they often use informal language or partial terms (e.g., "book" instead of "Books", "elec" instead of "Electronics"). Cortex Search enables fuzzy matching that allows users to make mistakes with terminology and still get proper results.
 <img width="1804" height="662" alt="cortex_search" src="https://github.com/user-attachments/assets/02ef91b8-a6c7-4c16-9e81-e97921a55f3d" />
 
 ---
