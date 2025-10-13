@@ -194,9 +194,9 @@ After asking a question, try follow-ups like "Show me the trend over time" or "C
 
 Extend your agent's capabilities by adding email functionality. This allows the agent to send analysis results directly via email.
 
-**Step 1: Setup Email Integration**
+**Step 1: Setup Email Integration and Procedure**
 
-First, set up the email notification integration in the agents schema:
+First, set up the email notification integration and create the email sending procedure in the agents schema:
 
 ```sql
 -- ========================================
@@ -211,13 +211,7 @@ CREATE OR REPLACE NOTIFICATION INTEGRATION snowflake_intelligence_email_integrat
   TYPE=EMAIL
   ENABLED=TRUE
   DEFAULT_SUBJECT = 'Snowflake Cortex Demo';
-```
 
-**Step 2: Create Email Sending Procedure**
-
-Create a stored procedure that wraps Snowflake's email sending functionality:
-
-```sql
 -- ========================================
 -- Email sending procedure
 -- ========================================
@@ -268,7 +262,7 @@ def send_email(session, recipient_email, subject, body):
 $$;
 ```
 
-**Step 3: Add Email Tool to Your Agent**
+**Step 2: Add Email Tool to Your Agent**
 
 Now integrate the email procedure with your agent:
 
@@ -277,7 +271,7 @@ ALTER AGENT revenue_analyst_agent
   ADD TOOL email_notification_tool
   TYPE = PROCEDURE
   PARAMETERS = (
-    PROCEDURE_NAME = 'tools.send_email',
+    PROCEDURE_NAME = 'snowflake_intelligence.agents.send_email',
     DESCRIPTION = 'Send email notifications with analysis results'
   )
   DESCRIPTION = 'Use this tool when the user requests to send or share analysis results via email';
