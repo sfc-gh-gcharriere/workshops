@@ -180,25 +180,6 @@ WHERE pd.product_line IN ('Books', 'Electronics')
 
 ---
 
-## Common Questions
-
-**Q: Does Cortex Search slow down queries?**  
-A: No! Search happens during query generation, not execution. The actual SQL uses exact matches (IN clause), so query performance is identical.
-
-**Q: How much does Cortex Search cost?**  
-A: Minimal cost - just the warehouse time to build/refresh the index. Query-time search is very fast and efficient.
-
-**Q: Can I use multiple search services in one query?**  
-A: Yes! Enable search on multiple dimensions (product lines, regions, states, etc.) and Cortex Analyst will use them appropriately.
-
-**Q: What if the search can't find a match?**  
-A: Cortex Analyst will either ask for clarification or return no results, just like without search. The difference is search has a much higher success rate.
-
-**Q: Can I customize the matching algorithm?**  
-A: The vector embeddings are automatic, but you can control results by adding synonyms to your semantic model dimensions.
-
----
-
 ## Session Summary
 
 In this optional session, you've learned:
@@ -211,40 +192,6 @@ In this optional session, you've learned:
 ✅ **Best Practices**: When and how to use Cortex Search effectively  
 
 **Key Takeaway:** Cortex Search transforms your semantic model from requiring precise terminology to understanding natural, flexible language - dramatically improving user experience!
-
----
-
-## Hands-On Exercise
-
-Try creating your own search scenarios:
-
-1. **Test Different Variations:**
-   - "ebook revenue" (should match "Books")
-   - "gadgets sales" (should match "Electronics")
-   - "fashion products" (should match "Clothing")
-
-2. **Test Misspellings:**
-   - "electronic devices" → "Electronics"
-   - "cloths" → "Clothing"
-   - "boks" → "Books"
-
-3. **Test Abbreviations:**
-   - "elec" → "Electronics"  
-   - "cloth" → "Clothing"
-
-4. **Create Your Own Search Service:**
-   - Pick another dimension from your data
-   - Create a search service for it
-   - Test with various natural language queries
-
----
-
-## Additional Resources
-
-- [Cortex Search Documentation](https://docs.snowflake.com/en/user-guide/cortex-search)
-- [Vector Embeddings Guide](https://docs.snowflake.com/en/user-guide/cortex-embeddings)
-- [Semantic Model Search Integration](https://docs.snowflake.com/en/user-guide/cortex-analyst-semantic-models#search)
-- [Search Service Best Practices](https://docs.snowflake.com/en/user-guide/cortex-search-best-practices)
 
 ---
 
