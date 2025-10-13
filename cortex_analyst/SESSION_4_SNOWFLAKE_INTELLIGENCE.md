@@ -1,4 +1,4 @@
-# Session 3: Advanced Analytics with Snowflake Intelligence (30 minutes)
+# Session 4: Advanced Analytics with Snowflake Intelligence (30 minutes)
 
 ## AI-Powered Insights and Automation
 
@@ -549,6 +549,6 @@ Congratulations! You've completed the Snowflake Cortex Analyst Workshop.
 
 ---
 
-**Previous**: [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST.md)  
+**Previous**: [Session 3: Cortex Search Integration](SESSION_3_CORTEX_SEARCH_INTEGRATION.md)  
 **Back to Main**: [Workshop Overview](README.md)
 

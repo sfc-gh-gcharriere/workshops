@@ -22,7 +22,7 @@ By the end of this workshop, participants will be able to:
 - Basic understanding of SQL
 - Familiarity with data warehousing concepts
 
-## Workshop Agenda (Half-Day Format)
+## Workshop Agenda (3.5 Hour Format)
 
 ### 📚 Session 1: Snowflake Platform Fundamentals (45 minutes)
 **Introduction to Core Snowflake Capabilities**
@@ -70,7 +70,24 @@ Learn to build and configure Cortex Analyst from the ground up, creating semanti
 
 ---
 
-### 🚀 Session 3: Advanced Analytics with Snowflake Intelligence (30 minutes)
+### 🔍 Session 3: Cortex Search Integration with Cortex Analyst (45 minutes)
+**Enhancing Analytics with Semantic Search**
+
+Learn how to integrate Snowflake Cortex Search with Cortex Analyst, enabling hybrid analytics that combine structured data queries with unstructured text search capabilities.
+
+**Topics Covered:**
+- Creating Cortex Search services
+- Semantic search with vector embeddings
+- Integrating search with semantic models
+- Hybrid analytics patterns (search + structured data)
+- Product catalog search with revenue correlation
+- Customer feedback analysis with sentiment scoring
+
+[📖 View Full Session Details →](SESSION_3_CORTEX_SEARCH_INTEGRATION.md)
+
+---
+
+### 🚀 Session 4: Advanced Analytics with Snowflake Intelligence (30 minutes)
 **AI-Powered Insights and Automation**
 
 Discover how to orchestrate AI tools using Snowflake Agents and leverage Snowflake Intelligence for conversational analytics and automated workflows.
@@ -83,7 +100,7 @@ Discover how to orchestrate AI tools using Snowflake Agents and leverage Snowfla
 - Conversational analytics
 - Automatic visualization generation
 
-[📖 View Full Session Details →](SESSION_3_SNOWFLAKE_INTELLIGENCE.md)
+[📖 View Full Session Details →](SESSION_4_SNOWFLAKE_INTELLIGENCE.md)
 
 ## Hands-On Lab Materials
 
@@ -113,7 +130,7 @@ The workshop uses a comprehensive revenue analytics dataset including:
 ## Quick Start Guide
 
 ### For Instructors
-1. Review all three session files for detailed content and timing
+1. Review all four session files for detailed content and timing
 2. Ensure all participants have Snowflake trial accounts created
 3. Prepare the sample CSV files for distribution
 4. Test the semantic model before the workshop
@@ -123,7 +140,8 @@ The workshop uses a comprehensive revenue analytics dataset including:
 1. **Pre-Workshop**: Sign up for a Snowflake trial account at https://signup.snowflake.com/
 2. **Session 1**: Follow along with platform demonstrations
 3. **Session 2**: Hands-on setup and semantic model creation (detailed steps in [Session 2](SESSION_2_CORTEX_ANALYST.md))
-4. **Session 3**: Explore Snowflake Intelligence and agents
+4. **Session 3**: Integrate Cortex Search with semantic models for hybrid analytics
+5. **Session 4**: Explore Snowflake Intelligence and agents
 
 ### Workshop Materials Checklist
 
@@ -132,23 +150,24 @@ The workshop uses a comprehensive revenue analytics dataset including:
 - ✅ Access to public S3 bucket: `s3://snowflake-workshop-lab/demo98/trips/`
 - ✅ Partner account for data sharing exercises
 
-**Session 2 & 3 (Revenue Analytics):**
+**Session 2, 3 & 4 (Revenue Analytics):**
 - ✅ Sample CSV files (`daily_revenue.csv`, `product.csv`, `location.csv`)
 - ✅ Semantic model YAML file (`revenue_timeseries.yaml`)
-- ✅ Session guides (3 detailed markdown files)
+- ✅ Session guides (4 detailed markdown files)
 - ✅ Access to Snowsight web interface
 
 ## Workshop Structure
 
-This workshop is organized into three detailed session guides:
+This workshop is organized into four detailed session guides:
 
 | Session | Duration | Focus | Materials |
 |---------|----------|-------|-----------|
 | [Session 1](SESSION_1_SNOWFLAKE_FUNDAMENTALS.md) | 45 min | Platform fundamentals and core capabilities | Demos and examples |
 | [Session 2](SESSION_2_CORTEX_ANALYST.md) | 90 min | Hands-on semantic model development | CSV files, SQL scripts, YAML |
-| [Session 3](SESSION_3_SNOWFLAKE_INTELLIGENCE.md) | 30 min | AI agents and intelligence features | Agent configuration |
+| [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) | 45 min | Cortex Search integration with analytics | Search services, hybrid queries |
+| [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | AI agents and intelligence features | Agent configuration |
 
-**Total Duration**: 2 hours 45 minutes (approx. half-day with breaks)
+**Total Duration**: 3 hours 30 minutes (approx. half-day with breaks)
 
 ---
 
