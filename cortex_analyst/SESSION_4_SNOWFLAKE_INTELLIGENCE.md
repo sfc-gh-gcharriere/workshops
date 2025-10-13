@@ -112,9 +112,16 @@ Once the agent is created, click on it to open the details page, then click **Ed
    concise answers with relevant data insights.
    ```
 
-3. **Warehouse**: Select `cortex_analyst_wh` (compute resources for agent operations)
+Save your configuration.
 
-Save your configuration
+**Step 3: Test Your Agent**
+
+Try asking your agent a question to verify it's working:
+```
+Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
+```
+
+The agent will use Cortex Analyst to query your semantic model and provide insights on European sales performance with year-over-year comparison
 
 ---
 
