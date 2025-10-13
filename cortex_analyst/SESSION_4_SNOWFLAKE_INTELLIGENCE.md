@@ -194,6 +194,8 @@ After asking a question, try follow-ups like "Show me the trend over time" or "C
 
 Extend your agent's capabilities by adding email functionality. This allows the agent to send analysis results directly via email.
 
+First, navigate to **AI & ML** > **Agents** in Snowsight, click on your **Revenue Analyst Agent**, and click **Edit** to prepare for adding the email tool.
+
 **Step 1: Setup Email Integration and Procedure**
 
 First, set up the email notification integration and create the email sending procedure in the data schema:
