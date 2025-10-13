@@ -1,8 +1,16 @@
 # Session 3: Cortex Search Integration with Cortex Analyst (15 minutes) - OPTIONAL
 
-## Enhancing Analytics with Semantic Search
+## Session Agenda
+
+| # | Topic | Duration | Description |
+|---|-------|----------|-------------|
+| 1 | What is Cortex Search? | 2 min | Understanding semantic search for high cardinality columns |
+| 2 | Understanding the Problem | 5 min | Test queries with and without fuzzy matching |
+| 3 | Cortex Search Solution | 10 min | Create search service and integrate with semantic model |
+| 4 | Test Fuzzy Matching | 3 min | Verify improved query capabilities |
 
 > **Note:** This is an optional session for participants interested in advanced integration patterns. You can proceed directly to [Session 4: Snowflake Intelligence](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) if you prefer.
+
 ---
 
 ## What is Cortex Search?

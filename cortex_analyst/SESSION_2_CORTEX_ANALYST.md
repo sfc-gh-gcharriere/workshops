@@ -1,8 +1,24 @@
 # Session 2: Building with Cortex Analyst (75 minutes)
 
-## Hands-On Semantic Model Development
+## Session Agenda
 
-This session focuses on the practical implementation of Snowflake Cortex Analyst, from environment setup to building sophisticated semantic models that enable natural language analytics.
+| # | Topic | Duration | Description |
+|---|-------|----------|-------------|
+| 1 | What is Cortex Analyst? | 5 min | Understanding natural language to SQL capabilities |
+| 2 | Environment Setup | 15 min | Create database, schema, warehouse, and load data |
+| 3 | Create Semantic View | 5 min | Build the foundation for your semantic model |
+| 4 | Configure Tables | 10 min | Define fact and dimension tables with relationships |
+| 5 | Test Join Query | 5 min | Validate relationships between tables |
+| 6 | Add Verified Queries | 5 min | Create complex query patterns for AI training |
+| 7 | Add Custom Metrics | 10 min | Define profit calculation with SQL expressions |
+| 8 | Add Named Filters | 10 min | Create reusable filters for large orders |
+| 9 | Add Custom Instructions | 10 min | Set default behaviors and formatting rules |
+| 10 | Save Semantic Model | 5 min | Finalize your semantic view |
+| 11 | Example Questions | 5 min | Try various natural language queries |
+| 12 | Intelligence Capabilities | 5 min | Explore advanced AI features |
+
+**Part 1: Environment Setup (15 minutes)**  
+**Part 2: Semantic Model Development (60 minutes)**
 
 ---
 

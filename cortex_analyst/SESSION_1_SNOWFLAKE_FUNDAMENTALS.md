@@ -1,8 +1,14 @@
 # Session 1: Snowflake Platform Fundamentals (45 minutes)
 
-## Introduction to Core Snowflake Capabilities
+## Session Agenda
 
-This session provides a comprehensive overview of the Snowflake Data Cloud platform, focusing on the key features that make it unique and powerful for modern data analytics.
+| # | Topic | Duration | Description |
+|---|-------|----------|-------------|
+| 1 | Virtual Warehouses | 10 min | Understanding compute resources and scaling |
+| 2 | Data Ingestion & Storage | 10 min | Loading data with stages and files |
+| 3 | Time Travel & Cloning | 10 min | Query historical data and zero-copy cloning |
+| 4 | Secure Data Sharing | 10 min | Share data across organizations without copying |
+| 5 | Streamlit Apps | 5 min | Build interactive data applications |
 
 ---
 

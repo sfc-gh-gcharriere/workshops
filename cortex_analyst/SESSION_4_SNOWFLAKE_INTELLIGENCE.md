@@ -1,5 +1,22 @@
 # Session 4: Snowflake Intelligence (30 minutes)
 
+## Session Agenda
+
+| # | Topic | Description |
+|---|-------|-------------|
+| 1 | What is Snowflake Intelligence? | Understanding the AI-powered assistant platform |
+| 2 | What are Snowflake Agents? | Introduction to AI assistants and tool orchestration |
+| 3 | Setup Snowflake Intelligence | Configure database, schema, and privileges |
+| 4 | Create Your First AI Agent | Build an agent with description and test questions |
+| 5 | Add Cortex Analyst Tool | Connect semantic model through the UI |
+| 6 | Test Your Agent | Validate capabilities through Snowflake Intelligence |
+| 7 | Intelligence Capabilities | Explore conversational analytics and orchestration |
+| 8 | Example Questions | Try various natural language queries |
+| 9 | Add Custom Email Tool (Optional) | Setup email integration and test notifications |
+| 10 | What's Next | Preview upcoming MCP capabilities |
+
+---
+
 ## What is Snowflake Intelligence?
 
 **Snowflake Intelligence** is Snowflake's AI-powered assistant that provides a unified, conversational interface to interact with your entire Snowflake environment. It combines natural language understanding with intelligent tool orchestration to help users get insights, automate workflows, and manage their data platform.

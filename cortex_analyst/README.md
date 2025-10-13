@@ -9,7 +9,7 @@ This workshop is organized into four detailed session guides:
 | [Session 1](SESSION_1_SNOWFLAKE_FUNDAMENTALS.md) | 45 min | Platform fundamentals and core capabilities | Demos and examples |
 | [Session 2](SESSION_2_CORTEX_ANALYST.md) | 75 min | Hands-on semantic model development | CSV files, SQL scripts, Semantic Views |
 | [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) ⭐ | 15 min | **OPTIONAL:** Cortex Search for fuzzy matching | Search service setup, integration demo |
-| [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | AI agents and intelligence features | Agent configuration |
+| [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | Snowflake Intelligence and AI agents | Agent configuration |
 
 **Core Duration**: 2 hours 30 minutes  
 **With Optional Session 3**: 2 hours 45 minutes (approx. half-day with breaks)
@@ -121,7 +121,7 @@ Cortex Search is a standalone service that can be integrated with Cortex Analyst
 
 ---
 
-### 🚀 Session 4: Advanced Analytics with Snowflake Intelligence (30 minutes)
+### 🚀 Session 4: Snowflake Intelligence (30 minutes)
 **AI-Powered Insights and Automation**
 
 Discover how to orchestrate AI tools using Snowflake Agents and leverage Snowflake Intelligence for conversational analytics and automated workflows.
