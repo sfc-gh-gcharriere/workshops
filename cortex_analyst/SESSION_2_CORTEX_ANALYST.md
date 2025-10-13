@@ -688,5 +688,5 @@ You now have a fully functional Cortex Analyst semantic model ready for producti
 ---
 
 **Previous**: [Session 1: Snowflake Platform Fundamentals](SESSION_1_SNOWFLAKE_FUNDAMENTALS.md)  
-**Next**: [Session 3: Cortex Search Integration](SESSION_3_CORTEX_SEARCH_INTEGRATION.md)
+**Next**: [Session 4: Snowflake Intelligence](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | [Session 3: Cortex Search Integration (Optional)](SESSION_3_CORTEX_SEARCH_INTEGRATION.md)
 

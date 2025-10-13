@@ -549,6 +549,6 @@ Congratulations! You've completed the Snowflake Cortex Analyst Workshop.
 
 ---
 
-**Previous**: [Session 3: Cortex Search Integration](SESSION_3_CORTEX_SEARCH_INTEGRATION.md)  
+**Previous**: [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST.md) | [Session 3: Cortex Search Integration (Optional)](SESSION_3_CORTEX_SEARCH_INTEGRATION.md)  
 **Back to Main**: [Workshop Overview](README.md)
 
