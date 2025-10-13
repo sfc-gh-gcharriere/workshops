@@ -10,6 +10,8 @@ This session focuses on the practical implementation of Snowflake Cortex Analyst
 
 **Cortex Analyst** is Snowflake's AI-powered, fully managed service that enables business users to interact with structured data using natural language. It acts as an intelligent semantic layer between users and their data, translating conversational questions into accurate SQL queries.
 
+<img alt="cortex_analyst" src="img/cortex_analyst/cortex_analyst.png" />
+
 **Key Capabilities:**
 - **Natural Language to SQL**: Automatically generates optimized SQL from plain English questions
 - **Semantic Understanding**: Leverages AI to understand business context, metrics, and relationships
