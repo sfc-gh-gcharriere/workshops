@@ -111,64 +111,38 @@ To verify your search service was created successfully:
 
 <img width="1258" height="204" alt="cortex_search_ui" src="https://github.com/user-attachments/assets/0b742c73-00a3-403d-98db-943f082153be" />
 
-**Optional: Test the Search Service Directly**
-
-You can test the search service with SQL to see how it matches terms:
-
-```sql
--- Test the search service directly
-SELECT * FROM TABLE(
-  product_line_search_service!SEARCH(
-    'book',
-    LIMIT => 5
-  )
-);
-```
-
-**Expected Results:**
-- `product_dimension`: "Books"
-- `search_score`: Relevance score (e.g., 0.95)
-
-The search service found "Books" even though we searched for "book"!
-
 ---
 
 ### Step 4: Integrate Search Service with Semantic Model
 
 Now we need to tell Cortex Analyst to use this search service when users ask about product lines.
 
-#### Option A: Update Semantic Model YAML (Manual)
-
-If you're editing the YAML file directly, add this to your semantic model:
-
-```yaml
-# Add to your semantic model configuration
-tables:
-  - name: PRODUCT_DIM
-    base_table:
-      database: CORTEX_ANALYST_DEMO
-      schema: REVENUE_TIMESERIES
-      table: PRODUCT_DIM
-    dimensions:
-      - name: PRODUCT_LINE
-        synonyms:
-          - product category
-          - product type
-          - product line
-        description: The product category (e.g., Books, Electronics, Clothing)
-        expr: PRODUCT_LINE
-        data_type: TEXT
-        cortex_search_service: product_line_search_service  # Enable search!
-```
-
-#### Option B: Update via Snowsight UI (Recommended)
+**Integrate via Snowsight UI:**
 
 1. Navigate to your **REVENUE_TIMESERIES** semantic view in Snowsight
 2. Click **Edit**
-3. Select the **PRODUCT_DIM** table
+3. Select the **PRODUCT_DIM** table in the left panel
 4. Find the **PRODUCT_LINE** dimension
-5. Enable **Cortex Search** and select `product_line_search_service`
-6. Click **Save**
+5. Click **Edit Dimension**
+6. Scroll to the **Cortex Search Service** section
+7. Enable **Cortex Search** and select `product_line_search_service` from the dropdown
+8. Click **Save**
+
+**How it looks in the Semantic Model:**
+
+Behind the scenes, this integration adds the `cortex_search_service` configuration to your PRODUCT_LINE dimension:
+
+```yaml
+dimensions:
+  - name: PRODUCT_LINE
+    synonyms:
+      - product category
+      - product type
+    description: The product category (e.g., Books, Electronics, Clothing)
+    expr: PRODUCT_LINE
+    data_type: TEXT
+    cortex_search_service: product_line_search_service  # Search enabled!
+```
 
 ---
 
