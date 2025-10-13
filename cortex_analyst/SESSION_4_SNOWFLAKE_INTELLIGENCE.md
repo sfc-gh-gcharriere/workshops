@@ -4,6 +4,8 @@
 
 **Snowflake Intelligence** is Snowflake's AI-powered assistant that provides a unified, conversational interface to interact with your entire Snowflake environment. It combines natural language understanding with intelligent tool orchestration to help users get insights, automate workflows, and manage their data platform.
 
+<img alt="cortex_analyst" src="img/snowflake_intelligence/snowflake_intelligence.png" />
+
 **Key Capabilities:**
 - **Conversational Analytics**: Ask questions across all your data using natural language
 - **Intelligent Tool Orchestration**: Automatically selects and chains the right AI services (Cortex Analyst, Cortex Search, etc.)
@@ -22,12 +24,6 @@
 - **Beyond Cortex Analyst**: While Cortex Analyst focuses on structured data queries, Snowflake Intelligence can help with platform tasks, documentation, troubleshooting, and more
 - **Multi-Tool Orchestration**: Automatically combines different AI services based on your needs
 - **Unified Experience**: One interface for all your Snowflake AI capabilities
-
-**Example Interactions:**
-- "What tables do I have access to in my database?"
-- "Analyze revenue trends and suggest optimization strategies"
-- "Show me how to create a dynamic masking policy"
-- "Compare sales performance across regions and explain any anomalies"
 
 In this session, you'll explore how Snowflake Intelligence and Agents extend your Cortex Analyst capabilities to create sophisticated, automated analytics workflows.
 
