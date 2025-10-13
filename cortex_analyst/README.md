@@ -70,7 +70,7 @@ Explore the foundational features of the Snowflake Data Cloud platform through h
 - **Streamlit Apps**: Overview of building interactive data applications
 
 **Hands-On Activities:**
-- Create and scale virtual warehouses (MEDIUM → SMALL → LARGE)
+- Create and scale virtual warehouses (Small to Large)
 - Load Citibike data from external S3 stage
 - Perform analytics queries with AI-generated SQL and chart visualization
 - Drop and restore tables using Time Travel
@@ -87,7 +87,7 @@ Explore the foundational features of the Snowflake Data Cloud platform through h
 Learn to build and configure Cortex Analyst from the ground up, creating semantic models that enable natural language analytics on your data.
 
 **Part 1: Environment Setup (15 minutes)**
-- Database, schema, warehouse, and stage creation
+- Database, schema, and warehouse creation
 - CSV data upload and loading
 - Permission configuration
 
@@ -135,59 +135,6 @@ Discover how to orchestrate AI tools using Snowflake Agents and leverage Snowfla
 - Automatic visualization generation
 
 [📖 View Full Session Details →](SESSION_4_SNOWFLAKE_INTELLIGENCE.md)
-
-## Hands-On Lab Materials
-
-### Sample Dataset
-The workshop uses a comprehensive revenue analytics dataset including:
-
-- **DAILY_REVENUE Table**: Daily revenue, COGS, and forecasted revenue data
-- **PRODUCT_DIM Table**: Product information and product lines
-- **REGION_DIM Table**: Sales regions and geographic information
-
-<img width="1602" height="732" alt="Model" src="https://github.com/user-attachments/assets/14df9ae6-538e-4e5a-a232-89fba72345a7" />
-
-
-### Key Data Elements
-- **Time Dimension**: Date-based analysis capabilities
-- **Measures**: Revenue, COGS, Forecasted Revenue, Profit calculations
-- **Dimensions**: Product lines, sales regions, geographic states
-- **Filters**: Large orders, DAPS region (Germany, Austria, Poland, Switzerland)
-
-### Sample Questions for Practice
-1. "What is the total revenue by product line for the last quarter?"
-2. "Show me the daily cumulative cost of goods sold for December 2023"
-3. "Which regions have the highest profit margins?"
-4. "Compare actual revenue vs forecasted revenue by month"
-5. "What are the top performing products in the DAPS region?"
-
-## Quick Start Guide
-
-### For Instructors
-1. Review all four session files for detailed content and timing
-2. Ensure all participants have Snowflake trial accounts created
-3. Prepare the sample CSV files for distribution
-4. Test the semantic model before the workshop
-5. Familiarize yourself with common troubleshooting scenarios
-
-### For Participants
-1. **Pre-Workshop**: Sign up for a Snowflake trial account at https://signup.snowflake.com/
-2. **Session 1**: Follow along with platform demonstrations
-3. **Session 2**: Hands-on setup and semantic model creation (detailed steps in [Session 2](SESSION_2_CORTEX_ANALYST.md))
-4. **Session 3** (Optional): Integrate Cortex Search for fuzzy matching on high cardinality columns
-5. **Session 4**: Explore Snowflake Intelligence and agents
-
-### Workshop Materials Checklist
-
-**Session 1 (Citibike Data):**
-- ✅ Snowflake account access
-- ✅ Access to public S3 bucket: `s3://snowflake-workshop-lab/demo98/trips/`
-- ✅ Partner account for data sharing exercises
-
-**Session 2, 3 & 4 (Revenue Analytics):**
-- ✅ Sample CSV files (`daily_revenue.csv`, `product.csv`, `location.csv`)
-- ✅ Session guides (4 detailed markdown files)
-- ✅ Access to Snowsight web interface
 
 ---
 

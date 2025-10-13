@@ -14,7 +14,7 @@ Set up the complete Snowflake environment required for Cortex Analyst, including
 
 ---
 
-### Step 1: Create Database, Schema, Warehouse and Stage
+### Step 1: Create Database, Schema, and Warehouse
 
 Create the foundational objects for your Cortex Analyst demo:
 
@@ -35,16 +35,11 @@ CREATE OR REPLACE WAREHOUSE cortex_analyst_wh
     AUTO_RESUME = TRUE
     INITIALLY_SUSPENDED = TRUE
 COMMENT = 'Warehouse for Cortex Analyst demo';
-
--- Create stage for raw data
-CREATE OR REPLACE STAGE cortex_analyst_demo.revenue_timeseries.raw_data 
-    DIRECTORY = (ENABLE = TRUE);
 ```
 
 **Key Considerations:**
 - **Warehouse Size**: Start with SMALL for this demo, can scale up for production
 - **Auto-suspend**: Set to 60 seconds to minimize costs during development
-- **Directory-enabled Stage**: Allows listing files and managing data efficiently
 
 ---
 
@@ -674,7 +669,7 @@ Your semantic model is now available for natural language queries through Cortex
 
 In this session, you've learned:
 
-✅ **Environment Setup**: Created database, schema, warehouse, stage, and tables  
+✅ **Environment Setup**: Created database, schema, warehouse, and tables  
 ✅ **Data Loading**: Uploaded CSV files and loaded data into Snowflake  
 ✅ **Semantic Model Basics**: Understanding structure and components  
 ✅ **Table Configuration**: Defined fact and dimension tables  
