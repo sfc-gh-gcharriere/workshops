@@ -252,7 +252,8 @@ def send_email(session, recipient_email, subject, body):
                 'snowflake_intelligence_email_integration', -- Name of the notification integration
                 '{recipient_email}',             -- Recipient email address
                 '{subject}',                     -- Email subject
-                '{escaped_body}'                 -- Email body (escaped)
+                '{escaped_body}',                -- Email body (escaped),
+                'text/html'
             )
         """).collect()
 
@@ -277,7 +278,7 @@ Now integrate the email procedure with your agent through the Snowsight UI:
    - **Database & Schema**: `SNOWFLAKE_INTELLIGENCE.AGENTS`
    - **Custom tool identifier**: `SNOWFLAKE_INTELLIGENCE.AGENTS.SEND_EMAIL()`
    - **Name**: `send_email`
-   - **Description**: `Send an email message`
+   - **Description**: `Send an email message. The email is well formatted, using HTML formatting. The email uses icons when applicable and various heading styles to add structure.`
 
 7. Configure the parameters:
 
