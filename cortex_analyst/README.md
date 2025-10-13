@@ -7,7 +7,7 @@ This workshop is organized into four detailed session guides:
 | Session | Duration | Focus | Materials |
 |---------|----------|-------|-----------|
 | [Session 1](SESSION_1_SNOWFLAKE_FUNDAMENTALS.md) | 45 min | Platform fundamentals and core capabilities | Demos and examples |
-| [Session 2](SESSION_2_CORTEX_ANALYST.md) | 75 min | Hands-on semantic model development | CSV files, SQL scripts, YAML |
+| [Session 2](SESSION_2_CORTEX_ANALYST.md) | 75 min | Hands-on semantic model development | CSV files, SQL scripts, Semantic Views |
 | [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) ⭐ | 15 min | **OPTIONAL:** Cortex Search for fuzzy matching | Search service setup, integration demo |
 | [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | AI agents and intelligence features | Agent configuration |
 
@@ -186,7 +186,6 @@ The workshop uses a comprehensive revenue analytics dataset including:
 
 **Session 2, 3 & 4 (Revenue Analytics):**
 - ✅ Sample CSV files (`daily_revenue.csv`, `product.csv`, `location.csv`)
-- ✅ Semantic model YAML file (`revenue_timeseries.yaml`)
 - ✅ Session guides (4 detailed markdown files)
 - ✅ Access to Snowsight web interface
 
