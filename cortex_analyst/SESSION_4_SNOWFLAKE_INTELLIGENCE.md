@@ -62,8 +62,8 @@ GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
 GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
 
 -- 4. Set default role and warehouse for your user (required for Snowflake Intelligence)
-ALTER USER <your_username> SET DEFAULT_ROLE = ACCOUNTADMIN;
-ALTER USER <your_username> SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
+ALTER USER admin SET DEFAULT_ROLE = ACCOUNTADMIN;
+ALTER USER admin SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
 ```
 
 **What This Does:**
