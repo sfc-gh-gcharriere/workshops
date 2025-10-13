@@ -767,19 +767,6 @@ Try these questions in the Playground tab or through Snowflake Intelligence to s
 
 ---
 
-### Snowflake Intelligence Capabilities
-
-When you use your semantic model through **Snowflake Intelligence**, you get access to powerful AI capabilities:
-
-- **Conversational Analytics**: Natural language interaction across the platform - ask questions in plain English and get instant answers
-- **Intelligent Tool Orchestration**: Automatic tool selection and chaining - the system intelligently chooses the right tools to answer complex questions
-- **Contextual Understanding**: Learn from user patterns and preferences - Intelligence remembers your conversation context and adapts to your style
-- **Visualization Recommendations**: Suggest optimal chart types - automatically generates the best visualizations based on your data and question
-
-These capabilities make it easy for business users to explore and analyze data without writing SQL or understanding complex technical details.
-
----
-
 ## Session Summary
 
 In this session, you've learned:

@@ -154,6 +154,65 @@ The agent will use the Cortex Analyst tool to query your semantic model and prov
 
 ---
 
+### Snowflake Intelligence Capabilities
+
+When you use your semantic model through **Snowflake Intelligence**, you get access to powerful AI capabilities:
+
+- **Conversational Analytics**: Natural language interaction across the platform - ask questions in plain English and get instant answers
+- **Intelligent Tool Orchestration**: Automatic tool selection and chaining - the system intelligently chooses the right tools to answer complex questions
+- **Contextual Understanding**: Learn from user patterns and preferences - Intelligence remembers your conversation context and adapts to your style
+- **Visualization Recommendations**: Suggest optimal chart types - automatically generates the best visualizations based on your data and question
+
+These capabilities make it easy for business users to explore and analyze data without writing SQL or understanding complex technical details.
+
+---
+
+### Example Questions for Snowflake Intelligence
+
+Now that your agent is configured with the semantic model, you can ask a wide variety of business questions through Snowflake Intelligence. Try these examples:
+
+**Basic Revenue Questions:**
+- What was the total revenue in 2024?
+- Show me daily revenue for the last 30 days
+- What's our best performing product line?
+
+**Regional Analysis:**
+- Compare revenue across all regions
+- Which region had the highest growth in 2024?
+- Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
+
+**Product Analysis:**
+- Top 5 products by revenue
+- Show me revenue by product line over time
+- What's the average order value by product category?
+
+**Time-Based Queries:**
+- Monthly revenue trend for 2024
+- Quarter-over-quarter revenue comparison
+- Daily cumulative revenue in December 2023
+
+**Advanced Queries (Using Custom Metrics & Filters):**
+- Monthly profit in Europe per category
+- List large orders from last month
+- Profit margin by region
+- Show me large orders with profit breakdown
+
+**Percentage & Comparison Queries:**
+- Percentage of revenue per region
+- YoY revenue growth by product line
+- What percentage of total revenue comes from Electronics?
+
+**Follow-up Questions (Contextual Understanding):**
+After asking a question, try follow-ups like:
+- "Show me the trend over time"
+- "Compare that to the previous year"
+- "Which products contributed most to that?"
+- "Break that down by region"
+
+Snowflake Intelligence will remember the context of your conversation and understand what "that" refers to, making it feel like a natural conversation with a data analyst!
+
+---
+
 ### Add Custom Email Tool (Optional)
 
 Create a tool that can send email notifications with analysis results:
