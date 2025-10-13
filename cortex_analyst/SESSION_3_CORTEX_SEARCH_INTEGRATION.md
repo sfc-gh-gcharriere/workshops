@@ -125,8 +125,15 @@ Now we need to tell Cortex Analyst to use this search service when users ask abo
 4. Find the **PRODUCT_LINE** dimension
 5. Click **Edit Dimension**
 6. Scroll to the **Cortex Search Service** section
-7. Enable **Cortex Search** and select `product_line_search_service` from the dropdown
-8. Click **Save**
+7. Click **Add Cortex Search** and select `product_line_search_service` from the dropdown
+
+   <img width="690" height="272" alt="add_cortex_search" src="https://github.com/user-attachments/assets/457f4b95-0f20-400e-a911-d5b3eb59f480" />
+
+8. Click **Connect** to link the search service to this dimension
+
+   <img width="583" height="512" alt="connect_search" src="https://github.com/user-attachments/assets/4c04d4c6-2833-4abe-b5cd-7bc796440892" />
+
+9. Click **Save** to save your semantic model changes
 
 **How it looks in the Semantic Model:**
 
