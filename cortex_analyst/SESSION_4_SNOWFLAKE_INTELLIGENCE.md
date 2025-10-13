@@ -29,7 +29,7 @@ In this session, you'll explore how Snowflake Intelligence and Agents extend you
 
 ---
 
-## Part 1: Snowflake Agents (10 minutes)
+## Snowflake Agents (10 minutes)
 
 ### What are Snowflake Agents?
 
@@ -267,8 +267,7 @@ In this session, you've learned:
 ✅ **Tool Orchestration**: Automatic multi-step workflow execution  
 ✅ **Snowflake Intelligence**: Conversational analytics across the platform  
 ✅ **Contextual AI**: Context retention and learning capabilities  
-✅ **Visualization**: Automatic chart generation and recommendations  
-✅ **Production Patterns**: Best practices for enterprise deployment  
+✅ **Visualization**: Automatic chart generation and recommendations
 
 You now have the knowledge to build sophisticated AI-powered analytics solutions!
 
