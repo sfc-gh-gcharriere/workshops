@@ -327,15 +327,17 @@ Check your email inbox to verify the email was sent successfully!
 
 In this session, you've learned:
 
-✅ **Snowflake Agents**: Create AI assistants that orchestrate multiple tools  
-✅ **Cortex Analyst Integration**: Add semantic models as agent tools  
-✅ **Custom Tools**: Build email, API, and workflow integrations  
-✅ **Tool Orchestration**: Automatic multi-step workflow execution  
-✅ **Snowflake Intelligence**: Conversational analytics across the platform  
-✅ **Contextual AI**: Context retention and learning capabilities  
-✅ **Visualization**: Automatic chart generation and recommendations
+✅ **Snowflake Intelligence**: Understanding the AI-powered assistant platform for conversational analytics  
+✅ **Agent Setup**: Configuring the environment with database, schema, and privileges  
+✅ **Agent Creation**: Building your first AI agent with description and test questions  
+✅ **Cortex Analyst Integration**: Connecting semantic models as agent tools through the UI  
+✅ **Agent Testing**: Validating agent capabilities through Snowflake Intelligence  
+✅ **Intelligence Capabilities**: Leveraging conversational analytics, tool orchestration, contextual understanding, and visualization  
+✅ **Custom Email Tool**: Creating HTML-formatted email notifications with proper integration and procedure setup  
+✅ **Tool Orchestration**: Enabling agents to automatically query data and send formatted email reports  
+✅ **Future Integration**: Understanding upcoming MCP capabilities for universal agent connectivity
 
-You now have the knowledge to build sophisticated AI-powered analytics solutions!
+You now have hands-on experience building and extending AI-powered agents that combine data analytics with automated workflows!
 
 ---
 
