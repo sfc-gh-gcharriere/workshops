@@ -17,12 +17,12 @@ A comprehensive, hands-on workshop demonstrating advanced data security patterns
 
 ---
 
-### 🤖 [Cortex Analyst Workshop](./analyst/)
+### 🤖 [Cortex Analyst Workshop](./cortex_analyst/)
 A half-day workshop introducing Snowflake Cortex Analyst, an AI-powered analytics tool that enables natural language interaction with your data. Build semantic models, ask questions in plain English, and generate intelligent insights through Snowflake Intelligence.
 
 **Key Topics**: Cortex Analyst, Semantic Models, Natural Language Queries, AI Agents, Snowflake Intelligence
 
-[View Workshop →](./analyst/README.md)
+[View Workshop →](./cortex_analyst/README.md)
 
 ---
 
