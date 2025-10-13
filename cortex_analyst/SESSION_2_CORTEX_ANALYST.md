@@ -7,7 +7,7 @@ This session focuses on the practical implementation of Snowflake Cortex Analyst
 
 ---
 
-## Part 1: Environment Setup (30 minutes)
+## Part 1: Environment Setup (15 minutes)
 
 ### Overview
 Set up the complete Snowflake environment required for Cortex Analyst, including database objects, data loading, and permissions.
@@ -179,7 +179,7 @@ WHERE revenue IS NULL;
 
 ---
 
-## Part 2: Semantic Model Development (60 minutes)
+## Part 2: Semantic Model Development (75 minutes)
 
 ### What is a Semantic Model?
 

@@ -20,7 +20,7 @@ When users ask questions, they often use informal language or partial terms (e.g
 
 ---
 
-## Part 1: Understanding the Problem
+## Part 1: Understanding the Problem (5 minutes)
 
 ### Step 1: Test a Question That Works
 
@@ -71,7 +71,7 @@ Users need to know the exact terminology in your data. If they say "book" instea
 
 ## Part 2: Cortex Search Solution (10 minutes)
 
-### Step 3: Create Cortex Search Service for Product Lines
+### Step 1: Create Cortex Search Service for Product Lines
 
 Now let's create a Cortex Search service to enable fuzzy/semantic matching on product lines:
 
@@ -113,7 +113,7 @@ To verify your search service was created successfully:
 
 ---
 
-### Step 4: Integrate Search Service with Semantic Model
+### Step 2: Integrate Search Service with Semantic Model
 
 Now we need to tell Cortex Analyst to use this search service when users ask about product lines.
 
@@ -158,7 +158,7 @@ Note that Cortex Search is now linked to this dimension, enabling fuzzy matching
 
 ---
 
-### Step 5: Test With Fuzzy Matching
+### Step 3: Test With Fuzzy Matching
 
 Now let's test the same question that failed before, plus a more complex one:
 

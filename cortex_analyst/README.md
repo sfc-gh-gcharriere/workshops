@@ -54,12 +54,12 @@ Explore the foundational features of the Snowflake Data Cloud platform through h
 
 Learn to build and configure Cortex Analyst from the ground up, creating semantic models that enable natural language analytics on your data.
 
-**Part 1: Environment Setup (30 minutes)**
+**Part 1: Environment Setup (15 minutes)**
 - Database, schema, warehouse, and stage creation
 - CSV data upload and loading
 - Permission configuration
 
-**Part 2: Semantic Model Development (60 minutes)**
+**Part 2: Semantic Model Development (75 minutes)**
 - Understanding semantic models
 - Defining tables, dimensions, and measures
 - Establishing table relationships
