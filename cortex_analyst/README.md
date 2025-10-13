@@ -1,5 +1,21 @@
 # Cortex Analyst Workshop
 
+## Workshop Structure
+
+This workshop is organized into four detailed session guides:
+
+| Session | Duration | Focus | Materials |
+|---------|----------|-------|-----------|
+| [Session 1](SESSION_1_SNOWFLAKE_FUNDAMENTALS.md) | 45 min | Platform fundamentals and core capabilities | Demos and examples |
+| [Session 2](SESSION_2_CORTEX_ANALYST.md) | 75 min | Hands-on semantic model development | CSV files, SQL scripts, YAML |
+| [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) ⭐ | 15 min | **OPTIONAL:** Cortex Search for fuzzy matching | Search service setup, integration demo |
+| [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | AI agents and intelligence features | Agent configuration |
+
+**Core Duration**: 2 hours 30 minutes  
+**With Optional Session 3**: 2 hours 45 minutes (approx. half-day with breaks)
+
+---
+
 ## Overview
 
 Transform your data analytics with **Snowflake Cortex Analyst** - the AI-powered solution that enables business users to ask questions in natural language and receive instant, accurate insights from their data.
@@ -28,20 +44,6 @@ By the end of this workshop, you will have created:
 - "Compare actual vs forecasted revenue by month"
 
 All using plain English - no SQL required for end users!
-
-## Workshop Structure
-
-This workshop is organized into four detailed session guides:
-
-| Session | Duration | Focus | Materials |
-|---------|----------|-------|-----------|
-| [Session 1](SESSION_1_SNOWFLAKE_FUNDAMENTALS.md) | 45 min | Platform fundamentals and core capabilities | Demos and examples |
-| [Session 2](SESSION_2_CORTEX_ANALYST.md) | 75 min | Hands-on semantic model development | CSV files, SQL scripts, YAML |
-| [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) ⭐ | 15 min | **OPTIONAL:** Cortex Search for fuzzy matching | Search service setup, integration demo |
-| [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | AI agents and intelligence features | Agent configuration |
-
-**Core Duration**: 2 hours 30 minutes  
-**With Optional Session 3**: 2 hours 45 minutes (approx. half-day with breaks)
 
 ---
 
