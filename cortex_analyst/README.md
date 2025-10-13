@@ -71,19 +71,19 @@ Learn to build and configure Cortex Analyst from the ground up, creating semanti
 ---
 
 ### 🔍 Session 3: Cortex Search Integration with Cortex Analyst (15 minutes) - OPTIONAL
-**Enhancing Analytics with Semantic Search**
+**Enhancing Analytics with Fuzzy Matching**
 
-> **Optional Session:** This advanced topic demonstrates hybrid analytics patterns. Skip to Session 4 if you prefer to focus on core Cortex Analyst capabilities.
+> **Optional Session:** This advanced topic demonstrates how to handle high cardinality columns with Cortex Search. Skip to Session 4 if you prefer to focus on core Cortex Analyst capabilities.
 
-Learn how to integrate Snowflake Cortex Search with Cortex Analyst, enabling hybrid analytics that combine structured data queries with unstructured text search capabilities.
+Cortex Search is a standalone service that can be integrated with Cortex Analyst to handle high cardinality columns such as product lines. Learn how this integration enables fuzzy matching that allows users to make mistakes with terminology and still get proper results.
 
-**Topics Covered:**
-- Creating Cortex Search services
-- Semantic search with vector embeddings
-- Integrating search with semantic models
-- Hybrid analytics patterns (search + structured data)
-- Product catalog search with revenue correlation
-- Customer feedback analysis with sentiment scoring
+**What You'll Learn:**
+1. **The Problem**: Test queries that fail without exact terminology ("book" vs "Books")
+2. **The Solution**: Create a Cortex Search service for product lines
+3. **Integration**: Link the search service to your semantic model via Snowsight UI
+4. **The Results**: Test fuzzy matching - "book and elec cat" → `IN ('Books', 'Electronics')`
+
+**Key Takeaway:** Users no longer need to know exact values - Cortex Search handles variations, typos, and abbreviations automatically.
 
 [📖 View Full Session Details →](SESSION_3_CORTEX_SEARCH_INTEGRATION.md)
 
@@ -142,7 +142,7 @@ The workshop uses a comprehensive revenue analytics dataset including:
 1. **Pre-Workshop**: Sign up for a Snowflake trial account at https://signup.snowflake.com/
 2. **Session 1**: Follow along with platform demonstrations
 3. **Session 2**: Hands-on setup and semantic model creation (detailed steps in [Session 2](SESSION_2_CORTEX_ANALYST.md))
-4. **Session 3** (Optional): Integrate Cortex Search with semantic models for hybrid analytics
+4. **Session 3** (Optional): Integrate Cortex Search for fuzzy matching on high cardinality columns
 5. **Session 4**: Explore Snowflake Intelligence and agents
 
 ### Workshop Materials Checklist
@@ -166,7 +166,7 @@ This workshop is organized into four detailed session guides:
 |---------|----------|-------|-----------|
 | [Session 1](SESSION_1_SNOWFLAKE_FUNDAMENTALS.md) | 45 min | Platform fundamentals and core capabilities | Demos and examples |
 | [Session 2](SESSION_2_CORTEX_ANALYST.md) | 90 min | Hands-on semantic model development | CSV files, SQL scripts, YAML |
-| [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) ⭐ | 15 min | **OPTIONAL:** Cortex Search integration with analytics | Search services, hybrid queries |
+| [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) ⭐ | 15 min | **OPTIONAL:** Cortex Search for fuzzy matching | Search service setup, integration demo |
 | [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | AI agents and intelligence features | Agent configuration |
 
 **Core Duration**: 2 hours 45 minutes  
