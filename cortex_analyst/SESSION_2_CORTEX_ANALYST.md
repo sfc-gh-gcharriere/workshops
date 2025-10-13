@@ -1,4 +1,4 @@
-# Session 2: Building with Cortex Analyst (90 minutes)
+# Session 2: Building with Cortex Analyst (75 minutes)
 
 ## Hands-On Semantic Model Development
 
@@ -179,7 +179,7 @@ WHERE revenue IS NULL;
 
 ---
 
-## Part 2: Semantic Model Development (75 minutes)
+## Part 2: Semantic Model Development (60 minutes)
 
 ### What is a Semantic Model?
 

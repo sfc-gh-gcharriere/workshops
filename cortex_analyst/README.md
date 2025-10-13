@@ -2,18 +2,48 @@
 
 ## Overview
 
-This half-day workshop introduces students to **Snowflake Cortex Analyst**, a powerful AI-powered analytics tool that enables natural language interaction with data. Participants will learn how to leverage Cortex Analyst to ask questions in plain English and receive intelligent insights from their data.
+Transform your data analytics with **Snowflake Cortex Analyst** - the AI-powered solution that enables business users to ask questions in natural language and receive instant, accurate insights from their data.
 
-## Workshop Objectives
+This hands-on workshop takes you from Snowflake fundamentals through building production-ready semantic models, with optional advanced topics on search integration and intelligent automation. In just 2.5 hours, you'll learn to democratize data access and empower your organization with conversational analytics.
 
-By the end of this workshop, participants will be able to:
+**What Makes This Workshop Unique:**
+- **100% Hands-On**: Build a complete semantic model from scratch using real revenue data
+- **Production-Ready**: Learn best practices and patterns used by enterprises
+- **Flexible Learning**: Core sessions plus optional advanced topics
+- **Immediate Value**: Start querying your own data with natural language by end of day
 
-- Understand the core concepts of the Snowflake Platform
-- Understand the core concepts and capabilities of Snowflake Cortex Analyst
-- Set up and configure a Cortex Analyst environment
-- Create semantic models for their data
-- Interact with data using natural language queries
-- Generate insights and visualizations through Snowflake Intelligence
+## What You'll Build
+
+By the end of this workshop, you will have created:
+
+✅ A complete **semantic model** for revenue analytics that supports natural language queries  
+✅ **Custom metrics** and **verified queries** tailored to business needs  
+✅ **Integration with Cortex Search** for fuzzy matching on high cardinality data (optional)  
+✅ Understanding of how to deploy and scale Cortex Analyst in production
+
+**You'll be able to answer questions like:**
+- "What is the total revenue for electronics in December?"
+- "Show me profit trends by region"
+- "Which products have the highest margins?"
+- "Compare actual vs forecasted revenue by month"
+
+All using plain English - no SQL required for end users!
+
+## Workshop Structure
+
+This workshop is organized into four detailed session guides:
+
+| Session | Duration | Focus | Materials |
+|---------|----------|-------|-----------|
+| [Session 1](SESSION_1_SNOWFLAKE_FUNDAMENTALS.md) | 45 min | Platform fundamentals and core capabilities | Demos and examples |
+| [Session 2](SESSION_2_CORTEX_ANALYST.md) | 75 min | Hands-on semantic model development | CSV files, SQL scripts, YAML |
+| [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) ⭐ | 15 min | **OPTIONAL:** Cortex Search for fuzzy matching | Search service setup, integration demo |
+| [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | AI agents and intelligence features | Agent configuration |
+
+**Core Duration**: 2 hours 30 minutes  
+**With Optional Session 3**: 2 hours 45 minutes (approx. half-day with breaks)
+
+---
 
 ## Prerequisites
 
@@ -22,7 +52,7 @@ By the end of this workshop, participants will be able to:
 - Basic understanding of SQL
 - Familiarity with data warehousing concepts
 
-## Workshop Agenda (2.5-3 Hour Format)
+## Workshop Agenda (2.5 Hour Format)
 
 ### 📚 Session 1: Snowflake Platform Fundamentals (45 minutes)
 **Introduction to Core Snowflake Capabilities**
@@ -49,7 +79,7 @@ Explore the foundational features of the Snowflake Data Cloud platform through h
 
 ---
 
-### 🛠️ Session 2: Building with Cortex Analyst (90 minutes)
+### 🛠️ Session 2: Building with Cortex Analyst (75 minutes)
 **Hands-On Semantic Model Development**
 
 Learn to build and configure Cortex Analyst from the ground up, creating semantic models that enable natural language analytics on your data.
@@ -59,7 +89,7 @@ Learn to build and configure Cortex Analyst from the ground up, creating semanti
 - CSV data upload and loading
 - Permission configuration
 
-**Part 2: Semantic Model Development (75 minutes)**
+**Part 2: Semantic Model Development (60 minutes)**
 - Understanding semantic models
 - Defining tables, dimensions, and measures
 - Establishing table relationships
@@ -157,41 +187,6 @@ The workshop uses a comprehensive revenue analytics dataset including:
 - ✅ Semantic model YAML file (`revenue_timeseries.yaml`)
 - ✅ Session guides (4 detailed markdown files)
 - ✅ Access to Snowsight web interface
-
-## Workshop Structure
-
-This workshop is organized into four detailed session guides:
-
-| Session | Duration | Focus | Materials |
-|---------|----------|-------|-----------|
-| [Session 1](SESSION_1_SNOWFLAKE_FUNDAMENTALS.md) | 45 min | Platform fundamentals and core capabilities | Demos and examples |
-| [Session 2](SESSION_2_CORTEX_ANALYST.md) | 90 min | Hands-on semantic model development | CSV files, SQL scripts, YAML |
-| [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) ⭐ | 15 min | **OPTIONAL:** Cortex Search for fuzzy matching | Search service setup, integration demo |
-| [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | AI agents and intelligence features | Agent configuration |
-
-**Core Duration**: 2 hours 45 minutes  
-**With Optional Session 3**: 3 hours (approx. half-day with breaks)
-
----
-
-## Resources and Next Steps
-
-### Documentation
-- [Snowflake Cortex Analyst Documentation](https://docs.snowflake.com/en/user-guide/cortex-analyst)
-- [Semantic Model Configuration Guide](https://docs.snowflake.com/en/user-guide/cortex-analyst-semantic-models)
-- [Snowflake Intelligence Guide](https://docs.snowflake.com/en/user-guide/intelligence)
-- [Streamlit Integration Examples](https://docs.snowflake.com/en/developer-guide/streamlit)
-
-### Community & Support
-- [Snowflake Community Forums](https://community.snowflake.com)
-- [Cortex AI Resources](https://www.snowflake.com/cortex)
-- [Quickstarts Library](https://quickstarts.snowflake.com)
-
-### Additional Learning
-- Explore the Snowflake Data Marketplace for sample datasets
-- Try building semantic models for your own data
-- Join Snowflake user groups and webinars
-- Complete Snowflake certification programs
 
 ---
 
