@@ -393,42 +393,50 @@ verified_queries:
   - name: Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
     question: Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
     sql: |
-      WITH revenue_2024 AS (
+      WITH yearly_revenue AS (
         SELECT
           p.product_line,
-          SUM(dr.revenue) AS revenue_2024
+          DATE_PART('YEAR', dr.date) AS year,
+          SUM(dr.revenue) AS total_revenue
         FROM
-          cortex_analyst_demo.revenue_timeseries.daily_revenue dr
-          JOIN cortex_analyst_demo.revenue_timeseries.product_dim p ON dr.product_id = p.product_id
-          JOIN cortex_analyst_demo.revenue_timeseries.location_dim l ON dr.location_id = l.location_id
+          daily_revenue AS dr
+          LEFT OUTER JOIN location_dim AS ld ON dr.location_id = ld.location_id
+          LEFT OUTER JOIN product_dim AS p ON dr.product_id = p.product_id
         WHERE
-          l.region = 'Europe'
-          AND DATE_PART('YEAR', dr.date) = 2024
-        GROUP BY p.product_line
+          ld.sales_region = 'Europe'
+          AND DATE_PART('YEAR', dr.date) IN (2023, 2024)
+        GROUP BY
+          p.product_line,
+          DATE_PART('YEAR', dr.date)
       ),
-      revenue_2023 AS (
+      yoy_growth AS (
         SELECT
-          p.product_line,
-          SUM(dr.revenue) AS revenue_2023
+          curr.product_line,
+          curr.year AS curr_year,
+          prev.year AS prev_year,
+          curr.total_revenue AS curr_revenue,
+          prev.total_revenue AS prev_revenue,
+          curr.total_revenue - prev.total_revenue AS yoy_chg,
+          (curr.total_revenue - prev.total_revenue) / NULLIF(NULLIF(prev.total_revenue, 0), 0) AS yoy_pct_chg
         FROM
-          cortex_analyst_demo.revenue_timeseries.daily_revenue dr
-          JOIN cortex_analyst_demo.revenue_timeseries.product_dim p ON dr.product_id = p.product_id
-          JOIN cortex_analyst_demo.revenue_timeseries.location_dim l ON dr.location_id = l.location_id
+          yearly_revenue AS curr
+          LEFT JOIN yearly_revenue AS prev ON curr.product_line = prev.product_line
+          AND curr.year = prev.year + 1
         WHERE
-          l.region = 'Europe'
-          AND DATE_PART('YEAR', dr.date) = 2023
-        GROUP BY p.product_line
+          curr.year = 2024
       )
       SELECT
-        r24.product_line,
-        r24.revenue_2024,
-        r23.revenue_2023,
-        ROUND(((r24.revenue_2024 - r23.revenue_2023) / r23.revenue_2023) * 100, 2) AS yoy_growth_percent
+        product_line,
+        curr_year,
+        prev_year,
+        curr_revenue,
+        prev_revenue,
+        yoy_chg,
+        yoy_pct_chg
       FROM
-        revenue_2024 r24
-        LEFT JOIN revenue_2023 r23 ON r24.product_line = r23.product_line
+        yoy_growth
       ORDER BY
-        r24.revenue_2024 DESC;
+        curr_revenue DESC NULLS LAST;
     verified_at: '1734766812'
     verified_by: ADMIN
 ```
