@@ -36,6 +36,18 @@ In the Cortex Analyst Playground, enter this question and run it.
 - Cortex Analyst can match "clothes" to "Clothing" from the discovered samples
 - Query generates: `WHERE product_line = 'Clothing'`
 
+**💡 Where to Find Sample Values:**
+To see what sample values Cortex Analyst has discovered:
+1. Navigate to your **REVENUE_TIMESERIES** semantic view
+2. Select the **PRODUCT_DIM** table
+3. Find the **PRODUCT_LINE** dimension
+4. Click **Edit Dimension**
+5. Scroll to the **Sample Values** section
+
+You'll see values like "Clothing", "Electronics", "Books" that Cortex Analyst uses for matching.
+
+<img width="441" height="151" alt="sample_values" src="https://github.com/user-attachments/assets/84da910c-b394-4ca6-be7e-ce464ddaeca1" />
+
 ---
 
 ### Step 2: Test a Question That Fails
