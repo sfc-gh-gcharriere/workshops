@@ -194,11 +194,9 @@ After asking a question, try follow-ups like "Show me the trend over time" or "C
 
 Extend your agent's capabilities by adding email functionality. This allows the agent to send analysis results directly via email.
 
-First, navigate to **AI & ML** > **Agents** in Snowsight, click on your **Revenue Analyst Agent**, and click **Edit** to prepare for adding the email tool.
-
 **Step 1: Setup Email Integration and Procedure**
 
-First, set up the email notification integration and create the email sending procedure in the data schema:
+Set up the email notification integration and create the email sending procedure in the data schema:
 
 ```sql
 -- ========================================
@@ -271,9 +269,12 @@ $$;
 
 Now integrate the email procedure with your agent through the Snowsight UI:
 
-1. Navigate to your agent's **Tools** tab
-2. Click on **+ Add** to add a custom tool
-3. Configure the email tool with the following settings:
+1. Navigate to **AI & ML** > **Agents** in Snowsight
+2. Click on your **Revenue Analyst Agent**
+3. Click **Edit** to open the agent configuration
+4. Navigate to the **Tools** tab
+5. Click on **+ Add** to add a custom tool
+6. Configure the email tool with the following settings:
 
    - **Name**: `Send_Email`
    - **Resource type**: `procedure`
@@ -281,7 +282,7 @@ Now integrate the email procedure with your agent through the Snowsight UI:
    - **Custom tool identifier**: `SNOWFLAKE_INTELLIGENCE.DATA.SEND_EMAIL()`
    - **Warehouse**: `COMPUTE_WH`
 
-4. Configure the parameters:
+7. Configure the parameters:
 
    **Parameter 1: body**
    - Description: `If body is not provided, summarize the last question and use that as content for the email.`
@@ -292,7 +293,7 @@ Now integrate the email procedure with your agent through the Snowsight UI:
    **Parameter 3: subject**
    - Description: `If subject is not provided, use "Snowflake Intelligence".`
 
-5. Click **Add** to save the tool configuration
+8. Click **Add** to save the tool configuration
 
 The agent can now send email notifications with analysis results!
 
