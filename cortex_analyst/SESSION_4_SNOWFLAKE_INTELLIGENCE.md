@@ -235,17 +235,6 @@ Congratulations! You've completed the Snowflake Cortex Analyst Workshop.
 2. **Cortex Analyst**: Semantic model development and natural language queries
 3. **Snowflake Intelligence**: Advanced AI orchestration and automation
 
-### Next Steps
-- Deploy your semantic model to production
-- Build custom agents for your organization
-- Explore additional Cortex AI features
-- Join the Snowflake community
-
-### Stay Connected
-- [Snowflake Community Forums](https://community.snowflake.com)
-- [Cortex AI Resources](https://www.snowflake.com/cortex)
-- [Quickstarts and Tutorials](https://quickstarts.snowflake.com)
-
 ---
 
 **Previous**: [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST.md) | [Session 3: Cortex Search Integration (Optional)](SESSION_3_CORTEX_SEARCH_INTEGRATION.md)  
