@@ -3,7 +3,7 @@
 ## Hands-On Semantic Model Development
 
 This session focuses on the practical implementation of Snowflake Cortex Analyst, from environment setup to building sophisticated semantic models that enable natural language analytics.
-<img width="1805" height="643" alt="model" src="https://github.com/user-attachments/assets/957048cc-04c0-407b-ae25-8e66bc10527d" />
+<img alt="model" src="img/snowflake_fundamentals/model.png" />
 
 ---
 
