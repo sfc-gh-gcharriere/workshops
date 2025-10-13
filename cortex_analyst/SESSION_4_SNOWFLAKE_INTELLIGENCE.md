@@ -105,27 +105,16 @@ Once the agent is created, click on it to open the details page, then click **Ed
    AI agent for analyzing revenue data and answering business questions
    ```
 
-2. **Instructions**: System prompts to guide agent behavior:
+2. **Test Question**:
    ```
-   You are a helpful revenue data analyst. Use the Cortex Analyst tool to answer 
-   questions about revenue, products, and regional performance. Provide clear, 
-   concise answers with relevant data insights.
+   Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
    ```
 
 Save your configuration.
 
-**Step 3: Test Your Agent**
-
-Try asking your agent a question to verify it's working:
-```
-Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
-```
-
-The agent will use Cortex Analyst to query your semantic model and provide insights on European sales performance with year-over-year comparison
-
 ---
 
-### Add Cortex Analyst Tool to Agent
+### Step 3: Add Cortex Analyst Tool to Agent
 
 Integrate your semantic model as a tool the agent can use:
 
