@@ -192,35 +192,92 @@ After asking a question, try follow-ups like "Show me the trend over time" or "C
 
 ### Add Custom Email Tool (Optional)
 
-Create a tool that can send email notifications with analysis results:
+Extend your agent's capabilities by adding email functionality. This allows the agent to send analysis results directly via email.
+
+**Step 1: Setup Email Integration**
+
+First, set up the email notification integration in the agents schema:
 
 ```sql
--- First, create a Python UDF for sending emails
-CREATE OR REPLACE FUNCTION send_email_notification(
-    recipient STRING,
-    subject STRING,
-    body STRING
+-- ========================================
+-- Email integration setup
+-- ========================================
+-- Switch to the agents schema
+USE SCHEMA snowflake_intelligence.agents;
+
+-- Create a notification integration for sending emails
+-- This allows Snowflake to send emails through its built-in email service
+CREATE OR REPLACE NOTIFICATION INTEGRATION snowflake_intelligence_email_integration
+  TYPE=EMAIL
+  ENABLED=TRUE
+  DEFAULT_SUBJECT = 'Snowflake Cortex Demo';
+```
+
+**Step 2: Create Email Sending Procedure**
+
+Create a stored procedure that wraps Snowflake's email sending functionality:
+
+```sql
+-- ========================================
+-- Email sending procedure
+-- ========================================
+-- Create a stored procedure that wraps Snowflake's email sending functionality
+-- This makes it easier for agents and applications to send emails
+CREATE OR REPLACE PROCEDURE send_email(
+    recipient_email VARCHAR,    -- Email address of the recipient
+    subject VARCHAR,            -- Email subject line
+    body VARCHAR                -- Email body content
 )
-RETURNS STRING
+RETURNS VARCHAR
 LANGUAGE PYTHON
-RUNTIME_VERSION = '3.11'
-HANDLER = 'send_email'
+RUNTIME_VERSION = '3.12'
 PACKAGES = ('snowflake-snowpark-python')
+HANDLER = 'send_email'
 AS
 $$
-def send_email(recipient, subject, body):
-    # In production, integrate with your email service (SendGrid, AWS SES, etc.)
-    # For demo purposes, we'll return a confirmation message
-    confirmation = f"Email sent to {recipient}\nSubject: {subject}\nBody: {body}"
-    return confirmation
-$$;
+def send_email(session, recipient_email, subject, body):
+    """
+    Send an email using Snowflake's built-in email integration.
 
--- Add email tool to agent
+    Args:
+        session: Snowpark session object
+        recipient_email: Email address to send to
+        subject: Email subject line
+        body: Email body content
+
+    Returns:
+        Success or error message
+    """
+    try:
+        # Escape single quotes in the body to prevent SQL injection
+        escaped_body = body.replace("'", "''")
+
+        # Execute the system procedure call to send the email
+        session.sql(f"""
+            CALL SYSTEM$SEND_EMAIL(
+                'snowflake_intelligence_email_integration', -- Name of the notification integration
+                '{recipient_email}',             -- Recipient email address
+                '{subject}',                     -- Email subject
+                '{escaped_body}'                 -- Email body (escaped)
+            )
+        """).collect()
+
+        return "Email sent successfully"
+    except Exception as e:
+        return f"Error sending email: {str(e)}"
+$$;
+```
+
+**Step 3: Add Email Tool to Your Agent**
+
+Now integrate the email procedure with your agent:
+
+```sql
 ALTER AGENT revenue_analyst_agent
   ADD TOOL email_notification_tool
-  TYPE = FUNCTION
+  TYPE = PROCEDURE
   PARAMETERS = (
-    FUNCTION_NAME = 'send_email_notification',
+    PROCEDURE_NAME = 'tools.send_email',
     DESCRIPTION = 'Send email notifications with analysis results'
   )
   DESCRIPTION = 'Use this tool when the user requests to send or share analysis results via email';
