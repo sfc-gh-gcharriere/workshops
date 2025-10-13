@@ -64,6 +64,9 @@ GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
 -- 4. Set default role and warehouse for your user (required for Snowflake Intelligence)
 ALTER USER admin SET DEFAULT_ROLE = ACCOUNTADMIN;
 ALTER USER admin SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
+
+-- 5. Enable cross-region inference (required for Snowflake Intelligence)
+ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION';
 ```
 
 **What This Does:**
@@ -72,6 +75,7 @@ ALTER USER admin SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
 - Grants appropriate privileges for agent creation and access
 - Makes agents discoverable to all users with PUBLIC role
 - Sets your default role and warehouse (required for Snowflake Intelligence to work)
+- Enables cross-region inference to allow Cortex AI features to work across regions
 
 **Important Notes:**
 - By default, Snowflake Intelligence uses the user's default role and default warehouse
@@ -131,6 +135,24 @@ Navigate to the **Tools** tab in your agent configuration and click **+ Add** to
 <img alt="cortex_analyst_tool" src="img/snowflake_intelligence/analyst_tool.png" />
 
 Click **Add** to attach the tool to your agent, then **Save** your agent configuration
+
+---
+
+### Step 4: Test Your Agent in Snowflake Intelligence
+
+Now that your agent is configured with the Cortex Analyst tool, let's test it!
+
+1. Navigate to **AI & ML** > **Snowflake Intelligence** in Snowsight
+2. Your `Revenue Analyst Agent` should appear in the available agents
+3. Click on your agent to open the chat interface
+4. Click on the **test question** you configured earlier:
+   ```
+   Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
+   ```
+
+The agent will use the Cortex Analyst tool to query your semantic model and provide a detailed answer with revenue data and year-over-year growth analysis for European product categories.
+
+<img alt="cortex_analyst_tool" src="img/snowflake_intelligence/si.png" />
 
 ---
 
