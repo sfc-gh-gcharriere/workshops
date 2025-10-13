@@ -378,7 +378,7 @@ Verified queries help train Cortex Analyst on your specific query patterns and i
 **How to Add a Verified Query:**
 
 1. In the Semantic View builder, navigate to the **Playground** tab
-2. Enter the question: "daily cumulative expenses in december 2023"
+2. Enter the question: "Sales revenue for product categories sold in Europe in 2024 & YoY % Growth"
 3. Click the **Run** button to generate and execute the query
 4. Review the generated SQL and results
 5. Click the **+ Verified Query** button
@@ -390,28 +390,45 @@ Verified queries help train Cortex Analyst on your specific query patterns and i
 
 ```yaml
 verified_queries:
-  - name: daily cumulative expenses in december 2023
-    question: daily cumulative expenses in december 2023
+  - name: Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
+    question: Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
     sql: |
-      WITH __daily_revenue AS (
+      WITH revenue_2024 AS (
         SELECT
-          date,
-          cogs
+          p.product_line,
+          SUM(dr.revenue) AS revenue_2024
         FROM
-          cortex_analyst_demo.revenue_timeseries.daily_revenue
+          cortex_analyst_demo.revenue_timeseries.daily_revenue dr
+          JOIN cortex_analyst_demo.revenue_timeseries.product_dim p ON dr.product_id = p.product_id
+          JOIN cortex_analyst_demo.revenue_timeseries.location_dim l ON dr.location_id = l.location_id
+        WHERE
+          l.region = 'Europe'
+          AND DATE_PART('YEAR', dr.date) = 2024
+        GROUP BY p.product_line
+      ),
+      revenue_2023 AS (
+        SELECT
+          p.product_line,
+          SUM(dr.revenue) AS revenue_2023
+        FROM
+          cortex_analyst_demo.revenue_timeseries.daily_revenue dr
+          JOIN cortex_analyst_demo.revenue_timeseries.product_dim p ON dr.product_id = p.product_id
+          JOIN cortex_analyst_demo.revenue_timeseries.location_dim l ON dr.location_id = l.location_id
+        WHERE
+          l.region = 'Europe'
+          AND DATE_PART('YEAR', dr.date) = 2023
+        GROUP BY p.product_line
       )
       SELECT
-        date,
-        SUM(cogs) OVER (
-          ORDER BY date
-        ) AS cumulative_cogs
+        r24.product_line,
+        r24.revenue_2024,
+        r23.revenue_2023,
+        ROUND(((r24.revenue_2024 - r23.revenue_2023) / r23.revenue_2023) * 100, 2) AS yoy_growth_percent
       FROM
-        __daily_revenue
-      WHERE
-        DATE_PART('YEAR', date) = 2023
-        AND DATE_PART('MONTH', date) = 12
+        revenue_2024 r24
+        LEFT JOIN revenue_2023 r23 ON r24.product_line = r23.product_line
       ORDER BY
-        date DESC NULLS LAST;
+        r24.revenue_2024 DESC;
     verified_at: '1734766812'
     verified_by: ADMIN
 ```
