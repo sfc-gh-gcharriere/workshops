@@ -16,7 +16,7 @@
 
 **Why Integrate with Cortex Analyst?**
 When users ask questions, they often use informal language or partial terms (e.g., "book" instead of "Books", "elec" instead of "Electronics"). Cortex Search enables fuzzy matching that allows users to make mistakes with terminology and still get proper results.
-<img width="1804" height="662" alt="cortex_search" src="https://github.com/user-attachments/assets/02ef91b8-a6c7-4c16-9e81-e97921a55f3d" />
+<img alt="cortex_search" src="img/cortex_search/cortex_search_architecture.png" />
 
 ---
 
@@ -46,7 +46,7 @@ To see what sample values Cortex Analyst has discovered:
 
 You'll see values like "Clothing", "Electronics", "Books" that Cortex Analyst uses for matching.
 
-<img width="441" height="151" alt="sample_values" src="https://github.com/user-attachments/assets/84da910c-b394-4ca6-be7e-ce464ddaeca1" />
+<img width="441" height="151" alt="sample_values" src="img/cortex_search/sample_values.png" />
 
 ---
 
@@ -109,7 +109,7 @@ To verify your search service was created successfully:
 2. You should see `PRODUCT_LINE_SEARCH_SERVICE` listed
 3. Click on the service to view its details and status
 
-<img width="1258" height="204" alt="cortex_search_ui" src="https://github.com/user-attachments/assets/0b742c73-00a3-403d-98db-943f082153be" />
+<img width="1258" height="204" alt="cortex_search_ui" src="img/cortex_search/cortex_search_status.png" />
 
 ---
 
@@ -127,11 +127,11 @@ Now we need to tell Cortex Analyst to use this search service when users ask abo
 6. Scroll to the **Cortex Search Service** section
 7. Click **Add Cortex Search** and select `product_line_search_service` from the dropdown
 
-   <img width="690" height="272" alt="add_cortex_search" src="https://github.com/user-attachments/assets/457f4b95-0f20-400e-a911-d5b3eb59f480" />
+   <img width="690" height="272" alt="add_cortex_search" src="img/cortex_search/add_cortex_search.png" />
 
 8. Click **Connect** to link the search service to this dimension
 
-   <img width="583" height="512" alt="connect_search" src="https://github.com/user-attachments/assets/4c04d4c6-2833-4abe-b5cd-7bc796440892" />
+   <img width="583" height="512" alt="connect_search" src="img/cortex_search/connect_search.png" />
 
 9. Click **Save** to save your semantic model changes
 
