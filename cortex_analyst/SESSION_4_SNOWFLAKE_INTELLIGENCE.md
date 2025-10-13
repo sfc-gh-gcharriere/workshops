@@ -301,16 +301,14 @@ Now that your agent has email functionality, let's test it!
 
 1. Navigate to **AI & ML** > **Snowflake Intelligence** in Snowsight
 2. Select your **Revenue Analyst Agent**
-3. Try asking questions that involve sending emails, such as:
+3. Confirm the new **send_email** tool is available:
+
+   <img alt="cortex_send_email_tool" src="img/snowflake_intelligence/confirm_send_email_tool.png" />
+
+4. Try asking questions that involve sending emails, such as:
 
    ```
    Can you analyze the top 3 products by revenue and email me the results?
-   ```
-
-   or
-
-   ```
-   Send me an email with the total revenue for 2024
    ```
 
 The agent will:
