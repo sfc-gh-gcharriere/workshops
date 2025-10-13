@@ -1,0 +1,26 @@
+location_id,sales_region,state
+1,"North America","New York"
+2,"North America",California
+3,"North America",Texas
+4,"North America",Ontario
+5,"North America",Quebec
+6,Europe,England
+7,Europe,Germany
+8,Europe,France
+9,Europe,Spain
+10,Europe,Italy
+11,Asia,Japan
+12,Asia,"South Korea"
+13,Asia,China
+14,Asia,India
+15,Asia,Singapore
+16,"South America",Brazil
+17,"South America",Argentina
+18,"South America",Chile
+19,"South America",Peru
+20,"South America",Colombia
+21,Africa,"South Africa"
+22,Africa,Nigeria
+23,Africa,Kenya
+24,Africa,Egypt
+25,Africa,Ghana

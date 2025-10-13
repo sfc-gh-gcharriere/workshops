@@ -1,0 +1,435 @@
+# Session 1: Snowflake Platform Fundamentals (45 minutes)
+
+## Introduction to Core Snowflake Capabilities
+
+This session provides a comprehensive overview of the Snowflake Data Cloud platform, focusing on the key features that make it unique and powerful for modern data analytics.
+
+---
+
+## 1. Virtual Warehouses (10 minutes)
+
+### What are Virtual Warehouses?
+Virtual warehouses are Snowflake's compute resources that execute queries and perform data processing tasks. They are completely separate from data storage, enabling independent scaling.
+
+### Key Concepts
+- **Scalability**: Instantly scale compute resources up or down
+- **Concurrency**: Run multiple warehouses simultaneously without contention
+- **Auto-suspend/Auto-resume**: Automatic pause and restart to optimize costs
+- **Warehouse Sizes**: Choose from X-Small to 6X-Large based on workload requirements
+
+### Hands-On Demo
+```sql
+-- Create a warehouse for demonstration
+CREATE OR REPLACE WAREHOUSE demo_wh
+    WAREHOUSE_SIZE = 'MEDIUM'
+    WAREHOUSE_TYPE = 'STANDARD'
+    AUTO_SUSPEND = 60
+    AUTO_RESUME = TRUE
+    INITIALLY_SUSPENDED = TRUE
+    COMMENT = 'Warehouse for platform fundamentals demo';
+
+-- Verify warehouse was created
+SHOW WAREHOUSES;
+
+-- Resize on the fly (scales instantly without downtime)
+ALTER WAREHOUSE demo_wh SET WAREHOUSE_SIZE = 'SMALL';
+
+-- Check warehouse status after resizing
+SHOW WAREHOUSES;
+
+-- Manually suspend the warehouse
+ALTER WAREHOUSE demo_wh SUSPEND;
+```
+
+### Best Practices
+- Start small and scale up as needed
+- Use auto-suspend to minimize costs
+- Create dedicated warehouses for different workloads (ETL, BI, Data Science)
+- Monitor warehouse usage through Query History
+
+---
+
+## 2. Data Ingestion (10 minutes)
+
+### Loading Data into Snowflake
+Snowflake supports multiple methods for data ingestion, from simple CSV uploads to continuous data pipelines.
+
+### Ingestion Methods
+1. **Bulk Loading** (COPY INTO)
+2. **Continuous Loading** (Snowpipe)
+3. **Web Interface Upload** (Snowsight)
+4. **External Tools** (Connectors, APIs)
+
+### Hands-On Demo: Loading Citibike Trip Data
+
+In this demo, we'll load real Citibike trip data from an external S3 bucket into Snowflake.
+
+#### Step 1: Setup and Load Data
+```sql
+-- Create database for Citibike data
+CREATE OR REPLACE DATABASE CITIBIKE;
+
+-- Use the database
+USE DATABASE CITIBIKE;
+
+-- Use the demo warehouse
+USE WAREHOUSE demo_wh;
+
+-- Create table to store trip information
+CREATE OR REPLACE TABLE trips (
+    tripduration INTEGER,
+    starttime TIMESTAMP,
+    stoptime TIMESTAMP,
+    start_station_id INTEGER,
+    start_station_name STRING,
+    start_station_latitude FLOAT,
+    start_station_longitude FLOAT,
+    end_station_id INTEGER,
+    end_station_name STRING,
+    end_station_latitude FLOAT,
+    end_station_longitude FLOAT,
+    bikeid INTEGER,
+    membership_type STRING,
+    usertype STRING,
+    birth_year INTEGER,
+    gender INTEGER
+);
+
+-- Create stage pointing to public S3 bucket
+CREATE OR REPLACE STAGE citibike_trips 
+    URL = 's3://snowflake-workshop-lab/demo98/trips/';
+
+-- List files in the stage
+LIST @citibike_trips;
+
+-- Define CSV file format with error handling
+CREATE OR REPLACE FILE FORMAT csv 
+    TYPE = 'csv'
+    COMPRESSION = 'auto' 
+    FIELD_DELIMITER = ',' 
+    RECORD_DELIMITER = '\n'
+    SKIP_HEADER = 0 
+    FIELD_OPTIONALLY_ENCLOSED_BY = '\042' 
+    TRIM_SPACE = false
+    ERROR_ON_COLUMN_COUNT_MISMATCH = false 
+    ESCAPE = 'none' 
+    ESCAPE_UNENCLOSED_FIELD = '\134'
+    DATE_FORMAT = 'auto' 
+    TIMESTAMP_FORMAT = 'auto' 
+    NULL_IF = ('', 'NULL', 'null')
+    COMMENT = 'File format for ingesting data for zero to snowflake';
+
+-- Load files from stage into table with SMALL warehouse
+-- ⏱️ NOTE THE LOAD TIME - We'll compare this with LARGE warehouse
+COPY INTO trips 
+FROM @citibike_trips 
+FILE_FORMAT = csv 
+PATTERN = '.*csv.*';
+
+-- Count number of entries loaded
+SELECT COUNT(*) FROM trips;
+-- Expected: Millions of trip records
+
+-- Preview the loaded data
+SELECT * FROM trips LIMIT 10;
+```
+
+#### Step 2: Demonstrate Warehouse Scaling Performance
+```sql
+-- Clear the table to demonstrate performance difference
+TRUNCATE TABLE trips;
+
+-- Verify table is empty
+SELECT * FROM trips LIMIT 10;
+
+-- Scale warehouse from SMALL to LARGE (4x compute power)
+ALTER WAREHOUSE demo_wh SET WAREHOUSE_SIZE = 'LARGE';
+
+-- ⏱️ RELOAD DATA WITH LARGE WAREHOUSE - COMPARE THE LOADING TIME!
+-- Loading the same data should be significantly faster with LARGE warehouse
+COPY INTO trips 
+FROM @citibike_trips 
+FILE_FORMAT = csv 
+PATTERN = '.*csv.*';
+
+-- Verify data loaded successfully
+SELECT COUNT(*) FROM trips;
+
+-- 💡 Key Observation:
+-- SMALL warehouse load time: ~XX seconds
+-- LARGE warehouse load time: ~XX seconds (approximately 4x faster!)
+
+-- Run analytics query to demonstrate query performance
+-- 🤖 NOTE: In Snowsight, queries like this can be generated by AI directly from your workspace!
+-- Simply describe what you want to analyze, and AI can write the SQL for you.
+SELECT 
+    DATE_TRUNC('hour', starttime) AS "date",
+    COUNT(*) AS "num trips",
+    AVG(tripduration)/60 AS "avg duration (mins)",
+    AVG(HAVERSINE(start_station_latitude, start_station_longitude, 
+                  end_station_latitude, end_station_longitude)) AS "avg distance (km)"
+FROM trips
+GROUP BY 1 
+ORDER BY 1;
+
+-- 📊 TIP: In Snowsight, you can visualize these results as a chart!
+-- Click the "Chart" button to automatically generate visualizations from your query results.
+```
+
+### Key Takeaways
+- **External Stages**: Access data directly from cloud storage (S3, Azure Blob, GCS)
+- **File Formats**: Reusable format definitions for consistent data loading
+- **COPY INTO**: Efficient bulk loading with built-in error handling
+- **Warehouse Scaling**: Instantly scale compute to match workload requirements
+- **Pattern Matching**: Load multiple files with pattern filters
+
+### Supported File Formats
+- CSV, JSON, Avro, Parquet, ORC, XML
+- Compressed files (gzip, bzip2, etc.)
+- Semi-structured data (JSON, Avro, Parquet)
+
+---
+
+## 3. Time Travel (5 minutes)
+
+### What is Time Travel?
+Access historical data at any point within a retention period (1-90 days for Enterprise Edition).
+
+### Use Cases
+- **Undo Mistakes**: Restore accidentally deleted or modified data
+- **Historical Analysis**: Query data as it existed at a specific time
+- **Data Recovery**: Recover from human errors or application bugs
+
+### Hands-On Demo
+```sql
+-- Accidentally drop the trips table
+DROP TABLE trips;
+
+-- Try to query the dropped table - this will fail!
+SELECT COUNT(*) FROM trips;
+-- Error: SQL compilation error: Object 'TRIPS' does not exist
+
+-- Restore the table using UNDROP
+UNDROP TABLE trips;
+
+-- Verify data is back
+SELECT COUNT(*) FROM trips;
+
+-- Insert a test record with current timestamp
+INSERT INTO trips VALUES (
+    999, 
+    CURRENT_TIMESTAMP(), 
+    CURRENT_TIMESTAMP(),
+    1, 'Test Station', 40.7, -74.0,
+    2, 'Test Station 2', 40.8, -74.1,
+    99999, 'Annual Member', 'Subscriber', 1990, 1
+);
+
+-- Verify the new record was inserted
+SELECT COUNT(*) FROM trips;
+
+-- Query the table as it was 5 minutes ago using Time Travel
+-- This shows the data before our INSERT statement
+SELECT COUNT(*) FROM trips 
+    AT(OFFSET => -60*5);
+```
+
+### Time Travel Retention
+- Standard Edition: 1 day (default)
+- Enterprise Edition: Up to 90 days (configurable)
+
+---
+
+## 4. Zero-Copy Cloning (5 minutes)
+
+### What is Zero-Copy Cloning?
+Create instant, writable copies of databases, schemas, or tables without duplicating data or incurring additional storage costs initially.
+
+### Use Cases
+- **Development/Testing**: Create safe dev environments from production data
+- **Data Science**: Experiment without affecting production
+- **Backup & Recovery**: Quick snapshots before major changes
+
+### Hands-On Demo
+```sql
+-- ⏱️ NOTE THE TIME: Clone the trips table (millions of rows)
+-- This will complete INSTANTLY - no data is actually copied!
+CREATE TABLE trips_backup CLONE trips;
+
+-- Verify the clone has all the data
+SELECT COUNT(*) FROM trips_backup;
+
+-- The clone is a completely isolated, independent table with full read/write capabilities
+-- Make changes to the clone without affecting the original
+UPDATE trips_backup SET usertype = 'TEST' WHERE bikeid = 14529;
+
+-- Verify the change in the cloned table
+SELECT usertype FROM trips_backup WHERE bikeid = 14529;
+
+-- Verify the original table is unchanged
+SELECT usertype FROM trips WHERE bikeid = 14529;
+
+-- 💡 Key Observation:
+-- Despite having millions of rows, the clone operation completed in seconds!
+-- The clone is a fully independent table - changes don't affect the original.
+-- Traditional copy would take minutes or hours for this volume of data.
+```
+
+### Key Benefits
+- **Instant**: Clones are created in seconds, regardless of data size (millions of rows!)
+- **Cost-Effective**: No additional storage until data diverges
+- **Independent**: Changes to clone don't affect original
+- **Zero-Copy**: No data movement - only metadata is copied
+
+---
+
+## 5. Secure Data Sharing (10 minutes)
+
+### What is Secure Data Sharing?
+Secure Data Sharing enables consumers to query live data that is owned and managed by another Snowflake account, without copying or moving the data. Consumers access and query the data directly from the provider's account in real-time.
+
+### Key Features
+- **Real-Time**: Consumers always access the latest data
+- **Zero-Copy**: No data movement or duplication
+- **Secure**: Provider maintains full control and visibility
+- **Cross-Region/Cloud**: Share across clouds and regions
+
+### Types of Sharing
+1. **Private Listings**: Share data products privately with selected consumers
+2. **Public Listings (Marketplace)**: Publish data products publicly on the Snowflake Marketplace
+
+### Hands-On Demo
+
+#### Part 1: Creating a Private Listing through Provider Studio
+
+1. **Navigate to Provider Studio** in Snowsight
+
+2. **Create Listing** → Select **Specified Consumers** (Private Listing)
+
+   <img width="1311" height="633" alt="Private_Listing" src="https://github.com/user-attachments/assets/ac0d7ab5-2fd2-4478-981a-95d6ee24cafd" />
+
+3. **Define Listing Details**:
+   - Listing Title: `yourname_citibike` (e.g., `john_citibike`)
+   - Click **Save**
+
+4. **Add Data Product**:
+   - Click **Add Data Product**
+   - Select your **TRIPS** table from the CITIBIKE database
+
+5. **Define Access Type** → Select **Free Listing**
+
+   <img width="476" height="276" alt="free_listing" src="https://github.com/user-attachments/assets/5ee7372a-3348-42c2-8f73-357a0c88162b" />
+
+6. **Add Consumer Accounts**:
+   - Get your neighbor's **Data Sharing Account Identifier**:
+   
+   <img width="622" height="621" alt="view_account_details" src="https://github.com/user-attachments/assets/ae4f0323-28a9-40d0-83ea-363fedfbbd47" />
+   
+   <img width="890" height="637" alt="data_sharing_account_identifier" src="https://github.com/user-attachments/assets/e3f14907-e786-41f4-97b1-c1d5a490ae18" />
+   
+   - Add your neighbor's account as a consumer account:
+   
+   <img width="606" height="765" alt="add_account" src="https://github.com/user-attachments/assets/2160c190-c220-4e11-9f9c-bc341f303b03" />
+   
+   - Click **Save**
+
+7. **Add Description**:
+   - Describe your data product: `Yourname Citibike Sharing Test`
+   - Click **Save**
+
+8. **Add Legal Terms**:
+   - Terms of service will be provided offline
+   - Click **Save**
+
+9. **Publish the Listing** to make it available to your neighbor
+
+#### Part 2: Accessing a Private Share (Consumer Side)
+
+1. **Navigate to Private Sharing** in Snowsight
+
+2. **Click Get** to access the private shared listings from your neighbor
+
+   <img width="531" height="417" alt="share" src="https://github.com/user-attachments/assets/45177694-0c20-460c-a55f-350cff4ebd41" />
+
+3. **Query the shared data** to verify access
+
+
+### Business Benefits
+- Monetize data assets
+- Real-time collaboration with partners
+- Build data ecosystems
+- Eliminate ETL for data distribution
+
+---
+
+## 6. Streamlit Apps (5 minutes)
+
+### What are Streamlit Apps in Snowflake?
+Build and deploy interactive Python-based data applications directly within Snowflake, with native access to your data.
+
+### Key Features
+- **Native Integration**: Direct access to Snowflake data
+- **No Infrastructure**: Fully managed hosting
+- **Python-Based**: Leverage Python ecosystem (pandas, matplotlib, plotly)
+- **Secure**: Built-in authentication and access controls
+
+### Use Cases
+- Interactive dashboards
+- Data exploration tools
+- Machine learning apps
+- Internal business applications
+- Self-service analytics portals
+
+### Quick Example
+```python
+import streamlit as st
+from snowflake.snowpark.context import get_active_session
+
+# Get Snowflake session
+session = get_active_session()
+
+# Query data
+df = session.sql("SELECT * FROM customers LIMIT 100").to_pandas()
+
+# Display in Streamlit
+st.title("Customer Dashboard")
+st.dataframe(df)
+st.bar_chart(df['revenue'])
+```
+
+### Benefits
+- **Fast Development**: Build apps in minutes, not weeks
+- **Data Governance**: Apps respect Snowflake security policies
+- **Collaboration**: Share apps with team members easily
+- **Version Control**: Integrate with Git for DevOps workflows
+
+---
+
+## Session Summary
+
+In this session, you've learned about the foundational capabilities of the Snowflake platform:
+
+✅ **Virtual Warehouses**: Scalable, independent compute resources  
+✅ **Data Ingestion**: Multiple methods to load data efficiently  
+✅ **Zero-Copy Cloning**: Instant data duplication without storage overhead  
+✅ **Time Travel**: Access and restore historical data  
+✅ **Secure Data Sharing**: Real-time data collaboration  
+✅ **Streamlit Apps**: Build and deploy data applications  
+
+These capabilities form the foundation for building the Cortex Analyst solution in the next session.
+
+---
+
+## Additional Resources
+
+- [Snowflake Virtual Warehouses Documentation](https://docs.snowflake.com/en/user-guide/warehouses)
+- [Data Loading Guide](https://docs.snowflake.com/en/user-guide/data-load-overview)
+- [Zero-Copy Cloning](https://docs.snowflake.com/en/user-guide/tables-storage-considerations#label-cloning-tables)
+- [Time Travel & Fail-safe](https://docs.snowflake.com/en/user-guide/data-time-travel)
+- [Secure Data Sharing](https://docs.snowflake.com/en/user-guide/data-sharing-intro)
+- [Streamlit in Snowflake](https://docs.snowflake.com/en/developer-guide/streamlit/about-streamlit)
+
+---
+
+**Next**: [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST.md)
+
