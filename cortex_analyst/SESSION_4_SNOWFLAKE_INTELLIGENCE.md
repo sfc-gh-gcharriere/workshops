@@ -84,28 +84,41 @@ For more details, see the [Snowflake Intelligence documentation](https://docs.sn
 
 ### Create Your First AI Agent
 
-Navigate to **AI & ML** > **Agents** in Snowsight and click **+ Agent** to create your first AI agent.
+Navigate to **AI & ML** > **Agents** in Snowsight and click **Create agent**.
 
 <img alt="create_agent" src="img/snowflake_intelligence/create_agent.png" />
 
-**Agent Configuration:**
+**Step 1: Create the Agent**
 
-1. **Agent object name**: `revenue_analyst_agent`
-2. **Display name**: `Revenue Analyst Agent`
-3. **Warehouse**: Select `cortex_analyst_wh` (compute resources for agent operations)
-4. **Description**: `AI agent for analyzing revenue data and answering business questions`
-5. **Instructions**: System prompts to guide agent behavior:
+Provide the following details:
+- **Agent object name**: `revenue_analyst_agent`
+- **Display name**: `Revenue Analyst Agent`
+
+Click **Create agent** to initialize your agent.
+
+**Step 2: Configure the Agent**
+
+Once the agent is created, click on it to open the details page, then click **Edit** to configure:
+
+1. **Description**: 
+   ```
+   AI agent for analyzing revenue data and answering business questions
+   ```
+
+2. **Instructions**: System prompts to guide agent behavior:
    ```
    You are a helpful revenue data analyst. Use the Cortex Analyst tool to answer 
    questions about revenue, products, and regional performance. Provide clear, 
    concise answers with relevant data insights.
    ```
 
-Click **Create agent** to complete the initial setup
+3. **Warehouse**: Select `cortex_analyst_wh` (compute resources for agent operations)
+
+Save your configuration
 
 ---
 
-### Step 2: Add Cortex Analyst Tool to Agent
+### Add Cortex Analyst Tool to Agent
 
 Integrate your semantic model as a tool the agent can use:
 
@@ -126,7 +139,7 @@ ALTER AGENT revenue_analyst_agent
 
 ---
 
-### Step 3: Add Custom Email Tool
+### Add Custom Email Tool (Optional)
 
 Create a tool that can send email notifications with analysis results:
 
