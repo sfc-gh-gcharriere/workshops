@@ -19,6 +19,8 @@
 4. Click **Edit Dimension**
 5. Scroll to **Sample Values** section
 
+<img width="441" height="151" alt="sample_values" src="img/cortex_search/sample_values.png" />
+
 ---
 
 ## Part 2: Cortex Search Solution
