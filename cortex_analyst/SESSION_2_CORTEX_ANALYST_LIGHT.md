@@ -229,5 +229,5 @@ If no date filter is provided, apply a filter for the last year.
 ---
 
 **Previous**: [Session 1: Snowflake Platform Fundamentals](SESSION_1_SNOWFLAKE_FUNDAMENTALS_LIGHT.md)  
-**Next**: [Session 4: Snowflake Intelligence](SESSION_4_SNOWFLAKE_INTELLIGENCE_LIGHT.md)
+**Next**: [Session 3: Cortex Search Integration (Optional)](SESSION_3_CORTEX_SEARCH_INTEGRATION_LIGHT.md) | [Session 4: Snowflake Intelligence](SESSION_4_SNOWFLAKE_INTELLIGENCE_LIGHT.md)
 
