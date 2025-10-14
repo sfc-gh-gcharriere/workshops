@@ -2,7 +2,10 @@
 
 ## Workshop Structure
 
-This workshop is organized into four detailed session guides:
+This workshop is organized into four session guides, available in **two formats**:
+
+### 📖 Full Session Guides (Detailed)
+Complete guides with explanations, best practices, and business context.
 
 | Session | Duration | Focus | Materials |
 |---------|----------|-------|-----------|
@@ -10,6 +13,16 @@ This workshop is organized into four detailed session guides:
 | [Session 2](SESSION_2_CORTEX_ANALYST.md) | 75 min | Hands-on semantic model development | CSV files, SQL scripts, Semantic Views |
 | [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) ⭐ | 15 min | **OPTIONAL:** Cortex Search for fuzzy matching | Search service setup, integration demo |
 | [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | Snowflake Intelligence and AI agents | Agent configuration |
+
+### ⚡ Light Versions (Quick Reference)
+Condensed versions with essential setup details, code blocks, and step-by-step instructions only.
+
+| Session | Link |
+|---------|------|
+| Session 1 | [Quick Reference →](SESSION_1_SNOWFLAKE_FUNDAMENTALS_LIGHT.md) |
+| Session 2 | [Quick Reference →](SESSION_2_CORTEX_ANALYST_LIGHT.md) |
+| Session 3 | [Quick Reference →](SESSION_3_CORTEX_SEARCH_INTEGRATION_LIGHT.md) |
+| Session 4 | [Quick Reference →](SESSION_4_SNOWFLAKE_INTELLIGENCE_LIGHT.md) |
 
 **Core Duration**: 2 hours 30 minutes  
 **With Optional Session 3**: 2 hours 45 minutes (approx. half-day with breaks)
