@@ -170,6 +170,9 @@ $$;
 4. Ask: "Can you analyze the top 3 products by revenue and email me the results?"
 5. Check your email inbox
 
+<img alt="send_email" src="img/snowflake_intelligence/send_email.png" />
+<img alt="send_email" src="img/snowflake_intelligence/email.png" />
+
 ---
 
 **Previous**: [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST_LIGHT.md) | [Session 3: Cortex Search Integration](SESSION_3_CORTEX_SEARCH_INTEGRATION_LIGHT.md)
