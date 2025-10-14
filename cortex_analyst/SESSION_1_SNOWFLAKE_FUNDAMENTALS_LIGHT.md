@@ -208,18 +208,27 @@ SELECT usertype FROM trips WHERE bikeid = 14529;
 
 1. Navigate to **Provider Studio** in Snowsight
 2. Click **Create Listing** → Select **Specified Consumers**
-   <img width="246" height="237" alt="Private Listing" src="img/snowflake_fundamentals/create_listing.png" />
+
+<img width="246" alt="Private Listing" src="img/snowflake_fundamentals/create_listing.png" />
+
 3. **Listing Title**: `yourname_citibike` (e.g., `john_citibike`)
 4. Click **Save**
 5. Click **Add Data Product** → Select **TRIPS** table from CITIBIKE database
 6. Select **Free Listing**
-   <img alt="Free Access" src="img/snowflake_fundamentals/free_access.png" />
+
+<img alt="Free Access" src="img/snowflake_fundamentals/free_access.png" />
+
 7. **Add Consumer Accounts**:
-   - Get neighbor's account identifier from Account → Admin → Accounts
-   <img alt="view_account_details" src="img/snowflake_fundamentals/account_details.png" />
-   <img alt="data_sharing_account_identifier" src="img/snowflake_fundamentals/account_identifier.png" />
+   - Get neighbor's account identifier: Account → Admin → Accounts
+   
+<img alt="Account Details" src="img/snowflake_fundamentals/account_details.png" />
+
+<img alt="Account Identifier" src="img/snowflake_fundamentals/account_identifier.png" />
+
    - Add their account as consumer
-   <img alt="add_account" src="img/snowflake_fundamentals/add_account.png" />
+   
+<img alt="Add Account" src="img/snowflake_fundamentals/add_account.png" />
+
    - Click **Save**
 8. **Add Description**: `Yourname Citibike Sharing Test`
 9. **Add Legal Terms** (will be provided offline)
@@ -229,7 +238,9 @@ SELECT usertype FROM trips WHERE bikeid = 14529;
 
 1. Navigate to **Private Sharing** in Snowsight
 2. Click **Get** on neighbor's shared listing
-   <img  alt="share" src="img/snowflake_fundamentals/consumer_share.png" />
+
+<img alt="Consumer Share" src="img/snowflake_fundamentals/consumer_share.png" />
+
 3. Query the shared data to verify access
 
 ---
