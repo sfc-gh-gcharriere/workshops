@@ -202,6 +202,8 @@ SELECT * FROM daily_revenue LIMIT 10;
    - **Metric Name**: `Profit`
    - **Description**: `The profit generated from sales after deducting 1% processing fee and cost of goods sold`
    - **Synonyms**: `earnings`, `margin`, `net income`
+<img alt="profit_metric" src="img/cortex_analyst/profit_metric.png" />
+
 5. Click **Save**
 
 **Test:** Ask "Monthly profit in Europe per category" and verify the formula is used.
