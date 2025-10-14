@@ -1,5 +1,7 @@
 # Session 4: Snowflake Intelligence - Quick Reference
 
+<img alt="cortex_analyst" src="img/snowflake_intelligence/snowflake_intelligence.png" />
+
 ## Setup Snowflake Intelligence
 
 ```sql
@@ -72,6 +74,8 @@ ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION';
 2. Select **Revenue Analyst Agent**
 3. Click on test question: "Sales revenue for product categories sold in Europe in 2024 & YoY % Growth"
 4. Review results
+
+<img alt="cortex_analyst_tool" src="img/snowflake_intelligence/answer.png" />
 
 ---
 
