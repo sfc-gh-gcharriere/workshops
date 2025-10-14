@@ -146,6 +146,9 @@ SELECT * FROM daily_revenue LIMIT 10;
 ### Step 3: Define Relationships
 
 **Relationship 1: Revenue to Product**
+
+<img alt="revenue_to_product" src="img/cortex_analyst/revenue_to_product.png" />
+
 ```yaml
 - name: revenue_to_product
   left_table: DAILY_REVENUE
@@ -156,6 +159,10 @@ SELECT * FROM daily_revenue LIMIT 10;
 ```
 
 **Relationship 2: Revenue to Location**
+
+<img alt="revenue_to_location" src="img/cortex_analyst/revenue_to_location.png" />
+
+
 ```yaml
 - name: revenue_to_location
   left_table: DAILY_REVENUE
