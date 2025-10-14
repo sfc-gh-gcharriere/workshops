@@ -220,6 +220,8 @@ SELECT * FROM daily_revenue LIMIT 10;
    - **Filter Name**: `large_order`
    - **Description**: `Orders with revenue equal to or greater than 1150`
    - **Synonyms**: `large orders`, `big orders`, `high value orders`
+<img alt="large_orders" src="img/cortex_analyst/large_orders.png" />
+
 5. Click **Add**
 
 **Test:** Ask "list large orders" and verify the filter is applied.
