@@ -1,5 +1,7 @@
 # Session 2: Building with Cortex Analyst - Quick Reference
 
+<img alt="cortex_analyst" src="img/cortex_analyst/cortex_analyst.png" />
+
 ## Part 1: Environment Setup
 
 ### Step 1: Create Database, Schema, and Warehouse
@@ -73,8 +75,15 @@ CREATE OR REPLACE TABLE cortex_analyst_demo.revenue_timeseries.daily_revenue (
 1. Click on `LOCATION_DIM` table
 2. Click **Load Data** → Select `location.csv`
 3. Click **Next**
-4. ⚠️ **Important**: Check box for **"First line contains header"**
-5. Verify column mapping is correct
+4. **⚠️ Important**: The file format may not automatically detect the header. Modify the file format settings:
+   - Check the box for **"First line contains header"**
+   
+   <img alt="first_line_header" src="img/cortex_analyst/first_line_header.png" />
+
+5. Verify the column mapping is correct:
+   - `location_id` → `LOCATION_ID`
+   - `sales_region` → `SALES_REGION`
+   - `state` → `STATE`
 6. Click **Load**
 
 **Load Daily Revenue Fact:**
