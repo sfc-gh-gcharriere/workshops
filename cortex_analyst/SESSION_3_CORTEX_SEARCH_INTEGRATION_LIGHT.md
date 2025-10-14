@@ -66,15 +66,23 @@ CREATE OR REPLACE CORTEX SEARCH SERVICE product_line_search_service
 8. Click **Connect**
 
    <img width="583" height="512" alt="connect_search" src="img/cortex_search/connect_search.png" />
-   
+
 9. Click **Save**
 
 **YAML representation:**
 ```yaml
-cortex_search_service:
-  database: CORTEX_ANALYST_DEMO
-  schema: REVENUE_TIMESERIES
-  service: PRODUCT_LINE_SEARCH_SERVICE
+- name: PRODUCT_LINE
+  description: The category or classification of the product, such as electronics, clothing, or home appliances, that helps to group similar products together for analysis and reporting purposes.
+  expr: PRODUCT_LINE
+  data_type: VARCHAR(16777216)
+  sample_values:
+    - Electronics
+    - Clothing
+    - Home Appliances
+  cortex_search_service:
+    database: CORTEX_ANALYST_DEMO
+    schema: REVENUE_TIMESERIES
+    service: PRODUCT_LINE_SEARCH_SERVICE
 ```
 
 ---
