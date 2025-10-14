@@ -1,6 +1,6 @@
 # Session 2: Building with Cortex Analyst - Quick Reference
 
-<img alt="cortex_analyst" src="img/cortex_analyst/cortex_analyst.png" />
+<img alt="model" src="img/cortex_analyst/model.png" />
 
 ## Part 1: Environment Setup
 
@@ -131,6 +131,7 @@ SELECT * FROM daily_revenue LIMIT 10;
 
 **Fix DAILY_REVENUE Table:**
 - Change `PRODUCT_ID` from "Fact" → "Dimension"
+<img alt="move to dimension" src="img/cortex_analyst/move_to_dim.png" />
 - Change `LOCATION_ID` from "Fact" → "Dimension"
 
 **Fix LOCATION_DIM Table:**

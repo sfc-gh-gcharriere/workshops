@@ -268,9 +268,9 @@ In the Semantic View builder, update the column types for each table:
 1. Select the `DAILY_REVENUE` table in the left panel
 2. For the `PRODUCT_ID` column:
    - Change type from **"Fact"** to **"Dimension"**
+<img alt="move to dimension" src="img/cortex_analyst/move_to_dim.png" />
 3. For the `LOCATION_ID` column:
    - Change type from **"Fact"** to **"Dimension"**
-<img alt="move to dimension" src="img/cortex_analyst/move_to_dim.png" />
 
 #### Fix LOCATION_DIM Table
 1. Select the `LOCATION_DIM` table in the left panel
