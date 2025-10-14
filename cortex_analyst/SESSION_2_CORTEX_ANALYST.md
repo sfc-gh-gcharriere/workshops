@@ -269,6 +269,7 @@ In the Semantic View builder, update the column types for each table:
 2. For the `PRODUCT_ID` column:
    - Change type from **"Fact"** to **"Dimension"**
 <img alt="move to dimension" src="img/cortex_analyst/move_to_dim.png" />
+
 3. For the `LOCATION_ID` column:
    - Change type from **"Fact"** to **"Dimension"**
 
