@@ -6,6 +6,7 @@
 
 ```sql
 USE ROLE ACCOUNTADMIN;
+SET USERNAME = (SELECT CURRENT_USER());
 
 -- Create database for Snowflake Intelligence
 CREATE DATABASE IF NOT EXISTS snowflake_intelligence;
@@ -19,8 +20,8 @@ GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
 GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
 
 -- Set default role and warehouse (required)
-ALTER USER admin SET DEFAULT_ROLE = ACCOUNTADMIN;
-ALTER USER admin SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
+ALTER identifier($USERNAME) admin SET DEFAULT_ROLE = ACCOUNTADMIN;
+ALTER identifier($USERNAME) admin SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
 
 -- Enable cross-region inference (required)
 ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION';
