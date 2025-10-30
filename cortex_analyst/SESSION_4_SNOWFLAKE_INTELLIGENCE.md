@@ -66,6 +66,7 @@ Before creating agents, you need to set up the required database and schema stru
 
 ```sql
 USE ROLE ACCOUNTADMIN;
+SET USERNAME = (SELECT CURRENT_USER());
 
 -- 1. Create database for Snowflake Intelligence configuration
 CREATE DATABASE IF NOT EXISTS snowflake_intelligence;
@@ -79,8 +80,8 @@ GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
 GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
 
 -- 4. Set default role and warehouse for your user (required for Snowflake Intelligence)
-ALTER USER admin SET DEFAULT_ROLE = ACCOUNTADMIN;
-ALTER USER admin SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
+ALTER USER identifier($USERNAME) SET DEFAULT_ROLE = ACCOUNTADMIN;
+ALTER USER identifier($USERNAME) SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
 
 -- 5. Enable cross-region inference (required for Snowflake Intelligence)
 ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION';
