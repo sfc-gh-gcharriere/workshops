@@ -273,11 +273,11 @@ Configure the agent's behavior by setting response instructions in the Orchestra
 1. In your agent configuration, navigate to the **Orchestration** tab
 2. In the **Response instructions** section, add the following instruction:
    ```
-   Can you analyze the top 3 products by revenue over the entire period and email me the results?
+   When sending an email, the email must be well formatted, using HTML formatting. The email uses icons when applicable and various heading styles to add structure.
    ```
 3. Click **Save** to save the orchestration settings
 
-This instruction guides the agent on how to handle similar requests.
+This instruction ensures that all emails sent by the agent are properly formatted with HTML, icons, and structured headings.
 
 **Step 4: Test Email Capabilities**
 

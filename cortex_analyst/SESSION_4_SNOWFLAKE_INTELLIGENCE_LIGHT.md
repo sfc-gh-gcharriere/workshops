@@ -141,7 +141,7 @@ $$;
 1. Navigate to the **Orchestration** tab
 2. Add response instruction:
    ```
-   Can you analyze the top 3 products by revenue over the entire period and email me the results?
+   When sending an email, the email must be well formatted, using HTML formatting. The email uses icons when applicable and various heading styles to add structure.
    ```
 3. Click **Save**
 
