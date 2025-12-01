@@ -126,9 +126,9 @@ SELECT * FROM daily_revenue LIMIT 10;
    - SQL Query (press **Shift + Enter** to save):
    ```sql
    SELECT p.product_line, l.sales_region, SUM(dr.revenue) as total_revenue
-   FROM daily_revenue dr
-   JOIN product_dim p ON dr.product_id = p.product_id
-   JOIN location_dim l ON dr.location_id = l.location_id
+   FROM cortex_analyst_demo.revenue_timeseries.daily_revenue dr
+   JOIN cortex_analyst_demo.revenue_timeseries.product_dim p ON dr.product_id = p.product_id
+   JOIN cortex_analyst_demo.revenue_timeseries.location_dim l ON dr.location_id = l.location_id
    GROUP BY p.product_line, l.sales_region
    ```
 6. Select tables: `DAILY_REVENUE`, `PRODUCT_DIM`, `LOCATION_DIM`
