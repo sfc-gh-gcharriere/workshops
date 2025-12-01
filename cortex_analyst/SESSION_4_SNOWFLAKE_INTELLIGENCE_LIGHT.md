@@ -162,3 +162,5 @@ $$;
 
 **Previous**: [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST_LIGHT.md) | [Session 3: Cortex Search Integration](SESSION_3_CORTEX_SEARCH_INTEGRATION_LIGHT.md)
 
+**[← Back to Main](README.md)**
+
