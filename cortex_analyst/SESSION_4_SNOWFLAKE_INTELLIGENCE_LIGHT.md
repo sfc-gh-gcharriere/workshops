@@ -2,30 +2,6 @@
 
 <img alt="cortex_analyst" src="img/snowflake_intelligence/snowflake_intelligence.png" />
 
-## Setup Snowflake Intelligence
-
-```sql
-USE ROLE ACCOUNTADMIN;
-SET USERNAME = (SELECT CURRENT_USER());
-
--- Create database for Snowflake Intelligence
-CREATE DATABASE IF NOT EXISTS snowflake_intelligence;
-GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE PUBLIC;
-
--- Create schema for agents
-CREATE SCHEMA IF NOT EXISTS snowflake_intelligence.agents;
-GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
-
--- Grant agent creation privilege
-GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
-
--- Set default role and warehouse (required)
-ALTER USER identifier($USERNAME) SET DEFAULT_ROLE = ACCOUNTADMIN;
-ALTER USER identifier($USERNAME) SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
-```
-
----
-
 ## Create Your First AI Agent
 
 ### Step 1: Create Agent
@@ -97,7 +73,7 @@ Try these questions:
 ### Step 1: Setup Email Integration
 
 ```sql
-USE SCHEMA snowflake_intelligence.agents;
+USE SCHEMA cortex_analyst_demo.revenue_timeseries;
 
 -- Create notification integration
 CREATE OR REPLACE NOTIFICATION INTEGRATION snowflake_intelligence_email_integration
@@ -147,8 +123,8 @@ $$;
 5. Click **+ Add**
 6. Configure:
    - **Resource type**: `procedure`
-   - **Database & Schema**: `SNOWFLAKE_INTELLIGENCE.AGENTS`
-   - **Custom tool identifier**: `SNOWFLAKE_INTELLIGENCE.AGENTS.SEND_EMAIL()`
+   - **Database & Schema**: `CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES`
+   - **Custom tool identifier**: `CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.SEND_EMAIL()`
    - **Tool name**: `send_email`
    - **Description**: `Send an email message. The email is well formatted, using HTML formatting. The email uses icons when applicable and various heading styles to add structure.`
 7. Configure parameters:

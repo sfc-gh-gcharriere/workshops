@@ -6,14 +6,13 @@
 |---|-------|-------------|
 | 1 | What is Snowflake Intelligence? | Understanding the AI-powered assistant platform |
 | 2 | What are Snowflake Agents? | Introduction to AI assistants and tool orchestration |
-| 3 | Setup Snowflake Intelligence | Configure database, schema, and privileges |
-| 4 | Create Your First AI Agent | Build an agent with description and test questions |
-| 5 | Add Cortex Analyst Tool | Connect semantic model through the UI |
-| 6 | Test Your Agent | Validate capabilities through Snowflake Intelligence |
-| 7 | Intelligence Capabilities | Explore conversational analytics and orchestration |
-| 8 | Example Questions | Try various natural language queries |
-| 9 | Add Custom Email Tool (Optional) | Setup email integration and test notifications |
-| 10 | What's Next | Preview upcoming MCP capabilities |
+| 3 | Create Your First AI Agent | Build an agent with description and test questions |
+| 4 | Add Cortex Analyst Tool | Connect semantic model through the UI |
+| 5 | Test Your Agent | Validate capabilities through Snowflake Intelligence |
+| 6 | Intelligence Capabilities | Explore conversational analytics and orchestration |
+| 7 | Example Questions | Try various natural language queries |
+| 8 | Add Custom Email Tool (Optional) | Setup email integration and test notifications |
+| 9 | What's Next | Preview upcoming MCP capabilities |
 
 ---
 
@@ -60,47 +59,7 @@ Think of agents as intelligent coordinators that can analyze data, make decision
 
 ---
 
-### Setup Snowflake Intelligence
-
-Before creating agents, you need to set up the required database and schema structure. Run the following SQL commands:
-
-```sql
-USE ROLE ACCOUNTADMIN;
-SET USERNAME = (SELECT CURRENT_USER());
-
--- 1. Create database for Snowflake Intelligence configuration
-CREATE DATABASE IF NOT EXISTS snowflake_intelligence;
-GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE PUBLIC;
-
--- 2. Create schema to store agents
-CREATE SCHEMA IF NOT EXISTS snowflake_intelligence.agents;
-GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
-
--- 3. Grant CREATE AGENT privilege to your role
-GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
-
--- 4. Set default role and warehouse for your user (required for Snowflake Intelligence)
-ALTER USER identifier($USERNAME) SET DEFAULT_ROLE = ACCOUNTADMIN;
-ALTER USER identifier($USERNAME) SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
-```
-
-**What This Does:**
-- Creates a dedicated `snowflake_intelligence` database for agent configuration
-- Creates an `agents` schema to store all agent definitions
-- Grants appropriate privileges for agent creation and access
-- Makes agents discoverable to all users with PUBLIC role
-- Sets your default role and warehouse (required for Snowflake Intelligence to work)
-
-**Important Notes:**
-- By default, Snowflake Intelligence uses the user's default role and default warehouse
-- All queries from Snowflake Intelligence use the user's credentials
-- Role-based access control (RBAC) and data masking policies automatically apply to all agent interactions
-
-For more details, see the [Snowflake Intelligence documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-intelligence).
-
----
-
-### Create Your First AI Agent
+## Create Your First AI Agent
 
 Navigate to **AI & ML** > **Agents** in Snowsight and click **Create agent**.
 
@@ -207,14 +166,14 @@ Extend your agent's capabilities by adding email functionality. This allows the 
 
 **Step 1: Setup Email Integration and Procedure**
 
-Set up the email notification integration and create the email sending procedure in the agents schema:
+Set up the email notification integration and create the email sending procedure in the revenue_timeseries schema:
 
 ```sql
 -- ========================================
 -- Email integration setup
 -- ========================================
--- Switch to the agents schema
-USE SCHEMA snowflake_intelligence.agents;
+-- Switch to the revenue_timeseries schema
+USE SCHEMA cortex_analyst_demo.revenue_timeseries;
 
 -- Create a notification integration for sending emails
 -- This allows Snowflake to send emails through its built-in email service
@@ -286,8 +245,8 @@ Now integrate the email procedure with your agent through the Snowsight UI:
 6. Configure the email tool with the following settings:
 
    - **Resource type**: `procedure`
-   - **Database & Schema**: `SNOWFLAKE_INTELLIGENCE.AGENTS`
-   - **Custom tool identifier**: `SNOWFLAKE_INTELLIGENCE.AGENTS.SEND_EMAIL()`
+   - **Database & Schema**: `CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES`
+   - **Custom tool identifier**: `CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.SEND_EMAIL()`
    - **Name**: `send_email`
    - **Description**: `Send an email message. The email is well formatted, using HTML formatting. The email uses icons when applicable and various heading styles to add structure.`
 
