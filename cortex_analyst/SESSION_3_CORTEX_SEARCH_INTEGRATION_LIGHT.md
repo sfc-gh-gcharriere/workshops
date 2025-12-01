@@ -99,12 +99,10 @@ CREATE OR REPLACE CORTEX SEARCH SERVICE product_line_search_service
 > "Overall sales revenue in book and elec cat"
 
 **💡 Check Response Metadata:**
-- Click **Response metadata** link to view the `cortex_search_queries` section
-- See the answers retrieved: "book" → "Books" and "elec" → "Electronics" (cat = category)
+- Click **Response metadata** link to see the answer retrieved by Cortex Search
 
 **Expected behavior:**
-- "book" matches "Books"
-- "elec" matches "Electronics" (cat = category)
+- "book" and "elec" matches "Books" and "Electronics" categories
 - Uses `IN ('Books', 'Electronics')` (not LIKE)
 - Response metadata shows answers retrieved by Cortex Search service
 

@@ -179,8 +179,7 @@ Now let's test the same question that failed before, plus a more complex one:
 - Returns revenue data successfully!
 
 **💡 Check the Cortex Search Response:**
-1. After running the query, click on the **Response metadata** link at the bottom of the response
-2. Review the `cortex_search_queries` section to see the answer retrieved by the Cortex Search service
+1. After running the query, click on the **Response metadata** link at the bottom of the response to see the answer retrieved by Cortex Search
 3. This shows you what value "book" was matched to (e.g., "Books")
 
 **Question 4: Advanced Test ✅**
@@ -198,14 +197,14 @@ WHERE pd.product_line IN ('Books', 'Electronics')
 
 **💡 Check the Response Metadata:**
 1. Click on the **Response metadata** link
-2. Examine the `cortex_search_queries` section to see the answers retrieved by the Cortex Search service:
+2. After running the query, click on the **Response metadata** link at the bottom of the response to see the answer retrieved by Cortex Search:
    - "book" was matched to "Books"
-   - "elec" was matched to "Electronics" (where "cat" simply means "category")
+   - "elec" was matched to "Electronics"
 3. This transparency helps you understand and verify the fuzzy matching results
 
 **Key Observations:**
 - ✅ "book" was matched to "Books"
-- ✅ "elec" was matched to "Electronics" (cat = category)
+- ✅ "elec" was matched to "Electronics"
 - ✅ Uses `IN ('Books', 'Electronics')` - **NOT** `LIKE '%book%'`
 - ✅ Vector search finds the actual product line names!
 - ✅ No need for wildcards or partial matching
