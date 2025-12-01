@@ -206,6 +206,13 @@ SELECT * FROM daily_revenue LIMIT 10;
 
 ### Step 6: Add Profit Metric
 
+**Test Question:** "Monthly profit in Europe per category"
+
+**Before Adding Metric:**
+1. In **Playground**, ask: **"Monthly profit in Europe per category"**
+2. Review how profit is calculated (simple: revenue - cogs)
+
+**Add the Metric:**
 1. Select **DAILY_REVENUE** table
 2. Scroll to **Metrics** section
 3. Click **+ Add Metric**
@@ -218,7 +225,9 @@ SELECT * FROM daily_revenue LIMIT 10;
 
 5. Click **Save**
 
-**Test:** Ask "Monthly profit in Europe per category" and verify the formula is used.
+**After Adding Metric:**
+1. Ask the **same question again**: **"Monthly profit in Europe per category"**
+2. Verify the new formula includes the 1% processing fee: `SUM(revenue - (0.01 * revenue) - cogs)`
 
 ---
 

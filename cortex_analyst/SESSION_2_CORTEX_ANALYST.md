@@ -491,16 +491,21 @@ verified_queries:
 
 Metrics define how numeric values should be calculated and aggregated. Let's add a custom "profit" metric that reflects your organization's specific business logic.
 
+**Test Question:** 
+> "Monthly profit in Europe per category"
+
+We'll ask this question **before** and **after** adding the profit metric to see the difference in how Cortex Analyst calculates profit.
+
 **Why Add Custom Metrics:**
 - Define business-specific calculations once
 - Ensure consistent metric definitions across all queries
 - Include complex formulas (e.g., profit with discount factor)
 
-#### Step 6.1: Test Without the Metric
+#### Step 6.1: Test Without the Metric (Before)
 
-First, let's see how Cortex Analyst calculates profit without a custom definition.
+First, let's see how Cortex Analyst calculates profit **without** a custom definition.
 
-1. In the **Playground** tab, ask: "Monthly profit in Europe per category"
+1. In the **Playground** tab, ask: **"Monthly profit in Europe per category"**
 2. Click **Run**
 3. Review the generated SQL
 
@@ -544,12 +549,14 @@ metrics:
 
 5. Click **Save**
 
-#### Step 6.3: Test With the Metric
+#### Step 6.3: Test With the Metric (After)
+
+Now let's verify that the custom metric is being used.
 
 1. Go back to the **Playground** tab
-2. Ask the same question again: "Monthly profit in Europe per category"
+2. Ask the **same question again**: **"Monthly profit in Europe per category"**
 3. Click **Run**
-4. Review the updated SQL
+4. Review the updated SQL and compare with the previous result
 
 **With the custom metric, Cortex Analyst will now use your formula:**
 ```sql
