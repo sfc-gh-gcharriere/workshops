@@ -116,21 +116,15 @@ Provide the following details:
 
 Click **Create agent** to initialize your agent.
 
-**Step 2: Configure the Agent**
+**Step 2: Add an Example Question**
 
-Once the agent is created, click on it to open the details page, then click **Edit** to configure:
+Once the agent is created, click on it to open the details page, then:
 
-1. **Description**: 
-   ```
-   AI agent for analyzing revenue data and answering business questions
-   ```
-
-2. **Test Question**:
+1. Navigate to the **About** tab
+2. Add an example question:
    ```
    Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
    ```
-
-Add your question.
 
 ---
 

@@ -41,14 +41,11 @@ ALTER USER identifier($USERNAME) SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
 
 ---
 
-### Step 2: Configure Agent
+### Step 2: Add Example Question
 
 1. Click on the agent to open details
-2. Click **Edit**
-3. Configure:
-   - **Description**: `AI agent for analyzing revenue data and answering business questions`
-   - **Test Question**: `Sales revenue for product categories sold in Europe in 2024 & YoY % Growth`
-4. Add test question
+2. Navigate to the **About** tab
+3. Add example question: `Sales revenue for product categories sold in Europe in 2024 & YoY % Growth`
 
 ---
 
