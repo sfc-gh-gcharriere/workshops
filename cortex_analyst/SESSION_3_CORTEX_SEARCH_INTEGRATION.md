@@ -178,6 +178,11 @@ Now let's test the same question that failed before, plus a more complex one:
 - Query generates: `WHERE product_line = 'Books'`
 - Returns revenue data successfully!
 
+**💡 Check the Cortex Search Query:**
+1. After running the query, click on the **Response metadata** link at the bottom of the response
+2. Review the `cortex_search_queries` section to see how Cortex Analyst translated "book" to "Books"
+3. This shows you exactly how the fuzzy matching was performed
+
 **Question 4: Advanced Test ✅**
 > "Overall sales revenue in book and elec cat"
 
@@ -191,12 +196,20 @@ JOIN cortex_analyst_demo.revenue_timeseries.product_dim pd
 WHERE pd.product_line IN ('Books', 'Electronics')
 ```
 
+**💡 Check the Response Metadata:**
+1. Click on the **Response metadata** link
+2. Examine the `cortex_search_queries` section to see:
+   - How "book" was matched to "Books"
+   - How "elec cat" was matched to "Electronics"
+3. This transparency helps you understand and debug the fuzzy matching behavior
+
 **Key Observations:**
 - ✅ "book" was matched to "Books"
 - ✅ "elec cat" was matched to "Electronics"
 - ✅ Uses `IN ('Books', 'Electronics')` - **NOT** `LIKE '%book%'`
 - ✅ Vector search finds the actual product line names!
 - ✅ No need for wildcards or partial matching
+- ✅ Response metadata shows the exact Cortex Search queries generated
 
 ---
 
