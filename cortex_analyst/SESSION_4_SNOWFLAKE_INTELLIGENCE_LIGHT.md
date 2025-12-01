@@ -136,12 +136,23 @@ $$;
 
 ---
 
-### Step 3: Test Email Capabilities
+### Step 3: Set Response Instructions
+
+1. Navigate to the **Orchestration** tab
+2. Add response instruction:
+   ```
+   Can you analyze the top 3 products by revenue over the entire period and email me the results?
+   ```
+3. Click **Save**
+
+---
+
+### Step 4: Test Email Capabilities
 
 1. Navigate to **AI & ML** > **Snowflake Intelligence**
 2. Select **Revenue Analyst Agent**
 3. Verify **send_email** tool is available
-4. Ask: "Can you analyze the top 3 products by revenue and email me the results?"
+4. Ask: "Can you analyze the top 3 products by revenue over the entire period and email me the results?"
 5. Check your email inbox
 
 <img alt="send_email" src="img/snowflake_intelligence/send_email.png" />

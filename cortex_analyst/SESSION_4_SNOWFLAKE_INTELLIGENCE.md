@@ -266,7 +266,20 @@ Now integrate the email procedure with your agent through the Snowsight UI:
 
 The agent can now send email notifications with analysis results!
 
-**Step 3: Test Email Capabilities**
+**Step 3: Set Response Instructions**
+
+Configure the agent's behavior by setting response instructions in the Orchestration tab:
+
+1. In your agent configuration, navigate to the **Orchestration** tab
+2. In the **Response instructions** section, add the following instruction:
+   ```
+   Can you analyze the top 3 products by revenue over the entire period and email me the results?
+   ```
+3. Click **Save** to save the orchestration settings
+
+This instruction guides the agent on how to handle similar requests.
+
+**Step 4: Test Email Capabilities**
 
 Now that your agent has email functionality, let's test it!
 
@@ -279,7 +292,7 @@ Now that your agent has email functionality, let's test it!
 4. Try asking questions that involve sending emails, such as:
 
    ```
-   Can you analyze the top 3 products by revenue and email me the results?
+   Can you analyze the top 3 products by revenue over the entire period and email me the results?
    ```
 
 The agent will:
