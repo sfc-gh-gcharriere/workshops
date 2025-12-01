@@ -109,8 +109,10 @@ Navigate to **AI & ML** > **Agents** in Snowsight and click **Create agent**.
 **Step 1: Create the Agent**
 
 Provide the following details:
-- **Agent object name**: `revenue_analyst_agent`
-- **Display name**: `Revenue Analyst Agent`
+1. **Database**: Select `CORTEX_ANALYST_DEMO`
+2. **Schema**: Select `REVENUE_TIMESERIES`
+3. **Agent object name**: `revenue_analyst_agent`
+4. **Display name**: `Revenue Analyst Agent`
 
 Click **Create agent** to initialize your agent.
 

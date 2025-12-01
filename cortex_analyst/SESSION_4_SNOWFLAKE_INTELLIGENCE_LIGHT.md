@@ -33,6 +33,8 @@ ALTER USER identifier($USERNAME) SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
 1. Navigate to **AI & ML** > **Agents** in Snowsight
 2. Click **Create agent**
 3. Configure:
+   - **Database**: `CORTEX_ANALYST_DEMO`
+   - **Schema**: `REVENUE_TIMESERIES`
    - **Agent object name**: `revenue_analyst_agent`
    - **Display name**: `Revenue Analyst Agent`
 4. Click **Create agent**
