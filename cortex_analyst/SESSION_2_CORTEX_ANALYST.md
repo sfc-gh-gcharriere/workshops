@@ -247,12 +247,28 @@ Navigate to Snowsight and create a new semantic view:
 2. Click **Create New** > **Create New Semantic View**
 3. Name it `REVENUE_TIMESERIES`
 4. Select the schema: `CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES`
-5. Select the tables to include: 
+5. **(Optional but Recommended)** Provide context to automatically define relationships:
+   - **Question**: `What is the total revenue by product line and sales region?`
+   - **SQL Query**:
+   ```sql
+   SELECT 
+       p.product_line,
+       l.sales_region,
+       SUM(dr.revenue) as total_revenue
+   FROM daily_revenue dr
+   JOIN product_dim p ON dr.product_id = p.product_id
+   JOIN location_dim l ON dr.location_id = l.location_id
+   GROUP BY p.product_line, l.sales_region
+   ```
+   
+   **💡 Pro Tip**: Providing this context helps Cortex Analyst automatically understand how your tables are related. The SQL query demonstrates the JOIN relationships, which will be automatically detected and configured, saving you time in Step 3.
+
+6. Select the tables to include: 
    - `DAILY_REVENUE`
    - `PRODUCT_DIM`
    - `LOCATION_DIM`
-6. Select columns: Include **all columns** from each of the selected tables
-7. Click **Create** and **Save**
+7. Select columns: Include **all columns** from each of the selected tables
+8. Click **Create** and **Save**
 
 <img alt="semantic_view_creation" src="img/cortex_analyst/semantic_view_creation.png" />
 
@@ -299,6 +315,8 @@ Relationships define how tables connect to each other, enabling Cortex Analyst t
 - Automatically generate correct SQL JOINs
 - Maintain referential integrity in queries
 - Support complex multi-table analytics
+
+**📝 Note**: If you provided the optional context with a SQL query in Step 1, the relationships may already be automatically detected and defined. Verify they are correct, or manually define them below if needed.
 
 In the Semantic View builder, navigate to the **Relationships** section and define the following two relationships:
 

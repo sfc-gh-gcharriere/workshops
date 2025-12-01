@@ -121,9 +121,19 @@ SELECT * FROM daily_revenue LIMIT 10;
 2. Click **Create New** > **Create New Semantic View**
 3. Name: `REVENUE_TIMESERIES`
 4. Schema: `CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES`
-5. Select tables: `DAILY_REVENUE`, `PRODUCT_DIM`, `LOCATION_DIM`
-6. Include **all columns** from selected tables
-7. Click **Create** and **Save**
+5. **(Optional)** Provide context to auto-define relationships:
+   - Question: `What is the total revenue by product line and sales region?`
+   - SQL Query:
+   ```sql
+   SELECT p.product_line, l.sales_region, SUM(dr.revenue) as total_revenue
+   FROM daily_revenue dr
+   JOIN product_dim p ON dr.product_id = p.product_id
+   JOIN location_dim l ON dr.location_id = l.location_id
+   GROUP BY p.product_line, l.sales_region
+   ```
+6. Select tables: `DAILY_REVENUE`, `PRODUCT_DIM`, `LOCATION_DIM`
+7. Include **all columns** from selected tables
+8. Click **Create** and **Save**
 
 ---
 
@@ -144,6 +154,8 @@ SELECT * FROM daily_revenue LIMIT 10;
 ---
 
 ### Step 3: Define Relationships
+
+**📝 Note**: If you provided context in Step 1, relationships may already be auto-detected. Verify or manually define:
 
 **Relationship 1: Revenue to Product**
 
