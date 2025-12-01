@@ -61,9 +61,9 @@ CREATE OR REPLACE TABLE cortex_analyst_demo.revenue_timeseries.daily_revenue (
 ### Step 3: Load CSV Files via Snowsight UI
 
 **Download CSV files from workshop data folder:**
-- `daily_revenue.csv`
-- `product.csv`
-- `location.csv`
+- [`daily_revenue.csv`](data/daily_revenue.csv)
+- [`product.csv`](data/product.csv)
+- [`location.csv`](data/location.csv)
 
 **Load Product Dimension:**
 1. Navigate to **Database Explorer** > `CORTEX_ANALYST_DEMO` > `REVENUE_TIMESERIES` > `Tables`

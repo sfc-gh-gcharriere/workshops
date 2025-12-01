@@ -141,9 +141,9 @@ CREATE OR REPLACE TABLE cortex_analyst_demo.revenue_timeseries.daily_revenue (
 
 **Download CSV Files:**
 1. Download the following CSV files from the workshop data folder:
-   - `daily_revenue.csv` (contains location_id references)
-   - `product.csv`
-   - `location.csv` (contains location_id, sales_region, and state)
+   - [`daily_revenue.csv`](data/daily_revenue.csv) (contains location_id references)
+   - [`product.csv`](data/product.csv)
+   - [`location.csv`](data/location.csv) (contains location_id, sales_region, and state)
 
 **Load Files Using Snowsight UI:**
 
