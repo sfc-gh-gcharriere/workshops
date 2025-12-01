@@ -125,6 +125,7 @@ Once the agent is created, click on it to open the details page, then:
    ```
    Sales revenue for product categories sold in Europe in 2024 & YoY % Growth
    ```
+3. Click **Save** to save the agent
 
 ---
 

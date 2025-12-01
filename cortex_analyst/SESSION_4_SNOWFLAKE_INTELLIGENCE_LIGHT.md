@@ -46,6 +46,7 @@ ALTER USER identifier($USERNAME) SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
 1. Click on the agent to open details
 2. Navigate to the **About** tab
 3. Add example question: `Sales revenue for product categories sold in Europe in 2024 & YoY % Growth`
+4. Click **Save**
 
 ---
 
