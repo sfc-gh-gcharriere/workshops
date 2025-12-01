@@ -85,11 +85,15 @@ CREATE OR REPLACE WAREHOUSE cortex_analyst_wh
     AUTO_RESUME = TRUE
     INITIALLY_SUSPENDED = TRUE
 COMMENT = 'Warehouse for Cortex Analyst demo';
+
+-- Enable cross-region inference (required for Cortex Analyst)
+ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION';
 ```
 
 **Key Considerations:**
 - **Warehouse Size**: Start with SMALL for this demo, can scale up for production
 - **Auto-suspend**: Set to 60 seconds to minimize costs during development
+- **Cross-region inference**: Required to enable Cortex AI features to work across all regions
 
 ---
 

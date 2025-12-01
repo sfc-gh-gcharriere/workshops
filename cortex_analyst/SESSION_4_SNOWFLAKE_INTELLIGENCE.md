@@ -82,9 +82,6 @@ GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
 -- 4. Set default role and warehouse for your user (required for Snowflake Intelligence)
 ALTER USER identifier($USERNAME) SET DEFAULT_ROLE = ACCOUNTADMIN;
 ALTER USER identifier($USERNAME) SET DEFAULT_WAREHOUSE = cortex_analyst_wh;
-
--- 5. Enable cross-region inference (required for Snowflake Intelligence)
-ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION';
 ```
 
 **What This Does:**
@@ -93,7 +90,6 @@ ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION';
 - Grants appropriate privileges for agent creation and access
 - Makes agents discoverable to all users with PUBLIC role
 - Sets your default role and warehouse (required for Snowflake Intelligence to work)
-- Enables cross-region inference to allow Cortex AI features to work across regions
 
 **Important Notes:**
 - By default, Snowflake Intelligence uses the user's default role and default warehouse

@@ -23,6 +23,9 @@ CREATE OR REPLACE WAREHOUSE cortex_analyst_wh
     AUTO_RESUME = TRUE
     INITIALLY_SUSPENDED = TRUE
 COMMENT = 'Warehouse for Cortex Analyst demo';
+
+-- Enable cross-region inference (required for Cortex Analyst)
+ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION';
 ```
 
 ---
