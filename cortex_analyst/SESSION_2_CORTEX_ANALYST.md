@@ -584,16 +584,21 @@ ORDER BY month, product_line
 
 Named filters allow you to define reusable business logic that users can reference by name, making queries more intuitive and consistent.
 
+**Test Question:** 
+> "List large orders"
+
+We'll ask this question **before** and **after** adding the large orders filter to see how Cortex Analyst handles undefined business terms.
+
 **Why Add Named Filters:**
 - Define business rules once (e.g., what qualifies as a "large order")
 - Enable users to reference filters by name without knowing the underlying logic
 - Ensure consistent criteria across all queries
 
-#### Step 7.1: Test Without the Filter
+#### Step 7.1: Test Without the Filter (Before)
 
 First, let's see what happens when users ask about concepts that aren't defined in the semantic model.
 
-1. In the **Playground** tab, ask: "list large orders"
+1. In the **Playground** tab, ask: **"List large orders"**
 2. Click **Run**
 
 **Without a named filter, Cortex Analyst cannot understand the request:**
@@ -632,12 +637,14 @@ filters:
     expr: REVENUE >= 1150
 ```
 
-#### Step 7.3: Test With the Filter
+#### Step 7.3: Test With the Filter (After)
+
+Now let's verify that the named filter is recognized and applied.
 
 1. Go back to the **Playground** tab
-2. Ask the same question again: "list large orders"
+2. Ask the **same question again**: **"List large orders"**
 3. Click **Run**
-4. Review the generated SQL
+4. Review the generated SQL and compare with the previous result
 
 **With the named filter, Cortex Analyst now understands the request:**
 ```sql

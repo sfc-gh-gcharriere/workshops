@@ -233,6 +233,13 @@ SELECT * FROM daily_revenue LIMIT 10;
 
 ### Step 7: Add Large Orders Filter
 
+**Test Question:** "List large orders"
+
+**Before Adding Filter:**
+1. In **Playground**, ask: **"List large orders"**
+2. Review the result - Cortex Analyst won't understand what "large orders" means
+
+**Add the Filter:**
 1. Select **DAILY_REVENUE** table
 2. Scroll to **Filters** section
 3. Click **+ Add Filter**
@@ -245,7 +252,9 @@ SELECT * FROM daily_revenue LIMIT 10;
 
 5. Click **Add**
 
-**Test:** Ask "list large orders" and verify the filter is applied.
+**After Adding Filter:**
+1. Ask the **same question again**: **"List large orders"**
+2. Verify Cortex Analyst now understands and applies the filter: `REVENUE >= 1150`
 
 ---
 
