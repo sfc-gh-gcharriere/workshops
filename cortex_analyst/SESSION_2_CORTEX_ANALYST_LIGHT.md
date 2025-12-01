@@ -123,7 +123,7 @@ SELECT * FROM daily_revenue LIMIT 10;
 4. Schema: `CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES`
 5. **(Optional)** Provide context to auto-define relationships:
    - Question: `What is the total revenue by product line and sales region?`
-   - SQL Query:
+   - SQL Query (press **Shift + Enter** to save):
    ```sql
    SELECT p.product_line, l.sales_region, SUM(dr.revenue) as total_revenue
    FROM daily_revenue dr

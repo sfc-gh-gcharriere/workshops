@@ -249,7 +249,7 @@ Navigate to Snowsight and create a new semantic view:
 4. Select the schema: `CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES`
 5. **(Optional but Recommended)** Provide context to automatically define relationships:
    - **Question**: `What is the total revenue by product line and sales region?`
-   - **SQL Query**:
+   - **SQL Query** (press **Shift + Enter** to save):
    ```sql
    SELECT 
        p.product_line,
@@ -260,6 +260,8 @@ Navigate to Snowsight and create a new semantic view:
    JOIN location_dim l ON dr.location_id = l.location_id
    GROUP BY p.product_line, l.sales_region
    ```
+   
+   <img alt="semantic_context" src="img/cortex_analyst/semantic_context.png" />
    
    **💡 Pro Tip**: Providing this context helps Cortex Analyst automatically understand how your tables are related. The SQL query demonstrates the JOIN relationships, which will be automatically detected and configured, saving you time in Step 3.
 
