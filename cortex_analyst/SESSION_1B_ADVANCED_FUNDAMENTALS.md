@@ -168,8 +168,9 @@ Now that the data is loaded, let's use **Cortex Code** to automatically generate
 3. Configure:
    - **App title**: `Dashboard`
    - **App location**: `CORTEX_ANALYST_DEMO`
-   - **App warehouse**: `COMPUTE_WH`
    - **Schema**: `REVENUE_TIMESERIES`
+   - **Python environment**: `Run on warehouse`
+   - **App warehouse**: `COMPUTE_WH`
 4. Click **Create**
 
 ---
