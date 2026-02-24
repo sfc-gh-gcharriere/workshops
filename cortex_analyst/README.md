@@ -10,7 +10,7 @@ Complete guides with explanations, best practices, and business context.
 | Session | Duration | Focus | Materials |
 |---------|----------|-------|-----------|
 | [Session 1](SESSION_1_SNOWFLAKE_FUNDAMENTALS.md) | 45 min | Platform fundamentals and core capabilities | Demos and examples |
-| [Session 1b](SESSION_1B_ADVANCED_FUNDAMENTALS.md) ⭐ | 45 min | **OPTIONAL:** Advanced Fundamentals - Streamlit & Dynamic Tables | AI-generated dashboard, pipelines |
+| [Session 1b](SESSION_1_B_ADVANCED_FUNDAMENTALS.md) ⭐ | 45 min | **OPTIONAL:** Advanced Fundamentals - Streamlit & Dynamic Tables | AI-generated dashboard, pipelines |
 | [Session 2](SESSION_2_CORTEX_ANALYST.md) | 75 min | Hands-on semantic model development | CSV files, SQL scripts, Semantic Views |
 | [Session 3](SESSION_3_CORTEX_SEARCH_INTEGRATION.md) ⭐ | 15 min | **OPTIONAL:** Cortex Search for fuzzy matching | Search service setup, integration demo |
 | [Session 4](SESSION_4_SNOWFLAKE_INTELLIGENCE.md) | 30 min | Snowflake Intelligence and AI agents | Agent configuration |
@@ -21,7 +21,7 @@ Condensed versions with essential setup details, code blocks, and step-by-step i
 | Session | Link |
 |---------|------|
 | Session 1 | [Quick Reference →](SESSION_1_SNOWFLAKE_FUNDAMENTALS_LIGHT.md) |
-| Session 1b | [Quick Reference →](SESSION_1B_ADVANCED_FUNDAMENTALS_LIGHT.md) |
+| Session 1b | [Quick Reference →](SESSION_1_B_ADVANCED_FUNDAMENTALS_LIGHT.md) |
 | Session 2 | [Quick Reference →](SESSION_2_CORTEX_ANALYST_LIGHT.md) |
 | Session 3 | [Quick Reference →](SESSION_3_CORTEX_SEARCH_INTEGRATION_LIGHT.md) |
 | Session 4 | [Quick Reference →](SESSION_4_SNOWFLAKE_INTELLIGENCE_LIGHT.md) |
@@ -115,7 +115,7 @@ Build an interactive Streamlit dashboard using Cortex Code and create automatic 
 - Cortex Code enables rapid development by translating natural language into working code
 - Dynamic Tables keep derived data automatically up-to-date without manual ETL
 
-[📖 View Full Session Details →](SESSION_1B_ADVANCED_FUNDAMENTALS.md)
+[📖 View Full Session Details →](SESSION_1_B_ADVANCED_FUNDAMENTALS.md)
 
 ---
 

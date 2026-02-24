@@ -437,5 +437,5 @@ These capabilities form the foundation for building the Cortex Analyst solution 
 
 ---
 
-**Next**: [Session 1b: Advanced Fundamentals (Optional)](SESSION_1B_ADVANCED_FUNDAMENTALS.md) | [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST.md)
+**Next**: [Session 1b: Advanced Fundamentals (Optional)](SESSION_1_B_ADVANCED_FUNDAMENTALS.md) | [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST.md)
 
