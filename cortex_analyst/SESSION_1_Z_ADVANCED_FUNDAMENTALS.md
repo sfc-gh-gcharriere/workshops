@@ -366,13 +366,11 @@ ORDER BY DATE DESC;
 **Insert New Data:**
 
 ```sql
--- Insert new revenue records for January 2024
+-- Insert a new revenue record for December 2024
 INSERT INTO CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE 
     (date, revenue, cogs, forecasted_revenue, product_id, location_id)
 VALUES 
-    ('2024-01-15', 5000.00, 2500.00, 4800.00, 1, 1),
-    ('2024-01-16', 7500.00, 3750.00, 7000.00, 2, 2),
-    ('2024-01-17', 3200.00, 1600.00, 3000.00, 3, 3);
+    ('2024-12-15', 5000.00, 2500.00, 4800.00, 1, 1);
 ```
 
 **Refresh and Observe the Update (After):**
@@ -386,9 +384,9 @@ ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGRE
 SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED 
 ORDER BY DATE DESC;
 
--- Check the aggregated table - January 2024 totals should include the new data
+-- Check the aggregated table - December 2024 totals should include the new data
 SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED
-WHERE MONTH = '2024-01-01'
+WHERE MONTH = '2024-12-01'
 ORDER BY TOTAL_REVENUE DESC;
 ```
 
@@ -404,10 +402,9 @@ ORDER BY TOTAL_REVENUE DESC;
 ### Step 5: Clean Up Test Data (Optional)
 
 ```sql
--- Remove the test records we inserted
+-- Remove the test record we inserted
 DELETE FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE 
-WHERE date IN ('2024-01-15', '2024-01-16', '2024-01-17')
-AND revenue IN (5000.00, 7500.00, 3200.00);
+WHERE date = '2024-12-15' AND revenue = 5000.00;
 ```
 
 ---
