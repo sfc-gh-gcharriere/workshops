@@ -238,7 +238,9 @@ ORDER BY DATE DESC;
 INSERT INTO CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE 
     (date, revenue, cogs, forecasted_revenue, product_id, location_id)
 VALUES 
-    ('2024-12-15', 5000.00, 2500.00, 4800.00, 1, 1);
+    ('2024-12-15', 5000.00, 2500.00, 4800.00, 1, 1),
+    ('2024-12-15', 7500.00, 3750.00, 7000.00, 2, 1),
+    ('2024-12-15', 3200.00, 1600.00, 3000.00, 1, 2);
 ```
 
 **Refresh and verify (After):**
@@ -259,7 +261,7 @@ ORDER BY TOTAL_REVENUE DESC;
 **Clean up (optional):**
 ```sql
 DELETE FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE 
-WHERE date = '2024-12-15' AND revenue = 5000.00;
+WHERE date = '2024-12-15' AND revenue IN (5000.00, 7500.00, 3200.00);
 ```
 
 ---
