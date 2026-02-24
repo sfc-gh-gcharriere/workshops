@@ -375,7 +375,7 @@ VALUES
     ('2024-12-15', 3200.00, 1600.00, 3000.00, 1, 2);
 ```
 
-**Refresh and Observe the Update (After):**
+**Refresh and Observe the Insert (After):**
 
 ```sql
 -- Manually refresh the dynamic tables (or wait up to 1 minute for automatic refresh)
@@ -392,21 +392,45 @@ WHERE MONTH = '2024-12-01'
 ORDER BY TOTAL_REVENUE DESC;
 ```
 
+**Delete the Test Records:**
+
+```sql
+-- Delete the test records we just inserted
+DELETE FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE 
+WHERE date = '2024-12-15' AND revenue IN (5000.00, 7500.00, 3200.00);
+```
+
+**Refresh and Observe the Delete:**
+
+```sql
+-- Refresh to propagate the deletion
+ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED REFRESH;
+ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED REFRESH;
+
+-- Check the denormalized table - deleted records should be gone
+SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED 
+ORDER BY DATE DESC;
+
+-- Check the aggregated table - December 2024 should no longer show the test data
+SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED
+WHERE MONTH = '2024-12-01'
+ORDER BY TOTAL_REVENUE DESC;
+```
+
 **💡 Key Observations:**
-- ✅ New data flows through the entire pipeline automatically
-- ✅ DAILY_REVENUE_DENORMALIZED updates first with the joined data
-- ✅ MONTHLY_REVENUE_AGGREGATED updates next with the aggregated results
+- ✅ INSERTs flow through the entire pipeline automatically
+- ✅ DELETEs also propagate through the dynamic tables
 - ✅ INCREMENTAL refresh only processes new/changed data
 - ✅ No manual ETL or scheduled tasks required
 
 ---
 
-### Step 5: Clean Up Test Data (Optional)
+### Step 5: Clean Up (Optional)
 
 ```sql
--- Remove the test records we inserted
-DELETE FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE 
-WHERE date = '2024-12-15' AND revenue IN (5000.00, 7500.00, 3200.00);
+-- Drop the dynamic tables when done
+DROP DYNAMIC TABLE IF EXISTS CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED;
+DROP DYNAMIC TABLE IF EXISTS CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED;
 ```
 
 ---
