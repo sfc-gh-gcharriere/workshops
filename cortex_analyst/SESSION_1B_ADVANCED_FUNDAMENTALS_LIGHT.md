@@ -111,52 +111,26 @@ SELECT 'LOCATION_DIM', COUNT(*) FROM location_dim;
 1. Navigate to **Projects** > **Streamlit** in Snowsight
 2. Click **+ Streamlit App**
 3. Configure:
-   - **App name**: `Revenue Dashboard`
-   - **App location**: `CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES`
-   - **Warehouse**: `CORTEX_ANALYST_WH`
+   - **App title**: `Dashboard`
+   - **App location**: `CORTEX_ANALYST_DEMO`
+   - **App warehouse**: `COMPUTE_WH`
+   - **Schema**: `REVENUE_TIMESERIES`
 4. Click **Create**
 
 ---
 
 ### Step 2: Use Cortex Code to Generate Dashboard
 
-1. **Delete all default code** in the editor
-2. **Open Cortex Code**: Click **AI Assistant** icon (✨) or press `Cmd+I` / `Ctrl+I`
-3. **Enter this prompt:**
+1. Click on the **Cortex Code** icon (✨) in the **bottom right corner**
+2. **Enter this prompt:**
 
 ```
-Create a beautiful and dynamic Streamlit dashboard to display sales data from the revenue_timeseries schema. The dashboard should:
-
-1. Query data from these tables:
-   - daily_revenue (date, revenue, cogs, forecasted_revenue, product_id, location_id)
-   - product_dim (product_id, product_line)
-   - location_dim (location_id, sales_region, state)
-
-2. Include interactive sidebar filters for:
-   - Date range selection
-   - Region multiselect
-   - Product line multiselect
-
-3. Display KPI metrics at the top:
-   - Total Revenue
-   - Total Profit (revenue - cogs)
-   - Average Daily Revenue
-   - Number of transactions
-
-4. Include these visualizations:
-   - Revenue trend over time (line chart)
-   - Revenue by region (bar chart)
-   - Revenue by product line (bar chart)
-   - Actual vs Forecasted revenue comparison
-
-5. Add a data table at the bottom showing detailed records
-
-Use modern styling with nice colors and clear labels. Make sure all charts are interactive.
+Create a beautiful and dynamic Streamlit dashboard to display sales data from the revenue_timeseries schema.
 ```
 
-4. Click **Generate**
-5. **Review** and click **Accept**
-6. Click **Run**
+3. Click **Generate**
+4. **Review** and click **Accept**
+5. Click **Run**
 
 ---
 

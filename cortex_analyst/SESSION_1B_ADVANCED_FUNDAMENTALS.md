@@ -4,8 +4,8 @@
 
 | # | Topic | Duration | Description |
 |---|-------|----------|-------------|
-| 1 | Environment Setup | 10 min | Create database, schema, warehouse, and load data |
-| 2 | Streamlit with Cortex Code | 15 min | Use AI to generate a dynamic dashboard |
+| 1 | Environment Setup | 15 min | Create database, schema, warehouse, and load data |
+| 2 | Streamlit with Cortex Code | 10 min | Use AI to generate a dynamic dashboard |
 | 3 | Dynamic Tables | 15 min | Create automatic data transformation pipelines |
 | 4 | Test Pipeline | 5 min | Insert new data and observe automatic updates |
 
@@ -166,57 +166,27 @@ Now that the data is loaded, let's use **Cortex Code** to automatically generate
 1. Navigate to **Projects** > **Streamlit** in Snowsight
 2. Click **+ Streamlit App**
 3. Configure:
-   - **App name**: `Revenue Dashboard`
-   - **App location**: `CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES`
-   - **Warehouse**: `CORTEX_ANALYST_WH`
+   - **App title**: `Dashboard`
+   - **App location**: `CORTEX_ANALYST_DEMO`
+   - **App warehouse**: `COMPUTE_WH`
+   - **Schema**: `REVENUE_TIMESERIES`
 4. Click **Create**
-
-You'll see the Streamlit editor with some default code.
 
 ---
 
 ### Step 2: Use Cortex Code to Generate the Dashboard
 
-Now let's use Cortex Code to generate a complete dashboard! 
-
-1. **Delete all the default code** in the editor
-2. **Open Cortex Code** by clicking the **AI Assistant** icon (✨) or pressing `Cmd+I` (Mac) / `Ctrl+I` (Windows)
-3. **Enter the following prompt:**
+1. In the Streamlit editor, click on the **Cortex Code** icon (✨) in the **bottom right corner**
+2. **Enter the following prompt:**
 
 ```
-Create a beautiful and dynamic Streamlit dashboard to display sales data from the revenue_timeseries schema. The dashboard should:
-
-1. Query data from these tables:
-   - daily_revenue (date, revenue, cogs, forecasted_revenue, product_id, location_id)
-   - product_dim (product_id, product_line)
-   - location_dim (location_id, sales_region, state)
-
-2. Include interactive sidebar filters for:
-   - Date range selection
-   - Region multiselect
-   - Product line multiselect
-
-3. Display KPI metrics at the top:
-   - Total Revenue
-   - Total Profit (revenue - cogs)
-   - Average Daily Revenue
-   - Number of transactions
-
-4. Include these visualizations:
-   - Revenue trend over time (line chart)
-   - Revenue by region (bar chart)
-   - Revenue by product line (bar chart)
-   - Actual vs Forecasted revenue comparison
-
-5. Add a data table at the bottom showing detailed records
-
-Use modern styling with nice colors and clear labels. Make sure all charts are interactive.
+Create a beautiful and dynamic Streamlit dashboard to display sales data from the revenue_timeseries schema.
 ```
 
-4. **Click Generate** or press Enter
-5. Cortex Code will generate the complete Streamlit app code
-6. **Review the generated code** and click **Accept** to insert it
-7. Click **Run** to see your dashboard!
+3. **Click Generate** or press Enter
+4. Cortex Code will generate the complete dashboard code
+5. **Review the generated code** and click **Accept**
+6. Click **Run** to see your dashboard!
 
 ---
 
