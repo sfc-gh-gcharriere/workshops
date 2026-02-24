@@ -267,5 +267,5 @@ st.bar_chart(df['revenue'])
 
 ---
 
-**Next**: [Session 1b: Advanced Fundamentals (Optional)](SESSION_1_B_ADVANCED_FUNDAMENTALS_LIGHT.md) | [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST_LIGHT.md)
+**Next**: [Session 1b: Advanced Fundamentals (Optional)](SESSION_1_Z_ADVANCED_FUNDAMENTALS_LIGHT.md) | [Session 2: Building with Cortex Analyst](SESSION_2_CORTEX_ANALYST_LIGHT.md)
 
