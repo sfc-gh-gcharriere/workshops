@@ -269,51 +269,50 @@ The generated code should look similar to this:
 
 ```sql
 -- Dynamic Table 1: Denormalized revenue data with product and location details
-CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED
-    TARGET_LAG = '1 minute'
-    WAREHOUSE = COMPUTE_WH
-AS
-SELECT
-    r.DATE,
-    r.REVENUE,
-    r.COGS,
-    r.FORECASTED_REVENUE,
-    p.PRODUCT_ID,
-    p.PRODUCT_LINE,
-    l.LOCATION_ID,
-    l.SALES_REGION,
-    l.STATE
-FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE r
-LEFT JOIN CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.PRODUCT_DIM p
-    ON r.PRODUCT_ID = p.PRODUCT_ID
-LEFT JOIN CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.LOCATION_DIM l
-    ON r.LOCATION_ID = l.LOCATION_ID;
+CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED
+  TARGET_LAG = '1 minute'
+  WAREHOUSE = COMPUTE_WH
+  REFRESH_MODE = INCREMENTAL
+  AS
+    SELECT 
+      dr.DATE,
+      dr.REVENUE,
+      dr.COGS,
+      dr.FORECASTED_REVENUE,
+      p.PRODUCT_ID,
+      p.PRODUCT_LINE,
+      l.LOCATION_ID,
+      l.SALES_REGION,
+      l.STATE
+    FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE dr
+    INNER JOIN CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.PRODUCT_DIM p 
+      ON dr.PRODUCT_ID = p.PRODUCT_ID
+    INNER JOIN CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.LOCATION_DIM l 
+      ON dr.LOCATION_ID = l.LOCATION_ID;
 
 -- Dynamic Table 2: Monthly revenue aggregation
-CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
-    TARGET_LAG = '1 minute'
-    WAREHOUSE = COMPUTE_WH
-AS
-SELECT
-    DATE_TRUNC('MONTH', DATE) AS REVENUE_MONTH,
-    PRODUCT_LINE,
-    SALES_REGION,
-    STATE,
-    SUM(REVENUE) AS TOTAL_REVENUE,
-    SUM(COGS) AS TOTAL_COGS,
-    SUM(FORECASTED_REVENUE) AS TOTAL_FORECASTED_REVENUE,
-    COUNT(*) AS RECORD_COUNT
-FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED
-GROUP BY
-    DATE_TRUNC('MONTH', DATE),
-    PRODUCT_LINE,
-    SALES_REGION,
-    STATE;
+CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED
+  TARGET_LAG = '1 minute'
+  WAREHOUSE = COMPUTE_WH
+  REFRESH_MODE = INCREMENTAL
+  AS
+    SELECT 
+      DATE_TRUNC('MONTH', DATE) AS MONTH,
+      PRODUCT_LINE,
+      SALES_REGION,
+      STATE,
+      SUM(REVENUE) AS TOTAL_REVENUE,
+      SUM(COGS) AS TOTAL_COGS,
+      SUM(FORECASTED_REVENUE) AS TOTAL_FORECASTED_REVENUE,
+      COUNT(*) AS TRANSACTION_COUNT
+    FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED
+    GROUP BY DATE_TRUNC('MONTH', DATE), PRODUCT_LINE, SALES_REGION, STATE;
 ```
 
 **What This Creates:**
-- **REVENUE_DENORMALIZED**: Joins the three source tables into a single denormalized view
-- **MONTHLY_REVENUE_AGG**: Aggregates the denormalized data by month, product line, region, and state
+- **DAILY_REVENUE_DENORMALIZED**: Joins the three source tables into a single denormalized view
+- **MONTHLY_REVENUE_AGGREGATED**: Aggregates the denormalized data by month, product line, region, and state
+- **REFRESH_MODE = INCREMENTAL**: Only processes new/changed data, not the entire table
 - **TARGET_LAG = '1 minute'**: Both tables refresh automatically within 1 minute of source changes
 - **Pipeline Chain**: The second table depends on the first, creating an automatic transformation pipeline
 
@@ -325,11 +324,11 @@ After creating the dynamic tables, verify the data pipeline lineage:
 
 1. Navigate to **Data** > **Databases** in Snowsight
 2. Go to `CORTEX_ANALYST_DEMO` > `REVENUE_TIMESERIES`
-3. Click on the `MONTHLY_REVENUE_AGG` dynamic table
+3. Click on the `MONTHLY_REVENUE_AGGREGATED` dynamic table
 4. Select the **Lineage** tab
 
 You'll see the complete data flow:
-- `DAILY_REVENUE`, `PRODUCT_DIM`, `LOCATION_DIM` → `REVENUE_DENORMALIZED` → `MONTHLY_REVENUE_AGG`
+- `DAILY_REVENUE`, `PRODUCT_DIM`, `LOCATION_DIM` → `DAILY_REVENUE_DENORMALIZED` → `MONTHLY_REVENUE_AGGREGATED`
 
 This visual lineage confirms the pipeline dependencies and helps you understand how data flows through the transformation layers.
 
@@ -339,12 +338,12 @@ This visual lineage confirms the pipeline dependencies and helps you understand 
 
 ```sql
 -- Check the denormalized data
-SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED
+SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED
 LIMIT 20;
 
 -- Check the monthly aggregation
-SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
-ORDER BY REVENUE_MONTH DESC, TOTAL_REVENUE DESC
+SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED
+ORDER BY MONTH DESC, TOTAL_REVENUE DESC
 LIMIT 20;
 ```
 
@@ -360,9 +359,9 @@ Let's insert new data and observe how both dynamic tables update automatically.
 -- Note the current totals for January 2024
 SELECT 
     SUM(TOTAL_REVENUE) as current_total_revenue,
-    SUM(RECORD_COUNT) as current_records
-FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
-WHERE REVENUE_MONTH = '2024-01-01';
+    SUM(TRANSACTION_COUNT) as current_records
+FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED
+WHERE MONTH = '2024-01-01';
 ```
 
 **Insert New Data:**
@@ -382,21 +381,22 @@ VALUES
 ```sql
 -- Wait for the dynamic tables to refresh (up to 1 minute with TARGET_LAG = '1 minute')
 -- Or manually refresh for testing:
-ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED REFRESH;
-ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG REFRESH;
+ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED REFRESH;
+ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED REFRESH;
 
 -- Check the updated totals
 SELECT 
     SUM(TOTAL_REVENUE) as updated_total_revenue,
-    SUM(RECORD_COUNT) as updated_records
-FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
-WHERE REVENUE_MONTH = '2024-01-01';
+    SUM(TRANSACTION_COUNT) as updated_records
+FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED
+WHERE MONTH = '2024-01-01';
 ```
 
 **💡 Key Observations:**
 - ✅ New data flows through the entire pipeline automatically
-- ✅ REVENUE_DENORMALIZED updates first with the joined data
-- ✅ MONTHLY_REVENUE_AGG updates next with the aggregated results
+- ✅ DAILY_REVENUE_DENORMALIZED updates first with the joined data
+- ✅ MONTHLY_REVENUE_AGGREGATED updates next with the aggregated results
+- ✅ INCREMENTAL refresh only processes new/changed data
 - ✅ No manual ETL or scheduled tasks required
 
 ---
