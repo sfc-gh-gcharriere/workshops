@@ -253,10 +253,10 @@ Dynamic Tables automatically keep derived data up-to-date as source data changes
 
 ```
 Create an automated incremental pipeline for transformation using dynamic tables in the CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES schema. 
-Create two dynamic tables:
+Create two dynamic tables with incremental refresh:
 1. First one will denormalize the data from DAILY_REVENUE, PRODUCT_DIM, and LOCATION_DIM tables
 2. Second one will aggregate the revenue by month from the first dynamic table
-Use COMPUTE_WH warehouse and 1 hour target lag.
+Use COMPUTE_WH warehouse, 1 minute target lag, and INCREMENTAL refresh mode.
 ```
 
 5. **Click Generate**
@@ -270,7 +270,7 @@ The generated code should look similar to this:
 ```sql
 -- Dynamic Table 1: Denormalized revenue data with product and location details
 CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED
-    TARGET_LAG = '1 hour'
+    TARGET_LAG = '1 minute'
     WAREHOUSE = COMPUTE_WH
 AS
 SELECT
@@ -291,7 +291,7 @@ LEFT JOIN CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.LOCATION_DIM l
 
 -- Dynamic Table 2: Monthly revenue aggregation
 CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
-    TARGET_LAG = '1 hour'
+    TARGET_LAG = '1 minute'
     WAREHOUSE = COMPUTE_WH
 AS
 SELECT
@@ -314,12 +314,28 @@ GROUP BY
 **What This Creates:**
 - **REVENUE_DENORMALIZED**: Joins the three source tables into a single denormalized view
 - **MONTHLY_REVENUE_AGG**: Aggregates the denormalized data by month, product line, region, and state
-- **TARGET_LAG = '1 hour'**: Both tables refresh automatically within 1 hour of source changes
+- **TARGET_LAG = '1 minute'**: Both tables refresh automatically within 1 minute of source changes
 - **Pipeline Chain**: The second table depends on the first, creating an automatic transformation pipeline
 
 ---
 
-### Step 2: Verify the Dynamic Tables
+### Step 2: Check the Lineage
+
+After creating the dynamic tables, verify the data pipeline lineage:
+
+1. Navigate to **Data** > **Databases** in Snowsight
+2. Go to `CORTEX_ANALYST_DEMO` > `REVENUE_TIMESERIES`
+3. Click on the `MONTHLY_REVENUE_AGG` dynamic table
+4. Select the **Lineage** tab
+
+You'll see the complete data flow:
+- `DAILY_REVENUE`, `PRODUCT_DIM`, `LOCATION_DIM` → `REVENUE_DENORMALIZED` → `MONTHLY_REVENUE_AGG`
+
+This visual lineage confirms the pipeline dependencies and helps you understand how data flows through the transformation layers.
+
+---
+
+### Step 3: Verify the Dynamic Tables
 
 ```sql
 -- Check the denormalized data
@@ -334,7 +350,7 @@ LIMIT 20;
 
 ---
 
-### Step 3: Test the Pipeline with New Data
+### Step 4: Test the Pipeline with New Data
 
 Let's insert new data and observe how both dynamic tables update automatically.
 
@@ -364,7 +380,7 @@ VALUES
 **Observe the Dynamic Update:**
 
 ```sql
--- Wait for the dynamic tables to refresh (up to 1 hour with TARGET_LAG = '1 hour')
+-- Wait for the dynamic tables to refresh (up to 1 minute with TARGET_LAG = '1 minute')
 -- Or manually refresh for testing:
 ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED REFRESH;
 ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG REFRESH;
@@ -385,7 +401,7 @@ WHERE REVENUE_MONTH = '2024-01-01';
 
 ---
 
-### Step 4: Clean Up Test Data (Optional)
+### Step 5: Clean Up Test Data (Optional)
 
 ```sql
 -- Remove the test records we inserted

@@ -167,10 +167,10 @@ Try additional Cortex Code prompts:
 
 ```
 Create an automated incremental pipeline for transformation using dynamic tables in the CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES schema. 
-Create two dynamic tables:
+Create two dynamic tables with incremental refresh:
 1. First one will denormalize the data from DAILY_REVENUE, PRODUCT_DIM, and LOCATION_DIM tables
 2. Second one will aggregate the revenue by month from the first dynamic table
-Use COMPUTE_WH warehouse and 1 hour target lag.
+Use COMPUTE_WH warehouse, 1 minute target lag, and INCREMENTAL refresh mode.
 ```
 
 5. Click **Generate**
@@ -182,7 +182,7 @@ Use COMPUTE_WH warehouse and 1 hour target lag.
 ```sql
 -- Dynamic Table 1: Denormalized revenue data
 CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED
-    TARGET_LAG = '1 hour'
+    TARGET_LAG = '1 minute'
     WAREHOUSE = COMPUTE_WH
 AS
 SELECT
@@ -195,7 +195,7 @@ LEFT JOIN CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.LOCATION_DIM l ON r.LOCATION_ID
 
 -- Dynamic Table 2: Monthly revenue aggregation
 CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
-    TARGET_LAG = '1 hour'
+    TARGET_LAG = '1 minute'
     WAREHOUSE = COMPUTE_WH
 AS
 SELECT
@@ -211,7 +211,17 @@ GROUP BY DATE_TRUNC('MONTH', DATE), PRODUCT_LINE, SALES_REGION, STATE;
 
 ---
 
-### Step 2: Test the Pipeline
+### Step 2: Check the Lineage
+
+1. Navigate to **Data** > **Databases** > `CORTEX_ANALYST_DEMO` > `REVENUE_TIMESERIES`
+2. Click on `MONTHLY_REVENUE_AGG` dynamic table
+3. Select the **Lineage** tab
+
+You'll see: `DAILY_REVENUE`, `PRODUCT_DIM`, `LOCATION_DIM` → `REVENUE_DENORMALIZED` → `MONTHLY_REVENUE_AGG`
+
+---
+
+### Step 3: Test the Pipeline
 
 **Insert new data:**
 ```sql
