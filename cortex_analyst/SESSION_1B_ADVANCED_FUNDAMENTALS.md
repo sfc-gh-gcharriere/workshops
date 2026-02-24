@@ -186,8 +186,9 @@ Create a beautiful and dynamic Streamlit dashboard to display sales data from th
 
 3. **Click Generate** or press Enter
 4. Cortex Code will generate the complete dashboard code
-5. **Review the generated code** and click **Accept**
-6. Click **Run** to see your dashboard!
+5. **Copy the generated code**
+6. **Replace** all the current Streamlit code with the generated code
+7. Click **Run** to see your dashboard!
 
 ---
 

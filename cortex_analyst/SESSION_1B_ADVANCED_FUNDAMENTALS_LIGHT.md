@@ -130,8 +130,9 @@ Create a beautiful and dynamic Streamlit dashboard to display sales data from th
 ```
 
 3. Click **Generate**
-4. **Review** and click **Accept**
-5. Click **Run**
+4. **Copy** the generated code
+5. **Replace** all current Streamlit code with the generated code
+6. Click **Run**
 
 ---
 
