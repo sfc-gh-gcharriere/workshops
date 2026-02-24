@@ -59,6 +59,8 @@ All without writing a single line of SQL!
 
 ## Part 1: Environment Setup (15 minutes)
 
+> **💡 Note**: If you completed **Session 1b: Advanced Fundamentals**, you can skip Part 1 - the database, tables, and data are already loaded!
+
 ### Overview
 Set up the complete Snowflake environment required for Cortex Analyst, including database objects, data loading, and permissions.
 

@@ -4,6 +4,8 @@
 
 ## Part 1: Environment Setup
 
+> **💡 Note**: If you completed **Session 1b: Advanced Fundamentals**, skip Part 1 - database and data are already loaded!
+
 ### Step 1: Create Database, Schema, and Warehouse
 
 ```sql
