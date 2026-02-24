@@ -355,15 +355,12 @@ LIMIT 20;
 
 Let's insert new data and observe how both dynamic tables update automatically.
 
-**Check Current State:**
+**Check Current State (Before):**
 
 ```sql
--- Note the current totals for January 2024
-SELECT 
-    SUM(TOTAL_REVENUE) as current_total_revenue,
-    SUM(TRANSACTION_COUNT) as current_records
-FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED
-WHERE MONTH = '2024-01-01';
+-- Check the most recent records in the denormalized table
+SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED 
+ORDER BY DATE DESC;
 ```
 
 **Insert New Data:**
@@ -378,20 +375,21 @@ VALUES
     ('2024-01-17', 3200.00, 1600.00, 3000.00, 3, 3);
 ```
 
-**Observe the Dynamic Update:**
+**Refresh and Observe the Update (After):**
 
 ```sql
--- Wait for the dynamic tables to refresh (up to 1 minute with TARGET_LAG = '1 minute')
--- Or manually refresh for testing:
+-- Manually refresh the dynamic tables (or wait up to 1 minute for automatic refresh)
 ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED REFRESH;
 ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED REFRESH;
 
--- Check the updated totals
-SELECT 
-    SUM(TOTAL_REVENUE) as updated_total_revenue,
-    SUM(TRANSACTION_COUNT) as updated_records
-FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED
-WHERE MONTH = '2024-01-01';
+-- Check the denormalized table - new records should appear at the top
+SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE_DENORMALIZED 
+ORDER BY DATE DESC;
+
+-- Check the aggregated table - January 2024 totals should include the new data
+SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGGREGATED
+WHERE MONTH = '2024-01-01'
+ORDER BY TOTAL_REVENUE DESC;
 ```
 
 **💡 Key Observations:**
