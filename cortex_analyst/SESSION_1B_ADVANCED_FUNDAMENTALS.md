@@ -242,126 +242,156 @@ Simply open Cortex Code, enter your prompt, and let AI enhance your dashboard!
 
 ## Part 3: Dynamic Tables
 
-Dynamic Tables automatically keep derived data up-to-date as source data changes. Let's create a normalized revenue summary that updates automatically.
+Dynamic Tables automatically keep derived data up-to-date as source data changes. Let's create an automated incremental pipeline with two dynamic tables.
 
-### Step 1: Create the Dynamic Table
+### Step 1: Use Cortex Code to Generate the Pipeline
 
-```sql
-USE SCHEMA CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES;
-USE WAREHOUSE CORTEX_ANALYST_WH;
+1. Navigate to **Projects** > **Worksheets** in Snowsight
+2. Click **+** to add a new SQL file
+3. Click on the **Cortex Code** icon (✨) in the **bottom right corner**
+4. **Enter the following prompt:**
 
--- Create a dynamic table that automatically aggregates revenue data
-CREATE OR REPLACE DYNAMIC TABLE revenue_summary
-    TARGET_LAG = '1 minute'
-    WAREHOUSE = CORTEX_ANALYST_WH
-AS
-SELECT 
-    DATE_TRUNC('MONTH', dr.date) AS month,
-    p.product_line,
-    l.sales_region,
-    l.state,
-    COUNT(*) AS transaction_count,
-    SUM(dr.revenue) AS total_revenue,
-    SUM(dr.cogs) AS total_cogs,
-    SUM(dr.revenue - dr.cogs) AS total_profit,
-    SUM(dr.forecasted_revenue) AS total_forecasted,
-    AVG(dr.revenue) AS avg_revenue,
-    ROUND(SUM(dr.revenue - dr.cogs) / NULLIF(SUM(dr.revenue), 0) * 100, 2) AS profit_margin_pct
-FROM daily_revenue dr
-JOIN product_dim p ON dr.product_id = p.product_id
-JOIN location_dim l ON dr.location_id = l.location_id
-GROUP BY 
-    DATE_TRUNC('MONTH', dr.date),
-    p.product_line,
-    l.sales_region,
-    l.state;
-
--- Verify the dynamic table was created
-SELECT * FROM revenue_summary 
-ORDER BY month DESC, total_revenue DESC
-LIMIT 20;
+```
+Create an automated incremental pipeline for transformation using dynamic tables in the CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES schema. 
+Create two dynamic tables:
+1. First one will denormalize the data from DAILY_REVENUE, PRODUCT_DIM, and LOCATION_DIM tables
+2. Second one will aggregate the revenue by month from the first dynamic table
+Use COMPUTE_WH warehouse and 1 hour target lag.
 ```
 
-**What This Does:**
-- **TARGET_LAG = '1 minute'**: Data refreshes automatically within 1 minute of source changes
-- **Automatic Aggregation**: Pre-computes monthly summaries by product and location
-- **Derived Metrics**: Calculates profit margin percentage automatically
-- **No Manual Refresh**: Snowflake handles all updates automatically
+5. **Click Generate**
+6. **Copy** the generated code and paste it into your SQL worksheet
+7. **Run** the SQL to create the dynamic tables
+
+**Expected Output:**
+
+The generated code should look similar to this:
+
+```sql
+-- Dynamic Table 1: Denormalized revenue data with product and location details
+CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED
+    TARGET_LAG = '1 hour'
+    WAREHOUSE = COMPUTE_WH
+AS
+SELECT
+    r.DATE,
+    r.REVENUE,
+    r.COGS,
+    r.FORECASTED_REVENUE,
+    p.PRODUCT_ID,
+    p.PRODUCT_LINE,
+    l.LOCATION_ID,
+    l.SALES_REGION,
+    l.STATE
+FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE r
+LEFT JOIN CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.PRODUCT_DIM p
+    ON r.PRODUCT_ID = p.PRODUCT_ID
+LEFT JOIN CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.LOCATION_DIM l
+    ON r.LOCATION_ID = l.LOCATION_ID;
+
+-- Dynamic Table 2: Monthly revenue aggregation
+CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
+    TARGET_LAG = '1 hour'
+    WAREHOUSE = COMPUTE_WH
+AS
+SELECT
+    DATE_TRUNC('MONTH', DATE) AS REVENUE_MONTH,
+    PRODUCT_LINE,
+    SALES_REGION,
+    STATE,
+    SUM(REVENUE) AS TOTAL_REVENUE,
+    SUM(COGS) AS TOTAL_COGS,
+    SUM(FORECASTED_REVENUE) AS TOTAL_FORECASTED_REVENUE,
+    COUNT(*) AS RECORD_COUNT
+FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED
+GROUP BY
+    DATE_TRUNC('MONTH', DATE),
+    PRODUCT_LINE,
+    SALES_REGION,
+    STATE;
+```
+
+**What This Creates:**
+- **REVENUE_DENORMALIZED**: Joins the three source tables into a single denormalized view
+- **MONTHLY_REVENUE_AGG**: Aggregates the denormalized data by month, product line, region, and state
+- **TARGET_LAG = '1 hour'**: Both tables refresh automatically within 1 hour of source changes
+- **Pipeline Chain**: The second table depends on the first, creating an automatic transformation pipeline
 
 ---
 
-### Step 2: Test with New Data
+### Step 2: Verify the Dynamic Tables
 
-Let's insert new data and observe how the dynamic table updates automatically.
+```sql
+-- Check the denormalized data
+SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED
+LIMIT 20;
+
+-- Check the monthly aggregation
+SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
+ORDER BY REVENUE_MONTH DESC, TOTAL_REVENUE DESC
+LIMIT 20;
+```
+
+---
+
+### Step 3: Test the Pipeline with New Data
+
+Let's insert new data and observe how both dynamic tables update automatically.
 
 **Check Current State:**
 
 ```sql
--- Check current revenue summary for a specific month
-SELECT * FROM revenue_summary 
-WHERE month = '2024-01-01'
-ORDER BY total_revenue DESC;
-
--- Note the current totals
+-- Note the current totals for January 2024
 SELECT 
-    SUM(total_revenue) as current_total_revenue,
-    SUM(transaction_count) as current_transactions
-FROM revenue_summary
-WHERE month = '2024-01-01';
+    SUM(TOTAL_REVENUE) as current_total_revenue,
+    SUM(RECORD_COUNT) as current_records
+FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
+WHERE REVENUE_MONTH = '2024-01-01';
 ```
 
 **Insert New Data:**
 
 ```sql
 -- Insert new revenue records for January 2024
-INSERT INTO daily_revenue (date, revenue, cogs, forecasted_revenue, product_id, location_id)
+INSERT INTO CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE 
+    (date, revenue, cogs, forecasted_revenue, product_id, location_id)
 VALUES 
     ('2024-01-15', 5000.00, 2500.00, 4800.00, 1, 1),
     ('2024-01-16', 7500.00, 3750.00, 7000.00, 2, 2),
     ('2024-01-17', 3200.00, 1600.00, 3000.00, 3, 3);
-
--- Verify the inserts
-SELECT * FROM daily_revenue 
-WHERE date IN ('2024-01-15', '2024-01-16', '2024-01-17')
-ORDER BY date;
 ```
 
 **Observe the Dynamic Update:**
 
 ```sql
--- Wait a moment for the dynamic table to refresh (up to 1 minute)
--- Then check the updated summary
-SELECT * FROM revenue_summary 
-WHERE month = '2024-01-01'
-ORDER BY total_revenue DESC;
+-- Wait for the dynamic tables to refresh (up to 1 hour with TARGET_LAG = '1 hour')
+-- Or manually refresh for testing:
+ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED REFRESH;
+ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG REFRESH;
 
--- Verify the totals have increased
+-- Check the updated totals
 SELECT 
-    SUM(total_revenue) as updated_total_revenue,
-    SUM(transaction_count) as updated_transactions
-FROM revenue_summary
-WHERE month = '2024-01-01';
+    SUM(TOTAL_REVENUE) as updated_total_revenue,
+    SUM(RECORD_COUNT) as updated_records
+FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
+WHERE REVENUE_MONTH = '2024-01-01';
 ```
 
 **💡 Key Observations:**
-- ✅ The dynamic table automatically detected the new inserts
-- ✅ Aggregations were recalculated without manual intervention
-- ✅ The Streamlit dashboard will also reflect the new data on refresh
-- ✅ No ETL jobs or scheduled tasks required
+- ✅ New data flows through the entire pipeline automatically
+- ✅ REVENUE_DENORMALIZED updates first with the joined data
+- ✅ MONTHLY_REVENUE_AGG updates next with the aggregated results
+- ✅ No manual ETL or scheduled tasks required
 
 ---
 
-### Step 3: Clean Up Test Data (Optional)
+### Step 4: Clean Up Test Data (Optional)
 
 ```sql
 -- Remove the test records we inserted
-DELETE FROM daily_revenue 
+DELETE FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE 
 WHERE date IN ('2024-01-15', '2024-01-16', '2024-01-17')
 AND revenue IN (5000.00, 7500.00, 3200.00);
-
--- Verify deletion
-SELECT COUNT(*) FROM daily_revenue 
-WHERE date IN ('2024-01-15', '2024-01-16', '2024-01-17');
 ```
 
 ---

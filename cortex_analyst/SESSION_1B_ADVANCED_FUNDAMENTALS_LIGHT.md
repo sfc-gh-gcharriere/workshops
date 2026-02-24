@@ -158,64 +158,86 @@ Try additional Cortex Code prompts:
 
 ## Part 3: Dynamic Tables
 
-### Step 1: Create Dynamic Table
+### Step 1: Use Cortex Code to Generate the Pipeline
+
+1. Navigate to **Projects** > **Worksheets** in Snowsight
+2. Click **+** to add a new SQL file
+3. Click on the **Cortex Code** icon (✨) in the **bottom right corner**
+4. **Enter this prompt:**
+
+```
+Create an automated incremental pipeline for transformation using dynamic tables in the CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES schema. 
+Create two dynamic tables:
+1. First one will denormalize the data from DAILY_REVENUE, PRODUCT_DIM, and LOCATION_DIM tables
+2. Second one will aggregate the revenue by month from the first dynamic table
+Use COMPUTE_WH warehouse and 1 hour target lag.
+```
+
+5. Click **Generate**
+6. **Copy** the generated code and paste it into your SQL worksheet
+7. **Run** the SQL
+
+**Expected Output:**
 
 ```sql
-USE SCHEMA CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES;
-USE WAREHOUSE CORTEX_ANALYST_WH;
-
--- Create dynamic table for automatic aggregation
-CREATE OR REPLACE DYNAMIC TABLE revenue_summary
-    TARGET_LAG = '1 minute'
-    WAREHOUSE = CORTEX_ANALYST_WH
+-- Dynamic Table 1: Denormalized revenue data
+CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED
+    TARGET_LAG = '1 hour'
+    WAREHOUSE = COMPUTE_WH
 AS
-SELECT 
-    DATE_TRUNC('MONTH', dr.date) AS month,
-    p.product_line,
-    l.sales_region,
-    l.state,
-    COUNT(*) AS transaction_count,
-    SUM(dr.revenue) AS total_revenue,
-    SUM(dr.cogs) AS total_cogs,
-    SUM(dr.revenue - dr.cogs) AS total_profit,
-    ROUND(SUM(dr.revenue - dr.cogs) / NULLIF(SUM(dr.revenue), 0) * 100, 2) AS profit_margin_pct
-FROM daily_revenue dr
-JOIN product_dim p ON dr.product_id = p.product_id
-JOIN location_dim l ON dr.location_id = l.location_id
-GROUP BY DATE_TRUNC('MONTH', dr.date), p.product_line, l.sales_region, l.state;
+SELECT
+    r.DATE, r.REVENUE, r.COGS, r.FORECASTED_REVENUE,
+    p.PRODUCT_ID, p.PRODUCT_LINE,
+    l.LOCATION_ID, l.SALES_REGION, l.STATE
+FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE r
+LEFT JOIN CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.PRODUCT_DIM p ON r.PRODUCT_ID = p.PRODUCT_ID
+LEFT JOIN CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.LOCATION_DIM l ON r.LOCATION_ID = l.LOCATION_ID;
 
--- Verify
-SELECT * FROM revenue_summary ORDER BY month DESC, total_revenue DESC LIMIT 20;
+-- Dynamic Table 2: Monthly revenue aggregation
+CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
+    TARGET_LAG = '1 hour'
+    WAREHOUSE = COMPUTE_WH
+AS
+SELECT
+    DATE_TRUNC('MONTH', DATE) AS REVENUE_MONTH,
+    PRODUCT_LINE, SALES_REGION, STATE,
+    SUM(REVENUE) AS TOTAL_REVENUE,
+    SUM(COGS) AS TOTAL_COGS,
+    SUM(FORECASTED_REVENUE) AS TOTAL_FORECASTED_REVENUE,
+    COUNT(*) AS RECORD_COUNT
+FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED
+GROUP BY DATE_TRUNC('MONTH', DATE), PRODUCT_LINE, SALES_REGION, STATE;
 ```
 
 ---
 
-### Step 2: Test with New Data
-
-**Check current state:**
-```sql
-SELECT SUM(total_revenue) as current_total, SUM(transaction_count) as current_transactions
-FROM revenue_summary WHERE month = '2024-01-01';
-```
+### Step 2: Test the Pipeline
 
 **Insert new data:**
 ```sql
-INSERT INTO daily_revenue (date, revenue, cogs, forecasted_revenue, product_id, location_id)
+INSERT INTO CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE 
+    (date, revenue, cogs, forecasted_revenue, product_id, location_id)
 VALUES 
     ('2024-01-15', 5000.00, 2500.00, 4800.00, 1, 1),
     ('2024-01-16', 7500.00, 3750.00, 7000.00, 2, 2),
     ('2024-01-17', 3200.00, 1600.00, 3000.00, 3, 3);
 ```
 
-**Observe automatic update (wait ~1 minute):**
+**Manually refresh (or wait for automatic refresh):**
 ```sql
-SELECT SUM(total_revenue) as updated_total, SUM(transaction_count) as updated_transactions
-FROM revenue_summary WHERE month = '2024-01-01';
+ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.REVENUE_DENORMALIZED REFRESH;
+ALTER DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG REFRESH;
+```
+
+**Verify updates:**
+```sql
+SELECT * FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_REVENUE_AGG
+WHERE REVENUE_MONTH = '2024-01-01';
 ```
 
 **Clean up (optional):**
 ```sql
-DELETE FROM daily_revenue 
+DELETE FROM CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.DAILY_REVENUE 
 WHERE date IN ('2024-01-15', '2024-01-16', '2024-01-17')
 AND revenue IN (5000.00, 7500.00, 3200.00);
 ```
