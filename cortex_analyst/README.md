@@ -105,8 +105,6 @@ Explore the foundational features of the Snowflake Data Cloud platform through h
 
 Build an interactive Streamlit dashboard using Cortex Code and create automatic data pipelines with Dynamic Tables.
 
-<img alt="Dynamic Tables Pipeline" src="img/snowflake_fundamentals/pipeline.png" width="600" />
-
 **What You'll Learn:**
 1. **Environment Setup**: Create database, schema, and load revenue data
 2. **Streamlit with Cortex Code**: Use AI to generate a complete dashboard

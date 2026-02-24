@@ -330,6 +330,8 @@ After creating the dynamic tables, verify the data pipeline lineage:
 You'll see the complete data flow:
 - `DAILY_REVENUE`, `PRODUCT_DIM`, `LOCATION_DIM` → `DAILY_REVENUE_DENORMALIZED` → `MONTHLY_REVENUE_AGGREGATED`
 
+<img alt="Dynamic Tables Pipeline Lineage" src="img/snowflake_fundamentals/pipeline.png" />
+
 This visual lineage confirms the pipeline dependencies and helps you understand how data flows through the transformation layers.
 
 ---

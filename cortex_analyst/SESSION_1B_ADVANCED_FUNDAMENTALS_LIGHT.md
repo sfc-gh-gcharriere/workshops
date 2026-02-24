@@ -221,6 +221,8 @@ CREATE OR REPLACE DYNAMIC TABLE CORTEX_ANALYST_DEMO.REVENUE_TIMESERIES.MONTHLY_R
 
 You'll see: `DAILY_REVENUE`, `PRODUCT_DIM`, `LOCATION_DIM` → `DAILY_REVENUE_DENORMALIZED` → `MONTHLY_REVENUE_AGGREGATED`
 
+<img alt="Dynamic Tables Pipeline Lineage" src="img/snowflake_fundamentals/pipeline.png" />
+
 ---
 
 ### Step 3: Test the Pipeline
