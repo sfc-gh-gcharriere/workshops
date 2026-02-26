@@ -8,15 +8,6 @@
 
 ## Available Workshops
 
-### 🔒 [HR Data Security Blueprint](./hr/)
-A comprehensive, hands-on workshop demonstrating advanced data security patterns in Snowflake. Learn how to implement tag-based dynamic data masking, row access policies, and role-based access controls to protect sensitive HR data while maintaining appropriate access for different personas.
-
-**Key Topics**: Dynamic Data Masking, Row Access Policies, Tag-Based Governance, Role Separation
-
-[View Workshop →](./hr/README.md)
-
----
-
 ### 🤖 [Cortex Analyst Workshop](./cortex_analyst/)
 A half-day workshop introducing Snowflake Cortex Analyst, an AI-powered analytics tool that enables natural language interaction with your data. Build semantic models, ask questions in plain English, and create AI agents with intelligent tool orchestration through Snowflake Intelligence.
 
@@ -33,8 +24,6 @@ Each workshop includes:
 - Sample datasets and SQL scripts
 - Hands-on exercises and demonstrations
 - Best practices and troubleshooting tips
-
-Choose a workshop above to begin, or explore both to get a comprehensive understanding of Snowflake's platform capabilities and AI-powered features.
 
 ---
 

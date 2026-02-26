@@ -26,8 +26,9 @@ Condensed versions with essential setup details, code blocks, and step-by-step i
 | Session 3 | [Quick Reference →](SESSION_3_CORTEX_SEARCH_INTEGRATION_LIGHT.md) |
 | Session 4 | [Quick Reference →](SESSION_4_SNOWFLAKE_INTELLIGENCE_LIGHT.md) |
 
-**Core Duration**: 2 hours 30 minutes  
-**With Optional Session 3**: 2 hours 45 minutes (approx. half-day with breaks)
+**Core Duration**: 2 hours 30 minutes (Sessions 1, 2, 4)  
+**With Optional Session 1b**: 3 hours 15 minutes  
+**With All Optional Sessions**: 3 hours 30 minutes (approx. half-day with breaks)
 
 📊 **[Download Workshop Slides (PDF)](Snowflake%20Workshop%20-%20Oct%202025.pdf)**
 
@@ -179,7 +180,7 @@ Discover how to orchestrate AI tools using Snowflake Agents and leverage Snowfla
 ## Contact & Feedback
 
 **Workshop Maintainer**: Gael Charriere - Snowflake Senior Solution Engineer
-**Last Updated**: October 2025  
+**Last Updated**: February 2026  
 
 For questions, feedback, or contributions to this workshop, please reach out through your Snowflake account team.
 
